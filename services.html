@@ -80,6 +80,14 @@
       body { cursor: auto !important; }
       * { cursor: auto !important; }
     }
+
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; gap: 0; }
+      .service-card { padding: 2rem 1.5rem; transition: background 0.4s ease; }
+      .service-card.in-view { background: #0d0c1a; }
+      .service-card.in-view::before { opacity: 1; }
+      .service-card.in-view .service-num { color: rgba(123,75,255,0.2); }
+    }
   </style>
   <title>Services — On fait des bulles ?</title>
   <style>
@@ -207,6 +215,31 @@
       menu.classList.toggle('open');
       document.body.classList.toggle('menu-open');
       document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+  <script>
+    // Mobile scroll highlight for service cards
+    if (window.innerWidth <= 900) {
+      var cards = document.querySelectorAll('.service-card');
+      function highlightVisible() {
+        var center = window.innerHeight / 2;
+        var closest = null;
+        var closestDist = Infinity;
+        cards.forEach(function(card) {
+          var rect = card.getBoundingClientRect();
+          var cardCenter = rect.top + rect.height / 2;
+          var dist = Math.abs(cardCenter - center);
+          if (dist < closestDist) {
+            closestDist = dist;
+            closest = card;
+          }
+        });
+        cards.forEach(function(card) {
+          card.classList.toggle('in-view', card === closest);
+        });
+      }
+      window.addEventListener('scroll', highlightVisible, { passive: true });
+      highlightVisible();
     }
   </script>
 </body>
