@@ -97,85 +97,83 @@
     }, { threshold: 0.1 });
     reveals.forEach(r => observer.observe(r));
   </script>
+
+</html>
   <script>
-    function rand(a, b) { return Math.random() * (b - a) + a; }
-    var bubbles = [];
+    function rand(a,b){return Math.random()*(b-a)+a;}
+    var bs=[];
 
-    function makeBubble() {
-      var size = rand(50,110)|0;
-      var el = document.createElement('div');
-      el.style.cssText =
-        'position:fixed;' +
-        'width:'+size+'px;' +
-        'height:'+size+'px;' +
-        'border-radius:50%;' +
-        'background:radial-gradient(circle at 35% 30%, rgba(255,255,255,0.5) 0%, rgba(200,220,255,0.12) 25%, rgba(123,75,255,0.07) 55%, transparent 100%);' +
-        'border:1.5px solid rgba(255,255,255,0.3);' +
-        'box-shadow:inset 0 0 12px rgba(255,255,255,0.1), inset -3px -3px 6px rgba(0,229,204,0.07), 0 0 8px rgba(200,220,255,0.08);' +
-        'backdrop-filter:blur(1px);' +
-        'pointer-events:all;' +
-        'z-index:50;' +
-        'opacity:0;' +
-        'cursor:pointer;' +
-        'overflow:hidden;';
+    function vw(){return Math.min(window.innerWidth, document.body.clientWidth, screen.width);}
+    function vh(){return Math.min(window.innerHeight, document.body.clientHeight, screen.height);}
 
-      // Highlight dot
-      var shine = document.createElement('div');
-      shine.style.cssText = 'position:absolute;top:12%;left:18%;width:28%;height:16%;border-radius:50%;background:rgba(255,255,255,0.5);filter:blur(2px);transform:rotate(-35deg);pointer-events:none;';
+    function mk(){
+      var sz=rand(45,110)|0;
+      var el=document.createElement('div');
+      el.style.cssText='position:fixed;width:'+sz+'px;height:'+sz+'px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,0.5) 0%,rgba(200,220,255,0.12) 25%,rgba(123,75,255,0.07) 55%,transparent 100%);border:1.5px solid rgba(255,255,255,0.3);box-shadow:inset 0 0 12px rgba(255,255,255,0.1);pointer-events:all;z-index:50;opacity:0;cursor:pointer;overflow:hidden;left:0;top:0;';
+      var shine=document.createElement('div');
+      shine.style.cssText='position:absolute;top:12%;left:18%;width:28%;height:16%;border-radius:50%;background:rgba(255,255,255,0.5);filter:blur(2px);transform:rotate(-35deg);pointer-events:none;';
       el.appendChild(shine);
-
-      var b = {
-        el: el,
-        x: rand(60, window.innerWidth - 60),
-        y: window.innerHeight + size,
-        vy: rand(0.4, 0.9),
-        ph: rand(0, 6.28),
-        ws: rand(0.01, 0.025),
-        op: 0, fin: true, pop: false, sz: size
-      };
-
-      el.addEventListener('click', function() {
-        if (b.pop) return;
-        b.pop = true;
-        var phrases = ['oh, une nouvelle idee qui eclate !','pop !','et voila une bulle de moins...','bonne idee envolee','pof !','on en fait d autres !'];
-        var t = document.createElement('div');
-        t.textContent = phrases[Math.floor(Math.random() * phrases.length)];
-        t.style.cssText = 'position:fixed;left:'+Math.min(b.x+16,window.innerWidth-220)+'px;top:'+(b.y-10)+'px;color:#fff;font-family:DM Sans,sans-serif;font-size:13px;font-weight:300;pointer-events:none;z-index:999;opacity:0;white-space:nowrap;text-shadow:0 0 12px rgba(0,229,204,0.9);transition:opacity 0.3s,transform 1.5s;';
+      var W=vw(), H=vh();
+      var b={el:el,x:rand(sz,W-sz),y:H+sz,vy:rand(0.4,0.9),ph:rand(0,6.28),ws:rand(0.01,0.025),op:0,fin:true,pop:false,sz:sz,W:W,H:H};
+      el.onclick=function(){
+        if(b.pop)return;b.pop=true;
+        // Particles
+        var cols=['#7b4bff','#00e5cc','#ff3cac','rgba(255,255,255,0.9)'];
+        for(var pi=0;pi<12;pi++){
+          (function(pi){
+            var p=document.createElement('div');
+            var angle=(pi/12)*6.2832;
+            var dist=rand(20,70);
+            var tx=Math.cos(angle)*dist, ty=Math.sin(angle)*dist;
+            p.style.cssText='position:fixed;left:'+b.x+'px;top:'+b.y+'px;width:'+rand(3,9)+'px;height:'+rand(3,9)+'px;border-radius:50%;background:'+cols[pi%4]+';pointer-events:none;z-index:999;transform:translate(-50%,-50%);transition:transform 0.55s cubic-bezier(0.2,0,0.8,1),opacity 0.55s ease;';
+            document.body.appendChild(p);
+            requestAnimationFrame(function(){
+              p.style.transform='translate(calc(-50% + '+tx+'px),calc(-50% + '+ty+'px))';
+              p.style.opacity='0';
+            });
+            setTimeout(function(){p.remove();},650);
+          })(pi);
+        }
+        var phrases=['Une bonne idée envolée !','Une autre ?','Plop !','C’est stylé non ?','Heureusement qu’on en a plein !','Eh doucement !','Tu sais qu’on est sur Insta ?','Paf !'];
+        var t=document.createElement('div');
+        t.textContent=phrases[Math.floor(Math.random()*phrases.length)];
+        t.style.cssText='position:fixed;left:'+Math.min(b.x+16,b.W-220)+'px;top:'+(b.y-10)+'px;color:#fff;font-family:sans-serif;font-size:13px;pointer-events:none;z-index:999;opacity:0;white-space:nowrap;text-shadow:0 0 12px #00e5cc;transition:opacity 0.3s,transform 1.5s;';
         document.body.appendChild(t);
-        requestAnimationFrame(function() { t.style.opacity='1'; t.style.transform='translateY(-35px)'; });
-        setTimeout(function() { t.style.opacity='0'; }, 1500);
-        setTimeout(function() { t.remove(); }, 2000);
-        el.style.transition = 'transform 0.12s,opacity 0.15s';
-        el.style.transform = 'translate('+(b.x-size/2)+'px,'+(b.y-size/2)+'px) scale(1.5)';
-        el.style.opacity = '0';
-        setTimeout(function() { el.remove(); var idx=bubbles.indexOf(b); if(idx>-1)bubbles.splice(idx,1); }, 200);
-      });
-
+        requestAnimationFrame(function(){t.style.opacity='1';t.style.transform='translateY(-35px)';});
+        setTimeout(function(){t.style.opacity='0';},1500);
+        setTimeout(function(){t.remove();},2000);
+        el.style.transition='transform 0.12s,opacity 0.15s';
+        el.style.transform='translate('+(b.x-sz/2)+'px,'+(b.y-sz/2)+'px) scale(1.5)';
+        el.style.opacity='0';
+        setTimeout(function(){el.remove();bs.splice(bs.indexOf(b),1);},200);
+      };
       document.body.appendChild(el);
-      bubbles.push(b);
+      bs.push(b);
     }
 
-    function tick() {
-      for (var i = bubbles.length - 1; i >= 0; i--) {
-        var b = bubbles[i];
-        if (b.pop) continue;
-        b.ph += b.ws; b.y -= b.vy; b.x += Math.sin(b.ph) * 0.5;
-        if (b.fin) { b.op = Math.min(0.85, b.op + 0.008); if (b.op >= 0.84) b.fin = false; }
-        if (b.y < 100) b.op = Math.max(0, b.op - 0.01);
-        if (b.y < -b.sz || (b.op <= 0 && !b.fin)) { b.el.remove(); bubbles.splice(i, 1); continue; }
-        b.el.style.opacity = b.op;
-        b.el.style.transform = 'translate('+(b.x-b.sz/2)+'px,'+(b.y-b.sz/2)+'px)';
+    function tick(){
+      for(var i=bs.length-1;i>=0;i--){
+        var b=bs[i];
+        if(b.pop)continue;
+        b.ph+=b.ws;b.y-=b.vy;b.x+=Math.sin(b.ph)*0.5;
+        if(b.fin){b.op=Math.min(0.85,b.op+0.008);if(b.op>=0.84)b.fin=false;}
+        if(b.y<100)b.op=Math.max(0,b.op-0.01);
+        if(b.y<-b.sz||(b.op<=0&&!b.fin)){b.el.remove();bs.splice(i,1);continue;}
+        b.el.style.opacity=b.op;
+        b.el.style.transform='translate('+(b.x-b.sz/2)+'px,'+(b.y-b.sz/2)+'px)';
       }
       requestAnimationFrame(tick);
     }
 
-    function schedule() {
-      if (bubbles.length < 6) makeBubble();
-      setTimeout(schedule, rand(2000, 5500));
+    function sch(){
+      var W=vw();
+      // Re-read width each time in case of resize
+      if(bs.length<6) mk();
+      setTimeout(sch,rand(2000,5500));
     }
 
     tick();
-    schedule();
+    setTimeout(sch, 1000);
   </script>
 </body>
 </html>
