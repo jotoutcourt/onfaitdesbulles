@@ -102,6 +102,35 @@
       .service-card.active-card::before { opacity: 1 !important; }
       .service-card.active-card .service-num { color: rgba(123,75,255,0.2) !important; }
     }
+
+    .service-num {
+      position: relative;
+      display: inline-block;
+    }
+    .num-bubble-sphere {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      transform: scale(0);
+      opacity: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 32% 28%, rgba(255,255,255,0.6) 0%, transparent 35%),
+        radial-gradient(circle at 70% 75%, rgba(0,229,204,0.15) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(123,75,255,0.08) 0%, transparent 70%);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      box-shadow: inset 0 0 20px rgba(255,255,255,0.08);
+    }
+    .num-bubble-sphere::before {
+      content: '';
+      position: absolute;
+      top: 12%; left: 18%;
+      width: 28%; height: 16%;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      filter: blur(2px);
+      transform: rotate(-35deg);
+    }
   </style>
   <title>Services — On fait des bulles ?</title>
   <style>
@@ -149,42 +178,42 @@
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
-        <div class="service-num">01</div>
+        <div class="service-num"><div class="num-bubble-sphere"></div>01</div>
         <div class="service-who">Jo fait des bulles</div>
         <h2 class="service-name">Direction Artistique</h2>
         <p class="service-desc">Concept créatif, direction de campagnes, supervision visuelle. Du brief au BAT, une vision cohérente et impactante.</p>
         <div class="service-tags"><span class="tag">Print</span><span class="tag">Campagnes</span><span class="tag">Concept</span></div>
       </div>
       <div class="service-card reveal">
-        <div class="service-num">02</div>
+        <div class="service-num"><div class="num-bubble-sphere"></div>02</div>
         <div class="service-who">Jo fait des bulles</div>
         <h2 class="service-name">Identité Visuelle</h2>
         <p class="service-desc">Logo, charte graphique et déclinaisons. Une identité forte, cohérente, qui vous ressemble et reste dans les esprits.</p>
         <div class="service-tags"><span class="tag">Logo</span><span class="tag">Charte</span><span class="tag">Supports</span></div>
       </div>
       <div class="service-card reveal">
-        <div class="service-num">03</div>
+        <div class="service-num"><div class="num-bubble-sphere"></div>03</div>
         <div class="service-who">Jo fait des bulles</div>
         <h2 class="service-name">Sites Web</h2>
         <p class="service-desc">Sites vitrines et boutiques en ligne. Design soigné, code propre, expérience utilisateur pensée dans les moindres détails.</p>
         <div class="service-tags"><span class="tag">Vitrine</span><span class="tag">E-commerce</span><span class="tag">Refonte</span></div>
       </div>
       <div class="service-card reveal">
-        <div class="service-num">04</div>
+        <div class="service-num"><div class="num-bubble-sphere"></div>04</div>
         <div class="service-who">Ju fait des bulles aussi</div>
         <h2 class="service-name">Campagnes ADS</h2>
         <p class="service-desc">Campagnes Meta et Google Ads pilotées avec précision. On optimise votre budget pour un retour maximal.</p>
         <div class="service-tags"><span class="tag">Meta Ads</span><span class="tag">Google Ads</span><span class="tag">Retargeting</span></div>
       </div>
       <div class="service-card reveal">
-        <div class="service-num">05</div>
+        <div class="service-num"><div class="num-bubble-sphere"></div>05</div>
         <div class="service-who">Ju fait des bulles aussi</div>
         <h2 class="service-name">Community Management</h2>
         <p class="service-desc">Gestion de vos réseaux sociaux, création de contenu et animation de communauté. Un feed cohérent qui convertit.</p>
         <div class="service-tags"><span class="tag">Instagram</span><span class="tag">LinkedIn</span><span class="tag">TikTok</span></div>
       </div>
       <div class="service-card reveal">
-        <div class="service-num">06</div>
+        <div class="service-num"><div class="num-bubble-sphere"></div>06</div>
         <div class="service-who">Ju fait des bulles aussi</div>
         <h2 class="service-name">Référencement SEO</h2>
         <p class="service-desc">Audit, optimisation et stratégie de contenu pour vous rendre visible sur Google là où ça compte vraiment.</p>
@@ -263,6 +292,92 @@
       initScrollHighlight();
     }
     mq.addEventListener('change', initScrollHighlight);
+  </script>
+  <script>
+    document.querySelectorAll('.service-card').forEach(function(card) {
+      var wrap = card.querySelector('.service-num');
+      if (!wrap) return;
+      var sphere = wrap.querySelector('.num-bubble-sphere');
+      var size = 0, interval = null, popped = false, t = 0;
+
+      wrap.addEventListener('mouseenter', function() {
+        if (popped) return;
+        clearInterval(interval);
+        interval = setInterval(function() {
+          t++;
+          size = Math.min(1.05, size + 0.018 + size * 0.008);
+          var wx = 1 + 0.06 * Math.sin(t * 0.5);
+          var wy = 1 - 0.06 * Math.sin(t * 0.5);
+          var s = size * 1.3;
+          sphere.style.transform = 'scale(' + (s * wx) + ',' + (s * wy) + ')';
+          sphere.style.opacity = Math.min(1, size * 2);
+          sphere.style.boxShadow = 'inset 0 0 20px rgba(255,255,255,0.08),0 0 ' + (size*40) + 'px rgba(123,75,255,' + (size*0.35) + ')';
+          wrap.style.color = 'rgba(255,255,255,' + Math.min(0.9, 0.06 + size * 0.9) + ')';
+          wrap.style.textShadow = '0 0 ' + (size * 15) + 'px rgba(0,229,204,' + size * 0.5 + ')';
+          if (size >= 1.05) { clearInterval(interval); explode(); }
+        }, 35);
+      });
+
+      wrap.addEventListener('mouseleave', function() {
+        clearInterval(interval);
+        if (popped) return;
+        t = 0;
+        interval = setInterval(function() {
+          size = Math.max(0, size - 0.035);
+          var s = size * 1.3;
+          sphere.style.transform = 'scale(' + s + ')';
+          sphere.style.opacity = Math.min(1, size * 2);
+          sphere.style.boxShadow = 'inset 0 0 20px rgba(255,255,255,0.08),0 0 ' + (size*40) + 'px rgba(123,75,255,' + (size*0.35) + ')';
+          wrap.style.color = 'rgba(255,255,255,' + (0.06 + size * 0.9) + ')';
+          wrap.style.textShadow = '';
+          if (size <= 0) clearInterval(interval);
+        }, 25);
+      });
+
+      function explode() {
+        popped = true;
+        var rect = wrap.getBoundingClientRect();
+        var cx = rect.left + rect.width / 2;
+        var cy = rect.top + rect.height / 2;
+        var cols = ['#7b4bff','#00e5cc','#ff3cac','#ffffff'];
+        for (var i = 0; i < 16; i++) {
+          (function(i) {
+            var p = document.createElement('div');
+            var angle = (i / 16) * 6.2832;
+            var dist = 40 + Math.random() * 80;
+            var tx = Math.cos(angle) * dist;
+            var ty = Math.sin(angle) * dist;
+            var ps = 3 + Math.random() * 8;
+            p.style.cssText = 'position:fixed;left:'+cx+'px;top:'+cy+'px;width:'+ps+'px;height:'+ps+'px;border-radius:50%;background:'+cols[i%4]+';pointer-events:none;z-index:99999;opacity:1;transform:translate(-50%,-50%);';
+            document.body.appendChild(p);
+            requestAnimationFrame(function(){ requestAnimationFrame(function(){
+              p.style.transition = 'transform 0.7s ease, opacity 0.7s ease';
+              p.style.transform = 'translate(calc(-50% + '+tx+'px),calc(-50% + '+ty+'px))';
+              p.style.opacity = '0';
+            }); });
+            setTimeout(function(){ p.remove(); }, 800);
+          })(i);
+        }
+
+        sphere.style.transition = 'transform 0.12s ease, opacity 0.15s ease';
+        sphere.style.transform = 'scale(2.5)';
+        sphere.style.opacity = '0';
+        wrap.style.transition = 'opacity 0.1s ease';
+        wrap.style.opacity = '0';
+
+        setTimeout(function() {
+          sphere.style.transition = 'none';
+          sphere.style.transform = 'scale(0)';
+          setTimeout(function() {
+            wrap.style.transition = 'opacity 0.4s ease, color 0.3s, text-shadow 0.3s';
+            wrap.style.opacity = '1';
+            wrap.style.color = '';
+            wrap.style.textShadow = '';
+            size = 0; t = 0; popped = false;
+          }, 300);
+        }, 200);
+      }
+    });
   </script>
 </body>
 </html>
