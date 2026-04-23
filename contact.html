@@ -80,6 +80,71 @@
       body { cursor: auto !important; }
       * { cursor: auto !important; }
     }
+
+    /* FORM */
+    .contact-form-wrap { margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.06); }
+    .contact-form-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent1); margin-bottom: 1.5rem; display: block; }
+    .contact-form-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .contact-form-fields input, .contact-form-textarea {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 0.4rem; padding: 0.9rem 1.2rem; color: var(--text);
+      font-family: var(--font-body); font-size: 0.9rem; font-weight: 300;
+      width: 100%; outline: none; transition: border-color 0.2s;
+    }
+    .contact-form-fields input:focus, .contact-form-textarea:focus { border-color: rgba(123,75,255,0.5); }
+    .contact-form-fields input::placeholder, .contact-form-textarea::placeholder { color: var(--muted); }
+    .contact-form-textarea { resize: none; height: 140px; margin-bottom: 1rem; }
+    .contact-form-btn {
+      background: transparent; color: #fff; padding: 0.9rem 2.5rem;
+      border-radius: 0.4rem; font-size: 0.9rem; letter-spacing: 0.08em;
+      border: 1px solid rgba(255,255,255,0.4); font-family: var(--font-body);
+      cursor: none; transition: border-color 0.2s, transform 0.2s; width: 100%; font-weight: 300;
+    }
+    .contact-form-btn:hover { border-color: #fff; transform: translateY(-2px); }
+    .contact-form-btn:disabled { opacity: 0.5; pointer-events: none; transform: none; }
+
+    /* BLUR OVERLAY */
+    .blur-overlay {
+      position: fixed; inset: 0;
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      background: rgba(7,6,14,0.5); z-index: 8999;
+      opacity: 0; pointer-events: none; transition: opacity 0.5s ease;
+    }
+    .blur-overlay.active { opacity: 1; pointer-events: all; }
+
+    /* FLYING BUBBLE */
+    .flying-bubble {
+      position: fixed; border-radius: 50%; pointer-events: none; z-index: 9000;
+      background:
+        radial-gradient(circle at 32% 28%, rgba(255,255,255,0.5) 0%, transparent 35%),
+        radial-gradient(circle at 70% 75%, rgba(0,229,204,0.15) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(123,75,255,0.08) 0%, transparent 70%);
+      border: 1.5px solid rgba(255,255,255,0.25);
+      box-shadow: inset 0 0 20px rgba(255,255,255,0.08), 0 0 40px rgba(123,75,255,0.2);
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .flying-bubble::before {
+      content: ''; position: absolute; top: 10%; left: 15%;
+      width: 30%; height: 18%; border-radius: 50%;
+      background: rgba(255,255,255,0.4); filter: blur(3px); transform: rotate(-35deg);
+    }
+    .flying-bubble-text {
+      font-family: var(--font-body); font-size: 0.7rem; color: rgba(255,255,255,0.7);
+      text-align: center; padding: 1rem; line-height: 1.4; position: relative; z-index: 1;
+    }
+
+    /* SUCCESS */
+    .success-msg {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      opacity: 0; text-align: center; z-index: 9001;
+      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+      pointer-events: none;
+    }
+    .success-msg.visible { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    .success-msg h2 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 0.5rem; color: var(--accent2); }
+    .success-msg p { color: var(--muted); font-size: 1rem; }
+    @media (max-width: 600px) { .contact-form-fields { grid-template-columns: 1fr; } }
   </style>
   <title>Contact — On fait des bulles ?</title>
   <style>
@@ -122,23 +187,21 @@
         <h1 class="contact-title">ON FAIT<br>DES BULLES&nbsp;?</h1>
         <p class="contact-sub">Un projet, une idée, une envie de changer votre image. On est disponibles pour en parler — sans engagement, autour d'un échange simple.</p>
       </div>
-      <div class="contact-team reveal">
-        <div class="contact-person">
-          <div class="contact-person-name">Jo</div>
-          <div class="contact-person-role">DA · Sites Web · Créa</div>
-          <a href="mailto:jo@faisonsdesbulles.com" class="contact-link">✉ jo@faisonsdesbulles.com</a>
-          <a href="tel:+33619842799" class="contact-link">☎ 06 19 84 27 99</a>
-        </div>
-        <div class="contact-person">
-          <div class="contact-person-name">Ju</div>
-          <div class="contact-person-role">ADS · CM · SEO</div>
-          <a href="mailto:ju@faisonsdesbulles.com" class="contact-link">✉ ju@faisonsdesbulles.com</a>
-        </div>
-      </div>
-      <hr class="divider">
       <div class="availability reveal">
         <div class="dot"></div>
         <span>Disponibles pour de nouvelles missions — Lyon & remote</span>
+      </div>
+
+      <div class="contact-form-wrap reveal">
+        <span class="contact-form-label">Envoyez-nous un message</span>
+        <div class="contact-form-fields">
+          <input type="text" id="cf-name" placeholder="Votre nom" />
+          <input type="email" id="cf-email" placeholder="Votre email" />
+          <input type="tel" id="cf-phone" placeholder="Votre telephone (facultatif)" />
+          <div></div>
+        </div>
+        <textarea class="contact-form-textarea" id="cf-msg" placeholder="Votre message..."></textarea>
+        <button class="contact-form-btn" id="cf-submit" onclick="sendBubble()">Envoyer ma demande</button>
       </div>
     </div>
   </div>
@@ -147,6 +210,8 @@
     <span>Lyon, France</span>
   </footer>
   
+  <div class="blur-overlay" id="blurOverlay"></div>
+  <div class="success-msg" id="successMsg"><h2>Demande bien reçue !</h2><p>On revient vers vous rapidement 🫧</p></div>
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="follower"></div>
   <div class="grain"></div>
@@ -187,6 +252,92 @@
       menu.classList.toggle('open');
       document.body.classList.toggle('menu-open');
       document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+  <script>
+    async function sendBubble() {
+      var name = document.getElementById('cf-name').value.trim();
+      var email = document.getElementById('cf-email').value.trim();
+      var msg = document.getElementById('cf-msg').value.trim();
+      var phone = document.getElementById('cf-phone').value.trim();
+      var btn = document.getElementById('cf-submit');
+      if (!name || !email || !msg) {
+        btn.textContent = 'Remplissez les champs obligatoires !';
+        setTimeout(function() { btn.textContent = 'Envoyer ma demande'; }, 2000);
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = 'Envoi en cours...';
+
+      // Blur overlay
+      document.getElementById('blurOverlay').classList.add('active');
+
+      // Bubble
+      var btnRect = btn.getBoundingClientRect();
+      var cx = btnRect.left + btnRect.width / 2;
+      var cy = btnRect.top + btnRect.height / 2;
+      var size = Math.min(window.innerWidth * 0.55, 300);
+      var bubble = document.createElement('div');
+      bubble.className = 'flying-bubble';
+      bubble.style.cssText = 'width:'+size+'px;height:'+size+'px;left:'+(cx-size/2)+'px;top:'+(cy-size/2)+'px;transform:scale(0);opacity:0;transition:transform 0.6s cubic-bezier(0.34,1.56,0.64,1),opacity 0.4s ease;';
+      var bt = document.createElement('div');
+      bt.className = 'flying-bubble-text';
+      bt.innerHTML = '<strong>' + name + '</strong><br>' + msg.substring(0, 60) + (msg.length > 60 ? '...' : '');
+      bubble.appendChild(bt);
+      document.body.appendChild(bubble);
+      requestAnimationFrame(function() { requestAnimationFrame(function() {
+        bubble.style.transform = 'scale(1)'; bubble.style.opacity = '1';
+      }); });
+
+      // Send to Formspree
+      try {
+        var fd = new FormData();
+        fd.append('name', name); fd.append('email', email); fd.append('message', msg);
+        if (phone) fd.append('phone', phone);
+        await fetch('https://formspree.io/f/mgorrzod', { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
+      } catch(e) {}
+
+      // Float up after 0.8s
+      setTimeout(function() {
+        var bx = cx - size/2;
+        var by = cy - size/2;
+        var vy = 0.5;
+        var phase = 0;
+        var elapsed = 0;
+        var duration = 260;
+        bubble.style.transition = 'none';
+
+        function floatUp() {
+          phase += 0.022;
+          by -= vy;
+          vy += 0.003;
+          bx += Math.sin(phase) * 1.6;
+          elapsed++;
+          bubble.style.left = bx + 'px';
+          bubble.style.top = by + 'px';
+          if (elapsed > duration - 70) {
+            var fade = (elapsed - (duration - 70)) / 70;
+            bubble.style.opacity = String(Math.max(0, 1 - fade));
+          }
+          if (elapsed < duration && by > -size - 50) {
+            requestAnimationFrame(floatUp);
+          } else {
+            bubble.remove();
+            document.getElementById('successMsg').classList.add('visible');
+            setTimeout(function() {
+              document.getElementById('blurOverlay').classList.remove('active');
+              document.getElementById('successMsg').classList.remove('visible');
+              document.getElementById('cf-name').value = '';
+              document.getElementById('cf-email').value = '';
+              document.getElementById('cf-phone').value = '';
+              document.getElementById('cf-msg').value = '';
+              btn.disabled = false;
+              btn.textContent = 'Envoyer ma demande';
+            }, 3000);
+          }
+        }
+        requestAnimationFrame(floatUp);
+      }, 800);
     }
   </script>
 </body>
