@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #07060e;
+      --surface: #0f0d1c;
+      --accent1: #7b4bff;
+      --accent2: #00e5cc;
+      --accent3: #ff3cac;
+      --text: #e8e4f0;
+      --muted: #7a748f;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-syne: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 300; overflow-x: hidden; cursor: none; }
+    .cursor { width: 12px; height: 12px; background: var(--accent2); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: difference; }
+    .cursor-follower { width: 36px; height: 36px; border: 1px solid rgba(123,75,255,0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transition: left 0.12s ease, top 0.12s ease; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: linear-gradient(to bottom, rgba(7,6,14,0.95), transparent); backdrop-filter: blur(12px); }
+    .nav-logo { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.08em; text-decoration: none; background: linear-gradient(120deg, #ffffff, #c8c8d8, #a0b4ff, #d0f0ff, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent2); }
+    .grain { position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); opacity: 0.4; pointer-events: none; z-index: 0; }
+    .section-label { font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent1); margin-bottom: 1rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 5rem); line-height: 1; margin-bottom: 3rem; }
+    .page-content { padding: 10rem 4rem 6rem; position: relative; z-index: 1; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    footer { padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem; color: var(--muted); position: relative; z-index: 1; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--accent2); }
+    @media (max-width: 900px) { nav { padding: 1.2rem 2rem; } .nav-links { display: none; } .page-content { padding: 8rem 2rem 4rem; } footer { padding: 2rem; } }
+  </style>
+  <title>Services — Jo fait des bulles</title>
+  <style>
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05); margin-top: 1rem; }
+    .service-card { background: var(--bg); padding: 3rem 2.5rem; position: relative; overflow: hidden; transition: background 0.3s; }
+    .service-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(123,75,255,0.08), transparent); opacity: 0; transition: opacity 0.3s; }
+    .service-card:hover::before { opacity: 1; }
+    .service-num { font-family: var(--font-display); font-size: 5rem; color: rgba(255,255,255,0.04); line-height: 1; margin-bottom: 1.5rem; transition: color 0.3s; }
+    .service-card:hover .service-num { color: rgba(123,75,255,0.15); }
+    .service-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .service-name { font-family: var(--font-display); font-size: 2rem; margin-bottom: 0.8rem; letter-spacing: 0.03em; }
+    .service-desc { color: var(--muted); font-size: 0.95rem; line-height: 1.8; }
+    .service-tags { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 2rem; color: var(--muted); }
+    .service-price { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); }
+    .price-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+    .price-value { font-family: var(--font-display); font-size: 1.8rem; color: var(--accent2); }
+    .cta-band { margin-top: 5rem; padding: 4rem; background: var(--surface); border: 1px solid rgba(255,255,255,0.05); border-radius: 0.5rem; text-align: center; }
+    .cta-band h3 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1rem; }
+    .cta-band p { color: var(--muted); margin-bottom: 2rem; }
+    .btn-outline { background: transparent; color: #fff; padding: 0.9rem 2.5rem; border-radius: 0.4rem; text-decoration: none; font-size: 0.9rem; letter-spacing: 0.08em; border: 1px solid rgba(255,255,255,0.4); transition: border-color 0.2s, transform 0.2s; display: inline-block; }
+    .btn-outline:hover { border-color: #fff; transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">JoFaitDesBulles</a>
+    <ul class="nav-links"><li><a href="services.html" class="active">Services</a></li><li><a href="projets.html" >Projets</a></li><li><a href="apropos.html" >À propos</a></li><li><a href="contact.html" >Contact</a></li></ul>
+  </nav>
+  <div class="page-content">
+    <div class="reveal">
+      <p class="section-label">Ce que je fais</p>
+      <h1 class="section-title">Services</h1>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <div class="service-icon">🎨</div>
+        <h2 class="service-name">Direction Artistique</h2>
+        <p class="service-desc">Concept créatif, direction de campagnes, supervision visuelle. Je transforme une idée en univers cohérent et impactant — du brief au BAT.</p>
+        <div class="service-tags">
+          <span class="tag">Campagnes Print</span>
+          <span class="tag">Branding</span>
+          <span class="tag">Concept</span>
+          <span class="tag">Affiches</span>
+        </div>
+        <div class="service-price">
+          <div class="price-label">À partir de</div>
+          <div class="price-value">600 €</div>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">02</div>
+        <div class="service-icon">◈</div>
+        <h2 class="service-name">Identité Visuelle</h2>
+        <p class="service-desc">Logo, charte graphique, déclinaisons. Une identité forte qui vous ressemble et qui reste gravée dans les mémoires.</p>
+        <div class="service-tags">
+          <span class="tag">Logo</span>
+          <span class="tag">Charte graphique</span>
+          <span class="tag">Supports</span>
+          <span class="tag">Carte de visite</span>
+        </div>
+        <div class="service-price">
+          <div class="price-label">À partir de</div>
+          <div class="price-value">800 €</div>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">03</div>
+        <div class="service-icon">⌨</div>
+        <h2 class="service-name">Sites Web</h2>
+        <p class="service-desc">Sites vitrines, boutiques et refonte complète. Design soigné, code propre, expérience utilisateur pensée dans les moindres détails.</p>
+        <div class="service-tags">
+          <span class="tag">Vitrine</span>
+          <span class="tag">E-commerce</span>
+          <span class="tag">Refonte</span>
+          <span class="tag">SEO</span>
+        </div>
+        <div class="service-price">
+          <div class="price-label">À partir de</div>
+          <div class="price-value">1 200 €</div>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">04</div>
+        <div class="service-icon">▶</div>
+        <h2 class="service-name">Réseaux Sociaux</h2>
+        <p class="service-desc">Templates, visuels et motion pour vos réseaux. Un feed cohérent et une communication qui convertit.</p>
+        <div class="service-tags">
+          <span class="tag">Instagram</span>
+          <span class="tag">LinkedIn</span>
+          <span class="tag">Templates</span>
+          <span class="tag">Ads</span>
+        </div>
+        <div class="service-price">
+          <div class="price-label">À partir de</div>
+          <div class="price-value">400 €</div>
+        </div>
+      </div>
+    </div>
+    <div class="cta-band reveal">
+      <h3>Un projet en tête&nbsp;?</h3>
+      <p>Discutons-en autour d'un café (ou d'une bulle).</p>
+      <a href="contact.html" class="btn-outline">Prendre contact</a>
+    </div>
+  </div>
+  <footer>
+    <span>© 2026 Jo fait des bulles</span>
+    <span>Lyon, France</span>
+  </footer>
+  
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="follower"></div>
+  <div class="grain"></div>
+  <script>
+    const cursor = document.getElementById('cursor');
+    const follower = document.getElementById('follower');
+    let mx = 0, my = 0;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx - 6 + 'px';
+      cursor.style.top = my - 6 + 'px';
+      follower.style.left = mx - 18 + 'px';
+      follower.style.top = my - 18 + 'px';
+    });
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80); });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+  </script>
+</body>
+</html>
