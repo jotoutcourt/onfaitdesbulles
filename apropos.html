@@ -34,6 +34,40 @@
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--accent2); }
     @media (max-width: 900px) { nav { padding: 1.2rem 2rem; } .nav-links { display: none; } .page-content { padding: 8rem 2rem 4rem; } footer { padding: 2rem; } }
+
+    /* MOBILE NAV */
+    .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; z-index: 200; }
+    .burger span { display: block; width: 24px; height: 1.5px; background: var(--text); transition: transform 0.3s, opacity 0.3s; }
+    .burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(7,6,14,0.97);
+      backdrop-filter: blur(20px);
+      z-index: 150;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--accent2); }
+    @media (max-width: 900px) {
+      .burger { display: flex; }
+      .cursor, .cursor-follower { display: none !important; }
+      body { cursor: auto !important; }
+      * { cursor: auto !important; }
+    }
   </style>
   <title>À propos — On fait des bulles ?</title>
   <style>
@@ -155,6 +189,16 @@
   <nav>
     <a href="index.html" class="nav-logo">OnFaitDesBulles</a>
     <ul class="nav-links"><li><a href="services.html" >Services</a></li><li><a href="projets.html" >Projets</a></li><li><a href="apropos.html" class="active">À propos</a></li><li><a href="contact.html" >Contact</a></li></ul>
+  <div class="burger" id="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="toggleMenu()">Accueil</a>
+    <a href="services.html" onclick="toggleMenu()">Services</a>
+    <a href="projets.html" onclick="toggleMenu()">Projets</a>
+    <a href="apropos.html" onclick="toggleMenu()">À propos</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+  </div>
   </nav>
   <div class="grain"></div>
 
@@ -306,6 +350,13 @@
       entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80); });
     }, { threshold: 0.1 });
     reveals.forEach(r => observer.observe(r));
+  </script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('burger').classList.toggle('open');
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
   </script>
 </body>
 </html>
