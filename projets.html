@@ -107,6 +107,18 @@
 </head>
 <body>
 <nav><a href="index.html" class="nav-logo">OnFaitDesBulles</a><ul class="nav-links"><li><a href="services.html" >Services</a></li><li><a href="projets.html" class="active">Projets</a></li><li><a href="apropos.html" >À propos</a></li><li><a href="contact.html" >Contact</a></li></ul></nav>
+
+  <div class="burger" id="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="toggleMenu()">&#x2715;</button>
+    <a href="index.html" onclick="toggleMenu()">Accueil</a>
+    <a href="services.html" onclick="toggleMenu()">Nos services</a>
+    <a href="projets.html" onclick="toggleMenu()">Nos r&#233;alisations</a>
+    <a href="apropos.html" onclick="toggleMenu()">&Agrave; propos</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+  </div>
   <div class="page-content">
     <div class="reveal">
       <p class="section-label">Réalisations</p>
@@ -402,6 +414,14 @@
     }
   </script>
 
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('open');
+      document.body.classList.toggle('menu-open');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
   <script>
     function toggleMenu() {
       const menu = document.getElementById('mobileMenu');
