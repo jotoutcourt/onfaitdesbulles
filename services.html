@@ -8,13 +8,9 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #07060e;
-      --surface: #0f0d1c;
-      --accent1: #7b4bff;
-      --accent2: #00e5cc;
-      --accent3: #ff3cac;
-      --text: #e8e4f0;
-      --muted: #7a748f;
+      --bg: #07060e; --surface: #0f0d1c;
+      --accent1: #7b4bff; --accent2: #00e5cc; --accent3: #ff3cac;
+      --text: #e8e4f0; --muted: #7a748f;
       --font-display: 'Bebas Neue', sans-serif;
       --font-syne: 'Syne', sans-serif;
       --font-body: 'DM Sans', sans-serif;
@@ -39,22 +35,20 @@
     footer a:hover { color: var(--accent2); }
     @media (max-width: 900px) { nav { padding: 1.2rem 2rem; } .nav-links { display: none; } .page-content { padding: 8rem 2rem 4rem; } footer { padding: 2rem; } }
   </style>
-  <title>Services — Jo fait des bulles</title>
+  <title>Services — On fait des bulles ?</title>
   <style>
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05); margin-top: 1rem; }
+    .services-intro { max-width: 600px; margin-bottom: 4rem; color: var(--muted); line-height: 1.8; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05); }
     .service-card { background: var(--bg); padding: 3rem 2.5rem; position: relative; overflow: hidden; transition: background 0.3s; }
     .service-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(123,75,255,0.08), transparent); opacity: 0; transition: opacity 0.3s; }
     .service-card:hover::before { opacity: 1; }
     .service-num { font-family: var(--font-display); font-size: 5rem; color: rgba(255,255,255,0.04); line-height: 1; margin-bottom: 1.5rem; transition: color 0.3s; }
     .service-card:hover .service-num { color: rgba(123,75,255,0.15); }
-    .service-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .service-name { font-family: var(--font-display); font-size: 2rem; margin-bottom: 0.8rem; letter-spacing: 0.03em; }
-    .service-desc { color: var(--muted); font-size: 0.95rem; line-height: 1.8; }
+    .service-who { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent3); margin-bottom: 0.5rem; }
+    .service-name { font-family: var(--font-display); font-size: 2rem; margin-bottom: 0.8rem; }
+    .service-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.8; }
     .service-tags { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .tag { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 2rem; color: var(--muted); }
-    .service-price { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); }
-    .price-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
-    .price-value { font-family: var(--font-display); font-size: 1.8rem; color: var(--accent2); }
     .cta-band { margin-top: 5rem; padding: 4rem; background: var(--surface); border: 1px solid rgba(255,255,255,0.05); border-radius: 0.5rem; text-align: center; }
     .cta-band h3 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1rem; }
     .cta-band p { color: var(--muted); margin-bottom: 2rem; }
@@ -64,88 +58,67 @@
 </head>
 <body>
   <nav>
-    <a href="index.html" class="nav-logo">JoFaitDesBulles</a>
+    <a href="index.html" class="nav-logo">OnFaitDesBulles</a>
     <ul class="nav-links"><li><a href="services.html" class="active">Services</a></li><li><a href="projets.html" >Projets</a></li><li><a href="apropos.html" >À propos</a></li><li><a href="contact.html" >Contact</a></li></ul>
   </nav>
   <div class="page-content">
     <div class="reveal">
-      <p class="section-label">Ce que je fais</p>
+      <p class="section-label">Ce qu'on fait</p>
       <h1 class="section-title">Services</h1>
+      <p class="services-intro">Jo s'occupe du design et du web. Ju prend en charge le digital et l'acquisition. Ensemble, on couvre tout le spectre de votre communication.</p>
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-num">01</div>
-        <div class="service-icon">🎨</div>
+        <div class="service-who">Jo fait des bulles</div>
         <h2 class="service-name">Direction Artistique</h2>
-        <p class="service-desc">Concept créatif, direction de campagnes, supervision visuelle. Je transforme une idée en univers cohérent et impactant — du brief au BAT.</p>
-        <div class="service-tags">
-          <span class="tag">Campagnes Print</span>
-          <span class="tag">Branding</span>
-          <span class="tag">Concept</span>
-          <span class="tag">Affiches</span>
-        </div>
-        <div class="service-price">
-          <div class="price-label">À partir de</div>
-          <div class="price-value">600 €</div>
-        </div>
+        <p class="service-desc">Concept créatif, direction de campagnes, supervision visuelle. Du brief au BAT, une vision cohérente et impactante.</p>
+        <div class="service-tags"><span class="tag">Print</span><span class="tag">Campagnes</span><span class="tag">Concept</span></div>
       </div>
       <div class="service-card reveal">
         <div class="service-num">02</div>
-        <div class="service-icon">◈</div>
+        <div class="service-who">Jo fait des bulles</div>
         <h2 class="service-name">Identité Visuelle</h2>
-        <p class="service-desc">Logo, charte graphique, déclinaisons. Une identité forte qui vous ressemble et qui reste gravée dans les mémoires.</p>
-        <div class="service-tags">
-          <span class="tag">Logo</span>
-          <span class="tag">Charte graphique</span>
-          <span class="tag">Supports</span>
-          <span class="tag">Carte de visite</span>
-        </div>
-        <div class="service-price">
-          <div class="price-label">À partir de</div>
-          <div class="price-value">800 €</div>
-        </div>
+        <p class="service-desc">Logo, charte graphique et déclinaisons. Une identité forte, cohérente, qui vous ressemble et reste dans les esprits.</p>
+        <div class="service-tags"><span class="tag">Logo</span><span class="tag">Charte</span><span class="tag">Supports</span></div>
       </div>
       <div class="service-card reveal">
         <div class="service-num">03</div>
-        <div class="service-icon">⌨</div>
+        <div class="service-who">Jo fait des bulles</div>
         <h2 class="service-name">Sites Web</h2>
-        <p class="service-desc">Sites vitrines, boutiques et refonte complète. Design soigné, code propre, expérience utilisateur pensée dans les moindres détails.</p>
-        <div class="service-tags">
-          <span class="tag">Vitrine</span>
-          <span class="tag">E-commerce</span>
-          <span class="tag">Refonte</span>
-          <span class="tag">SEO</span>
-        </div>
-        <div class="service-price">
-          <div class="price-label">À partir de</div>
-          <div class="price-value">1 200 €</div>
-        </div>
+        <p class="service-desc">Sites vitrines et boutiques en ligne. Design soigné, code propre, expérience utilisateur pensée dans les moindres détails.</p>
+        <div class="service-tags"><span class="tag">Vitrine</span><span class="tag">E-commerce</span><span class="tag">Refonte</span></div>
       </div>
       <div class="service-card reveal">
         <div class="service-num">04</div>
-        <div class="service-icon">▶</div>
-        <h2 class="service-name">Réseaux Sociaux</h2>
-        <p class="service-desc">Templates, visuels et motion pour vos réseaux. Un feed cohérent et une communication qui convertit.</p>
-        <div class="service-tags">
-          <span class="tag">Instagram</span>
-          <span class="tag">LinkedIn</span>
-          <span class="tag">Templates</span>
-          <span class="tag">Ads</span>
-        </div>
-        <div class="service-price">
-          <div class="price-label">À partir de</div>
-          <div class="price-value">400 €</div>
-        </div>
+        <div class="service-who">Ju fait des bulles aussi</div>
+        <h2 class="service-name">Campagnes ADS</h2>
+        <p class="service-desc">Campagnes Meta et Google Ads pilotées avec précision. On optimise votre budget pour un retour maximal.</p>
+        <div class="service-tags"><span class="tag">Meta Ads</span><span class="tag">Google Ads</span><span class="tag">Retargeting</span></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">05</div>
+        <div class="service-who">Ju fait des bulles aussi</div>
+        <h2 class="service-name">Community Management</h2>
+        <p class="service-desc">Gestion de vos réseaux sociaux, création de contenu et animation de communauté. Un feed cohérent qui convertit.</p>
+        <div class="service-tags"><span class="tag">Instagram</span><span class="tag">LinkedIn</span><span class="tag">TikTok</span></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">06</div>
+        <div class="service-who">Ju fait des bulles aussi</div>
+        <h2 class="service-name">Référencement SEO</h2>
+        <p class="service-desc">Audit, optimisation et stratégie de contenu pour vous rendre visible sur Google là où ça compte vraiment.</p>
+        <div class="service-tags"><span class="tag">Audit SEO</span><span class="tag">Contenu</span><span class="tag">Technique</span></div>
       </div>
     </div>
     <div class="cta-band reveal">
-      <h3>Un projet en tête&nbsp;?</h3>
-      <p>Discutons-en autour d'un café (ou d'une bulle).</p>
+      <h3>Un projet en tête ?</h3>
+      <p>Parlons-en autour d'un café (ou d'une bulle).</p>
       <a href="contact.html" class="btn-outline">Prendre contact</a>
     </div>
   </div>
   <footer>
-    <span>© 2026 Jo fait des bulles</span>
+    <span>© 2026 On fait des bulles ?</span>
     <span>Lyon, France</span>
   </footer>
   
