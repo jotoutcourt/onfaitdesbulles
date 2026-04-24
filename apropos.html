@@ -83,6 +83,25 @@
   </style>
   <title>À propos — On fait des bulles ?</title>
   <style>
+
+    .about-hero {
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.18;
+      filter: grayscale(100%) contrast(1.1);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .about-hero-bg { z-index: 1; }
+    .about-hero-content { z-index: 2; }
+    .about-hero-tag { z-index: 2; }
     /* HERO INTRO */
     .about-hero {
       min-height: 50vh;
@@ -218,6 +237,7 @@
 
   <!-- INTRO -->
   <div class="about-hero reveal">
+    <video class="about-hero-video" src="assets/bulles.mp4" autoplay muted loop playsinline></video>
     <div class="about-hero-bg"></div>
     <div class="about-hero-content">
       <span class="about-hero-tag">L'agence</span>
