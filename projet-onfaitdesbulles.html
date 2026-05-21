@@ -220,7 +220,7 @@
       margin: 0 auto;
     }
 
-    /* SECTION BULLES INTERACTIVES */
+    /* SECTION BULLES — FLAPPY GAME */
     .bubbles-section {
       position: relative;
       z-index: 1;
@@ -229,26 +229,29 @@
       margin: 0 auto;
       text-align: center;
     }
-    .bubbles-arena {
+    .game-wrapper {
       position: relative;
       width: 100%;
+      margin: 2.5rem 0 1.5rem;
+    }
+    #flappy-canvas {
+      width: 100%;
       height: 340px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 1rem;
-      overflow: hidden;
-      margin: 3rem 0;
-      cursor: none;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+      display: block;
+      cursor: pointer;
     }
-    .bubbles-hint {
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: -1rem;
-      margin-bottom: 2rem;
+    .game-ui {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
     }
-    .pop-counter {
+    .game-score {
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
@@ -259,38 +262,15 @@
       font-size: 0.8rem;
       letter-spacing: 0.1em;
       color: var(--muted);
-      margin-top: 1rem;
     }
-    .pop-counter span { color: var(--accent2); font-family: var(--font-display); font-size: 1.2rem; letter-spacing: 0; }
-
-    /* FOOTER */
-    footer {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 2rem 4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
+    .game-score span { color: var(--accent2); font-family: var(--font-display); font-size: 1.2rem; letter-spacing: 0; }
+    .game-hint {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
       color: var(--muted);
     }
-
-    /* REVEAL */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-
-    /* POP PARTICLE */
-    .pop-particle {
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9997;
-      animation: popOut 0.5s ease-out forwards;
-    }
-    @keyframes popOut {
-      0% { transform: scale(1); opacity: 0.8; }
-      100% { transform: scale(3); opacity: 0; }
+          100% { transform: scale(3); opacity: 0; }
     }
 
     /* FLYING BUBBLE (formulaire) */
@@ -378,16 +358,17 @@
 
 <div class="divider"></div>
 
-<!-- SECTION BULLES INTERACTIVES -->
+<!-- SECTION FLAPPY BUBBLE -->
 <section class="bubbles-section" id="bulles">
-  <p class="section-label reveal">02 — Interactivité</p>
-  <h2 class="section-title reveal">Les bulles,<br>ça se crève.</h2>
-  <div class="bubbles-arena reveal" id="arena">
-    <!-- Les bulles sont générées en JS -->
+  <p class="section-label reveal">02 — Mini-jeu</p>
+  <h2 class="section-title reveal">Flappy<br>Bubble.</h2>
+  <div class="game-wrapper reveal">
+    <canvas id="flappy-canvas"></canvas>
   </div>
-  <p class="bubbles-hint">Cliquez ou survolez les bulles pour les faire éclater</p>
-  <div class="pop-counter reveal">
-    <span id="pop-count">0</span> bulles éclatées
+  <div class="game-ui reveal">
+    <div class="game-score">Score&nbsp;&nbsp;<span id="score-val">0</span></div>
+    <div class="game-score">Meilleur&nbsp;&nbsp;<span id="best-val">0</span></div>
+    <div class="game-hint">Clic ou espace pour voler</div>
   </div>
 </section>
 
@@ -478,119 +459,256 @@ drawBgBubbles();
 // =====================
 // ARENA BULLES INTERACTIVES
 // =====================
-const arena = document.getElementById('arena');
 const popCountEl = document.getElementById('pop-count');
 let popCount = 0;
-let arenaBubbles = [];
 
-const colors = [
-  { stroke: 'rgba(0,229,204,0.6)', reflet: 'rgba(0,229,204,0.8)', bg: 'rgba(0,229,204,0.04)' },
-  { stroke: 'rgba(123,75,255,0.6)', reflet: 'rgba(180,150,255,0.8)', bg: 'rgba(123,75,255,0.04)' },
-  { stroke: 'rgba(255,60,172,0.5)', reflet: 'rgba(255,150,200,0.8)', bg: 'rgba(255,60,172,0.04)' },
-  { stroke: 'rgba(255,200,100,0.4)', reflet: 'rgba(255,230,160,0.8)', bg: 'rgba(255,200,100,0.03)' },
-];
 
-function spawnArenaBubble() {
-  if (arenaBubbles.length >= 14) return;
-  const r = 22 + Math.random() * 38;
-  const rect = arena.getBoundingClientRect();
-  const col = colors[Math.floor(Math.random() * colors.length)];
-  const el = document.createElement('div');
-  el.style.cssText = `
-    position: absolute;
-    width: ${r * 2}px;
-    height: ${r * 2}px;
-    border-radius: 50%;
-    border: 1px solid ${col.stroke};
-    background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.08), ${col.bg});
-    box-shadow: inset 0 0 ${r}px rgba(255,255,255,0.02);
-    cursor: none;
-    transition: transform 0.15s;
-    will-change: transform;
-  `;
-  // reflet
-  const reflet = document.createElement('div');
-  reflet.style.cssText = `
-    position: absolute;
-    top: 18%;
-    left: 22%;
-    width: 28%;
-    height: 18%;
-    border-radius: 50%;
-    background: ${col.reflet};
-    opacity: 0.5;
-    transform: rotate(-20deg);
-    pointer-events: none;
-  `;
-  el.appendChild(reflet);
 
-  const x = r + Math.random() * (arena.offsetWidth - r * 2);
-  const y = r + Math.random() * (arena.offsetHeight - r * 2);
-  const vx = (Math.random() - 0.5) * 0.8;
-  const vy = (Math.random() - 0.5) * 0.8;
+// =====================
+// FLAPPY BUBBLE GAME
+// =====================
+(function() {
+  const fc = document.getElementById('flappy-canvas');
+  if (!fc) return;
+  const fctx = fc.getContext('2d');
+  const scoreEl = document.getElementById('score-val');
+  const bestEl  = document.getElementById('best-val');
 
-  el.style.left = x - r + 'px';
-  el.style.top = y - r + 'px';
-  arena.appendChild(el);
+  let W, H;
+  function resize() {
+    W = fc.offsetWidth;
+    H = fc.offsetHeight;
+    fc.width  = W;
+    fc.height = H;
+  }
+  resize();
+  window.addEventListener('resize', () => { resize(); if (!running) drawIdle(); });
 
-  const bubble = { el, x, y, r, vx, vy, popped: false, col };
-  arenaBubbles.push(bubble);
+  const GRAVITY      = 0.32;
+  const FLAP         = -6.5;
+  const PIPE_W       = 52;
+  const GAP          = 130;
+  const PIPE_SPEED   = 2.2;
+  const PIPE_INTERVAL = 1600;
+  const COLORS = ['#00e5cc','#7b4bff','#ff3cac','#ffd166'];
 
-  function popBubble(bub) {
-    if (bub.popped) return;
-    bub.popped = true;
-    // effet éclatement
-    const elRect = bub.el.getBoundingClientRect();
-    for (let i = 0; i < 6; i++) {
-      const p = document.createElement('div');
-      const size = 6 + Math.random() * 10;
-      p.className = 'pop-particle';
-      p.style.cssText = `
-        width: ${size}px; height: ${size}px;
-        left: ${elRect.left + bub.r}px;
-        top: ${elRect.top + bub.r}px;
-        background: ${bub.col.stroke};
-        transform-origin: ${(Math.random() - 0.5) * 60}px ${(Math.random() - 0.5) * 60}px;
-      `;
-      document.body.appendChild(p);
-      setTimeout(() => p.remove(), 500);
+  let bubble, pipes, score, best = 0;
+  let running = false, dead = false, started = false;
+  let lastPipe = 0, lastTime = 0, animId;
+  let popParticles = [];
+
+  function initGame() {
+    bubble = { x: W * 0.22, y: H / 2, vy: 0, r: 22 };
+    pipes  = [];
+    score  = 0;
+    popParticles = [];
+    dead    = false;
+    started = false;
+    running = true;
+    lastPipe = performance.now();
+    if (scoreEl) scoreEl.textContent = 0;
+  }
+
+  function drawBackground() {
+    fctx.clearRect(0, 0, W, H);
+    fctx.strokeStyle = 'rgba(255,255,255,0.02)';
+    fctx.lineWidth = 1;
+    for (let x = 0; x < W; x += 40) { fctx.beginPath(); fctx.moveTo(x,0); fctx.lineTo(x,H); fctx.stroke(); }
+    for (let y = 0; y < H; y += 40) { fctx.beginPath(); fctx.moveTo(0,y); fctx.lineTo(W,y); fctx.stroke(); }
+  }
+
+  function drawBubble(b) {
+    // Corps
+    const g = fctx.createRadialGradient(b.x - b.r*0.3, b.y - b.r*0.35, b.r*0.05, b.x, b.y, b.r);
+    g.addColorStop(0, 'rgba(255,255,255,0.18)');
+    g.addColorStop(0.6, 'rgba(0,229,204,0.06)');
+    g.addColorStop(1, 'rgba(0,229,204,0.0)');
+    fctx.beginPath();
+    fctx.arc(b.x, b.y, b.r, 0, Math.PI*2);
+    fctx.fillStyle = g;
+    fctx.fill();
+    // Contour irisé
+    const sg = fctx.createLinearGradient(b.x-b.r, b.y-b.r, b.x+b.r, b.y+b.r);
+    sg.addColorStop(0, 'rgba(0,229,204,0.9)');
+    sg.addColorStop(0.5, 'rgba(123,75,255,0.7)');
+    sg.addColorStop(1, 'rgba(255,60,172,0.5)');
+    fctx.beginPath();
+    fctx.arc(b.x, b.y, b.r, 0, Math.PI*2);
+    fctx.strokeStyle = sg;
+    fctx.lineWidth = 1.5;
+    fctx.stroke();
+    // Reflet principal
+    fctx.beginPath();
+    fctx.ellipse(b.x - b.r*0.28, b.y - b.r*0.32, b.r*0.22, b.r*0.12, -0.4, 0, Math.PI*2);
+    fctx.fillStyle = 'rgba(255,255,255,0.55)';
+    fctx.fill();
+    // Petit reflet
+    fctx.beginPath();
+    fctx.ellipse(b.x + b.r*0.15, b.y + b.r*0.3, b.r*0.09, b.r*0.05, 0.6, 0, Math.PI*2);
+    fctx.fillStyle = 'rgba(255,255,255,0.2)';
+    fctx.fill();
+  }
+
+  function drawPipe(p) {
+    const g = fctx.createLinearGradient(p.x, 0, p.x+PIPE_W, 0);
+    g.addColorStop(0, 'rgba(123,75,255,0.35)');
+    g.addColorStop(0.5, 'rgba(123,75,255,0.18)');
+    g.addColorStop(1, 'rgba(123,75,255,0.08)');
+    // Haut
+    fctx.beginPath(); fctx.roundRect(p.x, 0, PIPE_W, p.top, [0,0,10,10]);
+    fctx.fillStyle = g; fctx.fill();
+    fctx.strokeStyle = 'rgba(123,75,255,0.55)'; fctx.lineWidth = 1; fctx.stroke();
+    // Bas
+    fctx.beginPath(); fctx.roundRect(p.x, p.top+GAP, PIPE_W, H-p.top-GAP, [10,10,0,0]);
+    fctx.fillStyle = g; fctx.fill();
+    fctx.strokeStyle = 'rgba(123,75,255,0.55)'; fctx.stroke();
+    // Bord lumineux
+    fctx.strokeStyle = 'rgba(0,229,204,0.3)'; fctx.lineWidth = 2;
+    fctx.beginPath();
+    fctx.moveTo(p.x+PIPE_W, 0); fctx.lineTo(p.x+PIPE_W, p.top);
+    fctx.moveTo(p.x+PIPE_W, p.top+GAP); fctx.lineTo(p.x+PIPE_W, H);
+    fctx.stroke();
+  }
+
+  function spawnPop(x, y) {
+    for (let i = 0; i < 12; i++) {
+      const angle = (Math.PI*2/12)*i + Math.random()*0.3;
+      const speed = 1.5 + Math.random()*3.5;
+      popParticles.push({ x, y,
+        vx: Math.cos(angle)*speed, vy: Math.sin(angle)*speed - 1,
+        r: 2 + Math.random()*5, alpha: 1,
+        color: COLORS[Math.floor(Math.random()*COLORS.length)]
+      });
     }
-    // curseur pop
-    cursor.classList.add('pop');
-    setTimeout(() => cursor.classList.remove('pop'), 200);
-    bub.el.style.transform = 'scale(1.3)';
-    bub.el.style.opacity = '0';
-    bub.el.style.transition = 'transform 0.15s, opacity 0.15s';
-    setTimeout(() => { bub.el.remove(); arenaBubbles = arenaBubbles.filter(b => b !== bub); spawnArenaBubble(); }, 150);
-    popCount++;
-    popCountEl.textContent = popCount;
   }
 
-  el.addEventListener('click', () => popBubble(bubble));
-  el.addEventListener('mouseenter', () => { el.style.transform = 'scale(1.08)'; });
-  el.addEventListener('mouseleave', () => { el.style.transform = 'scale(1)'; });
-
-  // animation position
-  function moveBubble() {
-    if (bubble.popped) return;
-    bubble.x += bubble.vx;
-    bubble.y += bubble.vy;
-    if (bubble.x - bubble.r < 0) { bubble.x = bubble.r; bubble.vx *= -1; }
-    if (bubble.x + bubble.r > arena.offsetWidth) { bubble.x = arena.offsetWidth - bubble.r; bubble.vx *= -1; }
-    if (bubble.y - bubble.r < 0) { bubble.y = bubble.r; bubble.vy *= -1; }
-    if (bubble.y + bubble.r > arena.offsetHeight) { bubble.y = arena.offsetHeight - bubble.r; bubble.vy *= -1; }
-    el.style.left = bubble.x - bubble.r + 'px';
-    el.style.top = bubble.y - bubble.r + 'px';
-    requestAnimationFrame(moveBubble);
+  function updatePops() {
+    popParticles = popParticles.filter(p => p.alpha > 0.02);
+    popParticles.forEach(p => {
+      p.x += p.vx; p.y += p.vy; p.vy += 0.14; p.alpha *= 0.88;
+      fctx.beginPath(); fctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      fctx.globalAlpha = p.alpha;
+      fctx.fillStyle = p.color; fctx.fill();
+      fctx.globalAlpha = 1;
+    });
   }
-  moveBubble();
-}
 
-// Spawn initial
-for (let i = 0; i < 10; i++) setTimeout(() => spawnArenaBubble(), i * 200);
-// Spawn régulier
-setInterval(() => { if (arenaBubbles.length < 10) spawnArenaBubble(); }, 3000);
+  function gameLoop(ts) {
+    if (!running) return;
+    lastTime = ts;
 
+    drawBackground();
+
+    if (started && !dead) {
+      bubble.vy += GRAVITY;
+      bubble.y  += bubble.vy;
+
+      // Spawn tuyaux
+      if (ts - lastPipe > PIPE_INTERVAL) {
+        const top = 50 + Math.random() * (H - GAP - 100);
+        pipes.push({ x: W + PIPE_W, top, scored: false });
+        lastPipe = ts;
+      }
+
+      pipes.forEach(p => {
+        p.x -= PIPE_SPEED;
+        drawPipe(p);
+        // Score
+        if (!p.scored && p.x + PIPE_W < bubble.x) {
+          score++;
+          if (scoreEl) scoreEl.textContent = score;
+          if (score > best) { best = score; if (bestEl) bestEl.textContent = best; }
+          p.scored = true;
+        }
+        // Collision
+        const inX   = bubble.x + bubble.r > p.x && bubble.x - bubble.r < p.x + PIPE_W;
+        const hitTop = bubble.y - bubble.r < p.top;
+        const hitBot = bubble.y + bubble.r > p.top + GAP;
+        if (inX && (hitTop || hitBot)) { dead = true; spawnPop(bubble.x, bubble.y); }
+      });
+      pipes = pipes.filter(p => p.x + PIPE_W > 0);
+
+      // Sol / plafond
+      if (bubble.y + bubble.r > H || bubble.y - bubble.r < 0) {
+        dead = true; spawnPop(bubble.x, bubble.y);
+      }
+    }
+
+    // Bulle (avec légère inclinaison)
+    if (!dead) {
+      fctx.save();
+      const tilt = started ? Math.max(-0.4, Math.min(0.4, bubble.vy * 0.04)) : 0;
+      fctx.translate(bubble.x, bubble.y);
+      fctx.rotate(tilt);
+      fctx.translate(-bubble.x, -bubble.y);
+      drawBubble(bubble);
+      fctx.restore();
+    }
+
+    updatePops();
+
+    // Score fantôme
+    if (started) {
+      fctx.save();
+      fctx.font = `bold ${Math.min(H*0.18, 52)}px 'Bebas Neue', sans-serif`;
+      fctx.fillStyle = 'rgba(255,255,255,0.06)';
+      fctx.textAlign = 'center';
+      fctx.fillText(score, W/2, H*0.25);
+      fctx.restore();
+    }
+
+    // Écran game over
+    if (dead && popParticles.length === 0) {
+      fctx.fillStyle = 'rgba(7,6,14,0.65)';
+      fctx.fillRect(0, 0, W, H);
+      fctx.save();
+      fctx.textAlign = 'center';
+      fctx.fillStyle = 'rgba(255,255,255,0.9)';
+      fctx.font = `bold ${Math.min(W*0.08, 40)}px 'Bebas Neue', sans-serif`;
+      fctx.fillText('ÉCLATÉE !', W/2, H/2 - 22);
+      fctx.font = `${Math.min(W*0.032, 14)}px 'DM Sans', sans-serif`;
+      fctx.fillStyle = 'rgba(0,229,204,0.85)';
+      fctx.letterSpacing = '0.12em';
+      fctx.fillText('CLIC POUR REJOUER', W/2, H/2 + 18);
+      fctx.restore();
+      running = false;
+      return;
+    }
+
+    animId = requestAnimationFrame(gameLoop);
+  }
+
+  function drawIdle() {
+    drawBackground();
+    drawBubble({ x: W*0.22, y: H/2, r: 22 });
+    fctx.save();
+    fctx.textAlign = 'center';
+    fctx.fillStyle = 'rgba(255,255,255,0.5)';
+    fctx.font = `600 ${Math.min(W*0.028, 13)}px 'DM Sans', sans-serif`;
+    fctx.fillText('CLIC OU ESPACE POUR JOUER', W/2, H/2 + 2);
+    fctx.restore();
+  }
+
+  function flap() {
+    if (!running) {
+      cancelAnimationFrame(animId);
+      initGame();
+      lastTime = performance.now();
+      animId = requestAnimationFrame(gameLoop);
+    }
+    if (!started) started = true;
+    if (!dead) bubble.vy = FLAP;
+  }
+
+  fc.addEventListener('click', flap);
+  document.addEventListener('keydown', e => { if (e.code === 'Space') { e.preventDefault(); flap(); } });
+
+  // Attendre que le canvas soit visible avant de dessiner
+  const observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) { resize(); drawIdle(); observer.disconnect(); }
+  }, { threshold: 0.1 });
+  observer.observe(fc);
+})();
 
 // =====================
 // REVEAL AU SCROLL
