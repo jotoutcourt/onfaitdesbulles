@@ -263,85 +263,6 @@
     }
     .pop-counter span { color: var(--accent2); font-family: var(--font-display); font-size: 1.2rem; letter-spacing: 0; }
 
-    /* SECTION FORMULAIRE */
-    .form-section {
-      position: relative;
-      z-index: 1;
-      padding: 6rem 4rem;
-      max-width: 680px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .form-section p {
-      color: var(--muted);
-      line-height: 1.9;
-      margin-bottom: 3rem;
-      font-size: 0.95rem;
-    }
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      text-align: left;
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-    .form-group label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 0.5rem;
-      padding: 0.8rem 1rem;
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      transition: border-color 0.2s, background 0.2s;
-      outline: none;
-      resize: none;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: rgba(0,229,204,0.4);
-      background: rgba(0,229,204,0.04);
-    }
-    .form-group textarea { min-height: 120px; }
-    .form-group select option { background: #1a1828; }
-    .form-submit {
-      position: relative;
-      margin-top: 0.5rem;
-      padding: 1rem 2.5rem;
-      background: linear-gradient(135deg, var(--accent1), var(--accent2));
-      border: none;
-      border-radius: 2rem;
-      color: #fff;
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: opacity 0.2s, transform 0.2s;
-      align-self: center;
-    }
-    .form-submit:hover { opacity: 0.9; transform: translateY(-1px); }
-    .form-submit:active { transform: translateY(0); }
-    .form-success {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      padding: 3rem;
-      border: 1px solid rgba(0,229,204,0.2);
-      border-radius: 1rem;
-      background: rgba(0,229,204,0.04);
-    }
-    .form-success.show { display: flex; }
-    .form-success-icon { font-size: 2.5rem; }
-    .form-success h3 { font-family: var(--font-display); font-size: 2rem; }
-    .form-success p { color: var(--muted); font-size: 0.9rem; }
-
     /* FOOTER */
     footer {
       position: relative;
@@ -467,53 +388,6 @@
   <p class="bubbles-hint">Cliquez ou survolez les bulles pour les faire éclater</p>
   <div class="pop-counter reveal">
     <span id="pop-count">0</span> bulles éclatées
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SECTION FORMULAIRE -->
-<section class="form-section" id="contact">
-  <p class="section-label reveal">03 — Contact</p>
-  <h2 class="section-title reveal">On vous répond<br>rapidement.</h2>
-  <p class="reveal">Une idée, un projet, une question ? Envoyez-nous un message. À la soumission du formulaire, une bulle s'envolera vers le ciel — promesse que votre message est bien parti.</p>
-
-  <form class="contact-form reveal" id="contactForm">
-    <div class="form-row">
-      <div class="form-group">
-        <label>Prénom</label>
-        <input type="text" placeholder="Jordan" required />
-      </div>
-      <div class="form-group">
-        <label>Nom</label>
-        <input type="text" placeholder="Laventure" required />
-      </div>
-    </div>
-    <div class="form-group">
-      <label>E-mail</label>
-      <input type="email" placeholder="hello@monentreprise.com" required />
-    </div>
-    <div class="form-group">
-      <label>Votre besoin</label>
-      <select>
-        <option value="">Sélectionner...</option>
-        <option>Identité visuelle</option>
-        <option>Site web</option>
-        <option>Stratégie digitale</option>
-        <option>Autre</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Message</label>
-      <textarea placeholder="Parlez-nous de votre projet..." required></textarea>
-    </div>
-    <button type="submit" class="form-submit">Envoyer le message ✦</button>
-  </form>
-
-  <div class="form-success" id="formSuccess">
-    <div class="form-success-icon">🫧</div>
-    <h3>C'est parti !</h3>
-    <p>Votre message s'est envolé. On revient vers vous très vite.</p>
   </div>
 </section>
 
@@ -717,37 +591,6 @@ for (let i = 0; i < 10; i++) setTimeout(() => spawnArenaBubble(), i * 200);
 // Spawn régulier
 setInterval(() => { if (arenaBubbles.length < 10) spawnArenaBubble(); }, 3000);
 
-// =====================
-// FORMULAIRE + BULLE ENVOL
-// =====================
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const btn = this.querySelector('.form-submit');
-  const rect = btn.getBoundingClientRect();
-
-  // Créer la bulle qui s'envole
-  for (let i = 0; i < 4; i++) {
-    setTimeout(() => {
-      const size = 40 + Math.random() * 60;
-      const bub = document.createElement('div');
-      bub.className = 'flying-bubble';
-      bub.style.cssText = `
-        width: ${size}px;
-        height: ${size}px;
-        left: ${rect.left + rect.width / 2 - size / 2 + (Math.random() - 0.5) * 80}px;
-        top: ${rect.top - size / 2}px;
-      `;
-      document.body.appendChild(bub);
-      setTimeout(() => bub.remove(), 2600);
-    }, i * 180);
-  }
-
-  // Masquer le form, afficher le succès
-  setTimeout(() => {
-    this.style.display = 'none';
-    document.getElementById('formSuccess').classList.add('show');
-  }, 600);
-});
 
 // =====================
 // REVEAL AU SCROLL
