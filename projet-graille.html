@@ -24,7 +24,7 @@
     @media(max-width:900px){ .cursor,.cursor-follower{display:none!important;} body{cursor:auto!important;} *{cursor:auto!important;} }
 
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: rgba(255,255,255,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(0,0,0,0.04); }
-    .nav-logo { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.08em; text-decoration: none; background: linear-gradient(120deg,#D66A77,#97BAED,#D66A77); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; transition: transform 0.2s, filter 0.3s; } .nav-logo svg { display: block; } .nav-logo:hover { transform: translateY(-1px); filter: drop-shadow(0 0 8px rgba(214,106,119,0.5)); }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a { color: #888; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--g-rouge); }
@@ -203,7 +203,7 @@
   <title>Graille &mdash; Communication &amp; Direction Artistique &mdash; On fait des bulles&nbsp;?</title></head>
 <body>
   <nav>
-    <a href="index.html" class="nav-logo">OnFaitDesBulles</a>
+    <a href="index.html" class="nav-logo" aria-label="Accueil"><svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="navIconGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#D66A77"/><stop offset="50%" stop-color="#97BAED"/><stop offset="100%" stop-color="#D66A77"/></linearGradient></defs><path d="M5 15 L16 5 L27 15" stroke="url(#navIconGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 13 V27 H24 V13" stroke="url(#navIconGrad)" stroke-width="2" stroke-linejoin="round"/><path d="M13 27 V19 H19 V27" stroke="url(#navIconGrad)" stroke-width="2" stroke-linejoin="round"/></svg></a>
     <ul class="nav-links">      <li><a href="services.html">Services</a></li>
       <li><a href="projets.html" class="active">Projets</a></li>
       <li><a href="apropos.html">À propos</a></li>
