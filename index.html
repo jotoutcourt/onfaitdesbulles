@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    @font-face { font-family: 'Champs'; src: url('assets/fonts/champs-regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Agrandir'; src: url('assets/fonts/agrandir-grand-heavy.otf') format('opentype'); font-weight: 800; font-style: normal; font-display: swap; }
     :root {
       --bg: #07060e; --surface: #0f0d1c;
       --accent1: #7b4bff; --accent2: #00e5cc; --accent3: #ff3cac;
@@ -110,8 +110,8 @@
       padding: 0.28rem 0.8rem; border-radius: 2rem; margin-bottom: 1.8rem;
     }
     .bl-name {
-      font-family: 'Champs', var(--font-display);
-      font-weight: 400;
+      font-family: 'Agrandir', var(--font-display);
+      font-weight: 800;
       font-size: clamp(3.2rem, 7.5vw, 5.4rem);
       line-height: 1; letter-spacing: 0.06em;
       background: linear-gradient(120deg, #7b4bff 0%, #00e5cc 50%, #7b4bff 100%);
@@ -159,7 +159,7 @@
     .hero-bubble-img { position: absolute; right: 6%; top: 50%; transform: translateY(-50%); width: min(480px, 42vw); height: min(480px, 42vw); object-fit: contain; animation: floatImg 10s ease-in-out infinite; pointer-events: none; }
     .hero-content { position: relative; z-index: 1; max-width: 55%; }
     .hero-tag { display: inline-block; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent2); border: 1px solid rgba(0,229,204,0.3); padding: 0.4rem 1rem; border-radius: 2rem; margin-bottom: 2rem; animation: fadeUp 0.8s ease both; }
-    .hero-title { font-family: 'Champs', 'Syne', sans-serif; font-weight: 400; font-size: clamp(3.5rem, 7.5vw, 8rem); line-height: 1; letter-spacing: -0.02em; animation: fadeUp 0.8s 0.1s ease both; }
+    .hero-title { font-family: 'Agrandir', 'Syne', sans-serif; font-weight: 800; font-size: clamp(3.5rem, 7.5vw, 8rem); line-height: 1; letter-spacing: -0.02em; animation: fadeUp 0.8s 0.1s ease both; }
     .hero-sub { margin-top: 2rem; font-size: 1.1rem; color: var(--muted); line-height: 1.7; max-width: 480px; animation: fadeUp 0.8s 0.2s ease both; }
     .hero-cta { margin-top: 3rem; display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; animation: fadeUp 0.8s 0.3s ease both; }
     @media(max-width:700px){ .hero-cta { flex-direction: column; align-items: stretch; gap: 0.8rem; } .hero-cta .btn-cta, .hero-cta .btn-outline { text-align: center; width: 100%; } }
