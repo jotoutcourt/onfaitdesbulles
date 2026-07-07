@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>  <meta charset="UTF-8" />  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <title>On fait des bulles — Notre site</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #07060e;
-      --accent1: #7b4bff;
-      --accent2: #00e5cc;
-      --accent3: #ff3cac;
-      --text: #e8e4f0;
-      --muted: #7a748f;
+      --bg: #ffffff; --surface: #f8f8f8;
+      --accent1: #D66A77;
+      --accent2: #97BAED;
+      --accent3: #D66A77;
+      --text: #1a1a2e;
+      --muted: #666676;
       --font-display: 'Bebas Neue', sans-serif;
       --font-body: 'DM Sans', sans-serif;
     }
@@ -32,12 +30,12 @@
     /* CURSOR */
     .cursor { width: 12px; height: 12px; background: var(--accent2); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: difference; transition: transform 0.1s; }
     .cursor.pop { transform: scale(2.5); background: var(--accent3); }
-    .cursor-follower { width: 36px; height: 36px; border: 1px solid rgba(123,75,255,0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; }
+    .cursor-follower { width: 36px; height: 36px; border: 1px solid rgba(214,106,119,0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; }
     @media (max-width: 900px) { .cursor, .cursor-follower { display: none !important; } body { cursor: auto !important; } }
 
     /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: rgba(7,6,14,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .nav-logo { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.08em; text-decoration: none; background: linear-gradient(120deg, var(--accent2), var(--accent1)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .nav-logo { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.08em; text-decoration: none; background: linear-gradient(120deg, #D66A77, #97BAED, #D66A77); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--accent2); }
@@ -93,7 +91,7 @@
       gap: 0.6rem;
       margin-top: 1rem;
       padding: 0.8rem 2rem;
-      border: 1px solid rgba(0,229,204,0.35);
+      border: 1px solid rgba(151,186,237,0.35);
       border-radius: 2rem;
       color: var(--accent2);
       font-size: 0.85rem;
@@ -104,7 +102,7 @@
       opacity: 0;
       animation: fadeUp 0.8s 0.8s forwards;
     }
-    .hero-cta:hover { background: rgba(0,229,204,0.08); border-color: var(--accent2); }
+    .hero-cta:hover { background: rgba(151,186,237,0.08); border-color: var(--accent2); }
     .hero-scroll {
       position: absolute;
       bottom: 2.5rem;
@@ -187,19 +185,19 @@
     .site-visual-ring {
       position: absolute;
       border-radius: 50%;
-      border: 1px solid rgba(123,75,255,0.15);
+      border: 1px solid rgba(214,106,119,0.15);
       animation: spin linear infinite;
     }
     .site-visual-ring:nth-child(1) { width: 90%; height: 90%; animation-duration: 30s; }
-    .site-visual-ring:nth-child(2) { width: 70%; height: 70%; animation-duration: 20s; animation-direction: reverse; border-color: rgba(0,229,204,0.15); }
-    .site-visual-ring:nth-child(3) { width: 50%; height: 50%; animation-duration: 15s; border-color: rgba(255,60,172,0.15); }
+    .site-visual-ring:nth-child(2) { width: 70%; height: 70%; animation-duration: 20s; animation-direction: reverse; border-color: rgba(151,186,237,0.15); }
+    .site-visual-ring:nth-child(3) { width: 50%; height: 50%; animation-duration: 15s; border-color: rgba(214,106,119,0.15); }
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     .site-visual-center {
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, rgba(123,75,255,0.4), rgba(0,229,204,0.1) 60%, transparent);
-      border: 1px solid rgba(123,75,255,0.3);
+      background: radial-gradient(circle at 35% 35%, rgba(214,106,119,0.4), rgba(151,186,237,0.1) 60%, transparent);
+      border: 1px solid rgba(214,106,119,0.3);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -256,7 +254,7 @@
       align-items: center;
       gap: 0.75rem;
       background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(0,0,0,0.1);
       border-radius: 2rem;
       padding: 0.5rem 1.25rem;
       font-size: 0.8rem;
@@ -279,9 +277,9 @@
       border-radius: 50%;
       pointer-events: none;
       z-index: 9996;
-      background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.6), rgba(0,229,204,0.2) 50%, rgba(123,75,255,0.1));
-      border: 1px solid rgba(0,229,204,0.5);
-      box-shadow: 0 0 20px rgba(0,229,204,0.2), inset 0 0 20px rgba(255,255,255,0.05);
+      background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.6), rgba(151,186,237,0.2) 50%, rgba(214,106,119,0.1));
+      border: 1px solid rgba(151,186,237,0.5);
+      box-shadow: 0 0 20px rgba(151,186,237,0.2), inset 0 0 20px rgba(255,255,255,0.05);
       animation: flyAway 2.5s ease-out forwards;
     }
     @keyframes flyAway {
@@ -297,20 +295,17 @@
       .form-row { grid-template-columns: 1fr; }
       footer { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
     }
-  </style>
-</head>
+  </style></head>
 <body>
-
 <canvas id="bubble-canvas"></canvas>
 
 <nav>
   <a href="index.html" class="nav-logo">OnFaitDesBulles</a>
-  <ul class="nav-links">
-    <li><a href="services.html">Services</a></li>
-    <li><a href="projets.html">Projets</a></li>
-    <li><a href="apropos.html">À propos</a></li>
-    <li><a href="contact.html" class="active">Contact</a></li>
-  </ul>
+      <ul class="nav-links">      <li><a href="services.html">Services</a></li>
+      <li><a href="projets.html" class="active">Projets</a></li>
+      <li><a href="apropos.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
 </nav>
 
 <!-- HERO -->
@@ -373,7 +368,7 @@
 </section>
 
 <footer>
-  <span>© 2026 On fait des bulles ?</span>
+  <span>&copy; 2026 On fait des bulles&nbsp;?</span>
   <span>Lyon, France — faisonsdesbulles.com</span>
 </footer>
 
@@ -490,7 +485,7 @@ let popCount = 0;
   const GAP          = 130;
   const PIPE_SPEED   = 2.2;
   const PIPE_INTERVAL = 1600;
-  const COLORS = ['#00e5cc','#7b4bff','#ff3cac','#ffd166'];
+  const COLORS = ['#97BAED','#D66A77','#D66A77','#ffd166'];
 
   let bubble, pipes, score, best = 0;
   let running = false, dead = false, started = false;
@@ -521,17 +516,17 @@ let popCount = 0;
     // Corps
     const g = fctx.createRadialGradient(b.x - b.r*0.3, b.y - b.r*0.35, b.r*0.05, b.x, b.y, b.r);
     g.addColorStop(0, 'rgba(255,255,255,0.18)');
-    g.addColorStop(0.6, 'rgba(0,229,204,0.06)');
-    g.addColorStop(1, 'rgba(0,229,204,0.0)');
+    g.addColorStop(0.6, 'rgba(151,186,237,0.06)');
+    g.addColorStop(1, 'rgba(151,186,237,0.0)');
     fctx.beginPath();
     fctx.arc(b.x, b.y, b.r, 0, Math.PI*2);
     fctx.fillStyle = g;
     fctx.fill();
     // Contour irisé
     const sg = fctx.createLinearGradient(b.x-b.r, b.y-b.r, b.x+b.r, b.y+b.r);
-    sg.addColorStop(0, 'rgba(0,229,204,0.9)');
-    sg.addColorStop(0.5, 'rgba(123,75,255,0.7)');
-    sg.addColorStop(1, 'rgba(255,60,172,0.5)');
+    sg.addColorStop(0, 'rgba(151,186,237,0.9)');
+    sg.addColorStop(0.5, 'rgba(214,106,119,0.7)');
+    sg.addColorStop(1, 'rgba(214,106,119,0.5)');
     fctx.beginPath();
     fctx.arc(b.x, b.y, b.r, 0, Math.PI*2);
     fctx.strokeStyle = sg;
@@ -551,19 +546,19 @@ let popCount = 0;
 
   function drawPipe(p) {
     const g = fctx.createLinearGradient(p.x, 0, p.x+PIPE_W, 0);
-    g.addColorStop(0, 'rgba(123,75,255,0.35)');
-    g.addColorStop(0.5, 'rgba(123,75,255,0.18)');
-    g.addColorStop(1, 'rgba(123,75,255,0.08)');
+    g.addColorStop(0, 'rgba(214,106,119,0.35)');
+    g.addColorStop(0.5, 'rgba(214,106,119,0.18)');
+    g.addColorStop(1, 'rgba(214,106,119,0.08)');
     // Haut
     fctx.beginPath(); fctx.roundRect(p.x, 0, PIPE_W, p.top, [0,0,10,10]);
     fctx.fillStyle = g; fctx.fill();
-    fctx.strokeStyle = 'rgba(123,75,255,0.55)'; fctx.lineWidth = 1; fctx.stroke();
+    fctx.strokeStyle = 'rgba(214,106,119,0.55)'; fctx.lineWidth = 1; fctx.stroke();
     // Bas
     fctx.beginPath(); fctx.roundRect(p.x, p.top+GAP, PIPE_W, H-p.top-GAP, [10,10,0,0]);
     fctx.fillStyle = g; fctx.fill();
-    fctx.strokeStyle = 'rgba(123,75,255,0.55)'; fctx.stroke();
+    fctx.strokeStyle = 'rgba(214,106,119,0.55)'; fctx.stroke();
     // Bord lumineux
-    fctx.strokeStyle = 'rgba(0,229,204,0.3)'; fctx.lineWidth = 2;
+    fctx.strokeStyle = 'rgba(151,186,237,0.3)'; fctx.lineWidth = 2;
     fctx.beginPath();
     fctx.moveTo(p.x+PIPE_W, 0); fctx.lineTo(p.x+PIPE_W, p.top);
     fctx.moveTo(p.x+PIPE_W, p.top+GAP); fctx.lineTo(p.x+PIPE_W, H);
@@ -659,7 +654,7 @@ let popCount = 0;
 
     // Écran game over
     if (dead && popParticles.length === 0) {
-      fctx.fillStyle = 'rgba(7,6,14,0.65)';
+      fctx.fillStyle = 'rgba(255,255,255,0.65)';
       fctx.fillRect(0, 0, W, H);
       fctx.save();
       fctx.textAlign = 'center';
@@ -667,7 +662,7 @@ let popCount = 0;
       fctx.font = `bold ${Math.min(W*0.08, 40)}px 'Bebas Neue', sans-serif`;
       fctx.fillText('ÉCLATÉE !', W/2, H/2 - 22);
       fctx.font = `${Math.min(W*0.032, 14)}px 'DM Sans', sans-serif`;
-      fctx.fillStyle = 'rgba(0,229,204,0.85)';
+      fctx.fillStyle = 'rgba(151,186,237,0.85)';
       fctx.letterSpacing = '0.12em';
       fctx.fillText('CLIC POUR REJOUER', W/2, H/2 + 18);
       fctx.restore();
@@ -718,6 +713,5 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
     if (entry.isIntersecting) setTimeout(() => el.classList.add('visible'), i % 3 * 80);
   }, { threshold: 0.1 }).observe(el);
 });
-</script>
-</body>
+</script></body>
 </html>

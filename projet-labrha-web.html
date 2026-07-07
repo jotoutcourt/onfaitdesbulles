@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>  <meta charset="UTF-8" />  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #07060e;
-      --accent1: #7b4bff; --accent2: #00e5cc;
-      --text: #e8e4f0; --muted: #7a748f;
+      --bg: #ffffff; --surface: #f8f8f8;
+      --accent1: #D66A77; --accent2: #97BAED; --accent3: #D66A77;
+      --text: #1a1a2e; --muted: #666676;
       --font-display: "Bebas Neue", sans-serif;
       --font-body: "DM Sans", sans-serif;
     }
     html { scroll-behavior: smooth; }
     body { background: #ffffff; color: #1a1a1a; font-family: var(--font-body); font-weight: 300; overflow-x: hidden; cursor: none; }
     .cursor { width: 12px; height: 12px; background: var(--accent2); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: difference; }
-    .cursor-follower { width: 36px; height: 36px; border: 1px solid rgba(123,75,255,0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; }
+    .cursor-follower { width: 36px; height: 36px; border: 1px solid rgba(214,106,119,0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; }
     @media (max-width: 900px) { .cursor, .cursor-follower { display: none !important; } body { cursor: auto !important; } * { cursor: auto !important; } }
 
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); }
-    .nav-logo { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.08em; text-decoration: none; background: linear-gradient(120deg, #111, #444, #7b4bff, #111); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-logo { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.08em; text-decoration: none; background: linear-gradient(120deg, #D66A77, #97BAED, #D66A77); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a { color: #888; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--accent2); }
@@ -107,16 +105,13 @@
     .lightbox-close { position: absolute; top: 1.5rem; right: 2rem; color: #fff; font-size: 2.5rem; line-height: 1; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; background: none; border: none; }
     .lightbox-close:hover { opacity: 1; }
   </style>
-  <title>Labrha — On fait des bulles ?</title>
-</head>
+  <title>Labrha — On fait des bulles ?</title></head>
 <body>
-
   <nav>
     <a href="index.html" class="nav-logo">OnFaitDesBulles</a>
-    <ul class="nav-links">
-      <li><a href="services.html">Services</a></li>
+        <ul class="nav-links">      <li><a href="services.html">Services</a></li>
       <li><a href="projets.html" class="active">Projets</a></li>
-      <li><a href="apropos.html">&Agrave; propos</a></li>
+      <li><a href="apropos.html">À propos</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
@@ -124,9 +119,8 @@
   <div class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-menu-close" onclick="toggleMenu()">&#x2715;</button>
-    <a href="index.html" onclick="toggleMenu()">Accueil</a>
-    <a href="services.html" onclick="toggleMenu()">Nos services</a>
-    <a href="projets.html" onclick="toggleMenu()">Nos r&eacute;alisations</a>
+    <a href="index.html" onclick="toggleMenu()">Accueil</a>    <a href="services.html" onclick="toggleMenu()">Nos services</a>
+    <a href="projets.html" onclick="toggleMenu()">Nos r&#233;alisations</a>
     <a href="apropos.html" onclick="toggleMenu()">&Agrave; propos</a>
     <a href="contact.html" onclick="toggleMenu()">Contact</a>
   </div>
@@ -333,6 +327,5 @@
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
     <img id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
-  </div>
-</body>
+  </div></body>
 </html>

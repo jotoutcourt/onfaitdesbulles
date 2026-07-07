@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>  <meta charset="UTF-8" />  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@700;800&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #07060e; --surface: #0f0d1c;
-      --accent1: #7b4bff; --accent2: #00e5cc; --accent3: #ff3cac;
-      --text: #e8e4f0; --muted: #7a748f;
+      --bg: #ffffff; --surface: #f8f8f8;
+      --accent1: #D66A77; --accent2: #97BAED; --accent3: #D66A77;
+      --text: #1a1a2e; --muted: #666676;
       --font-display: 'Bebas Neue', sans-serif;
       --font-body: 'DM Sans', sans-serif;
     }
@@ -26,15 +24,15 @@
       cursor: none;
     }
     .cursor { width: 12px; height: 12px; background: var(--accent2); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: difference; }
-    .cursor-follower { width: 36px; height: 36px; border: 1px solid rgba(123,75,255,0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; }
+    .cursor-follower { width: 36px; height: 36px; border: 1px solid rgba(214,106,119,0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; }
     @media (max-width: 900px) { .cursor, .cursor-follower { display: none !important; } body { cursor: auto !important; } * { cursor: auto !important; } }
 
     /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); }
-    nav.light .nav-logo { background: linear-gradient(120deg, #111, #444, #7b4bff, #111); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    nav.light .nav-logo { background: linear-gradient(120deg, #D66A77, #97BAED, #D66A77); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     nav.light .nav-links a { color: #888; }
     nav.light .nav-links a:hover { color: var(--accent1); }
-    .nav-logo { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.08em; text-decoration: none; background: linear-gradient(120deg, #111, #444, #7b4bff, #111); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-logo { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.08em; text-decoration: none; background: linear-gradient(120deg, #D66A77, #97BAED, #D66A77); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a { color: #888; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--accent2); }
@@ -52,15 +50,14 @@
     .mobile-menu a:hover { background: #f5f5f5; }
 
     /* DARK HERO */
-    .proj-hero { background: var(--bg); color: var(--text); padding: 5.5rem 4rem 1.5rem; position: relative; z-index: 1; }
-    .proj-back { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--muted); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; transition: color 0.2s; }
-    .proj-back:hover { color: var(--accent2); }
-    .proj-cat { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent2); margin-bottom: 1rem; }
-    .proj-title { font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 4.5rem); line-height: 1; margin-bottom: 1rem; }
-    .proj-meta { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
-    .proj-client { font-size: 0.9rem; color: var(--muted); }
-    .proj-theme-tag { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.9rem; border: 1px solid rgba(255,255,255,0.12); border-radius: 2rem; color: var(--muted); }
-    .grain { position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); opacity: 0.4; pointer-events: none; z-index: 0; }
+    .proj-hero { position: relative; min-height: 58vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 8rem 4rem 4rem; overflow: hidden; background: #0d1a12; }
+    .proj-hero-grad { position: absolute; inset: 0; background: linear-gradient(to top, #0d1a12 45%, rgba(13,26,18,0.3)); pointer-events: none; }
+    .proj-back { display: inline-flex; align-items: center; gap: 0.6rem; color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; transition: color 0.2s; position: relative; z-index: 2; width: fit-content; }
+    .proj-back:hover { color: rgba(255,255,255,0.8); }
+    .proj-badge { display: inline-block; font-size: 0.65rem; letter-spacing: 0.26em; text-transform: uppercase; color: #4a9e6a; border: 1px solid rgba(74,158,106,0.35); padding: 0.28rem 0.85rem; border-radius: 2rem; margin-bottom: 1.2rem; position: relative; z-index: 2; }
+    .proj-title { font-family: var(--font-display); font-size: clamp(3rem,7vw,7rem); line-height: 0.93; color: #fff; margin-bottom: 1.2rem; position: relative; z-index: 2; }
+    .proj-sub { font-style: italic; font-size: 1rem; color: rgba(255,255,255,0.5); position: relative; z-index: 2; }
+    .grain { position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); opacity: 0.12; pointer-events: none; z-index: 0; }
 
     /* WHITE CONTENT AREA */
     .proj-content {
@@ -71,14 +68,14 @@
       padding: 5rem 4rem 6rem;
     }
     .proj-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
     }
 
     /* GALLERY */
-    .proj-gallery { position: sticky; top: 8rem; }
+    .proj-gallery { position: static; order: 2; width: 100%; }
+    .proj-text { order: 1; }
     .proj-gallery-main {
       width: 100%;
       aspect-ratio: 4/3;
@@ -168,7 +165,7 @@
     .reveal.visible { opacity: 1; transform: none; }
 
     @media (max-width: 900px) {
-      .proj-hero { background: var(--bg); color: var(--text); padding: 5.5rem 4rem 1.5rem; position: relative; z-index: 1; }
+      .proj-hero { padding: 7rem 2rem 3rem; }
       .proj-content { padding: 3rem 2rem 4rem; }
       .proj-layout { grid-template-columns: 1fr; gap: 2.5rem; }
       .proj-gallery { position: static; }
@@ -202,15 +199,160 @@
     }
     .lightbox-close:hover { opacity: 1; }
     .proj-gallery-main { cursor: zoom-in; }
-  </style>
-  <title>Tenofort — On fait des bulles ?</title>
-</head>
-<body>
 
+    /* ============================================
+       DOSSIER D'AGENCE — Tenofort
+    ============================================ */
+    /* Progress dots */
+    .dos-progress {
+      position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 0.75rem; z-index: 500;
+    }
+    .dos-dot {
+      display: block; width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(0,0,0,0.18); transition: all 0.3s ease; text-decoration: none;
+    }
+    .dos-dot.active { background: var(--accent1); transform: scale(1.65); }
+    @media (max-width: 1100px) { .dos-progress { display: none; } }
+
+    /* Section headers */
+    .dos-label {
+      font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--accent1); margin-bottom: 1.6rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .dos-label::after { content: ''; flex: 1; height: 1px; background: rgba(0,0,0,0.08); }
+    .dos-section { margin-bottom: 5.5rem; scroll-margin-top: 6rem; }
+
+    /* --- 01 BRIEF --- */
+    .brief-wrap { display: flex; gap: 2rem; align-items: flex-start; }
+    .brief-paper {
+      flex: 1; background: #fdf9f4;
+      border: 1px solid rgba(0,0,0,0.07); border-radius: 0.6rem;
+      padding: 2.8rem; position: relative; overflow: hidden;
+      box-shadow: 0 3px 24px rgba(0,0,0,0.06);
+    }
+    .brief-paper::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: repeating-linear-gradient(transparent, transparent 27px, rgba(0,0,0,0.028) 27px, rgba(0,0,0,0.028) 28px);
+    }
+    .brief-paper-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid rgba(0,0,0,0.05);
+    }
+    .bph-badge {
+      display: inline-block; font-family: var(--font-display); font-size: 1.1rem;
+      letter-spacing: 0.12em; color: var(--accent1);
+      border: 2px solid var(--accent1); padding: 0.3rem 0.9rem;
+      border-radius: 3px; opacity: 0.8; margin-bottom: 0.4rem;
+    }
+    .bph-sub { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; }
+    .bph-ref { font-family: monospace; font-size: 0.72rem; color: var(--muted); text-align: right; line-height: 1.6; }
+    .brief-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 2rem; margin-bottom: 1rem; }
+    .bf { padding-bottom: 0.6rem; border-bottom: 1px dotted rgba(0,0,0,0.15); }
+    .bf-full { grid-column: 1 / -1; }
+    .bf-label { display: block; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+    .bf-val { font-size: 0.92rem; color: var(--text); line-height: 1.5; }
+    .brief-validated {
+      position: absolute; bottom: 2rem; right: 2rem;
+      width: 78px; height: 78px; opacity: 0.55; transform: rotate(-8deg);
+    }
+    .brief-validated svg { width: 100%; height: 100%; }
+
+    /* Post-its */
+    .postit {
+      background: #fef9c3; padding: 1.4rem 1.6rem; border-radius: 2px;
+      box-shadow: 2px 5px 18px rgba(0,0,0,0.13), 0 1px 4px rgba(0,0,0,0.08);
+      transform: rotate(-2.5deg);
+      font-family: 'Caveat', cursive; font-size: 1.15rem; line-height: 1.55;
+      color: #5c4400; max-width: 220px; flex-shrink: 0; position: relative; margin-top: 1.5rem;
+    }
+    .postit::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 26px; background: rgba(0,0,0,0.055); border-radius: 2px 2px 0 0;
+    }
+    .postit-rose { background: rgba(214,106,119,0.09); color: #8b1a26; border: 1px solid rgba(214,106,119,0.2); }
+    .postit-arrow { display: block; font-size: 0.9rem; margin-bottom: 0.25rem; opacity: 0.45; }
+
+    /* --- 02 INSIGHT --- */
+    .insight-block {
+      background: var(--text); color: #f0eee8;
+      border-radius: 0.8rem; padding: 3.5rem 3.5rem 3rem;
+      position: relative; overflow: hidden;
+    }
+    .insight-block::before {
+      content: '\201C'; position: absolute; top: -2rem; left: 1.5rem;
+      font-family: Georgia, serif; font-size: 18rem; color: rgba(255,255,255,0.04);
+      line-height: 1; pointer-events: none;
+    }
+    .insight-lead { font-size: 1rem; color: rgba(240,238,232,0.6); line-height: 1.85; margin-bottom: 2rem; max-width: 560px; }
+    .insight-reveal { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; }
+    .ir-line { flex: 1; height: 1px; background: rgba(214,106,119,0.4); }
+    .insight-big { font-family: var(--font-display); font-size: clamp(2.6rem, 5vw, 4.2rem); color: var(--accent1); margin: 0; white-space: nowrap; }
+    .insight-sub { font-size: 0.9rem; color: rgba(240,238,232,0.48); line-height: 1.85; max-width: 520px; }
+
+    /* --- 03 PARTI PRIS --- */
+    .partipris-concept { margin-bottom: 2.5rem; }
+    .pc-phrase { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1; color: var(--text); margin-bottom: 1rem; }
+    .pc-desc { font-size: 0.93rem; color: var(--muted); line-height: 1.8; max-width: 580px; }
+    .partipris-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .pp-card { background: var(--surface); border: 1px solid rgba(0,0,0,0.06); border-radius: 0.6rem; padding: 1.8rem; }
+    .pp-card-full { grid-column: 1 / -1; }
+    .pp-card-label { font-size: 0.64rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; }
+    .pp-swatches { display: flex; gap: 0.8rem; align-items: flex-end; padding-bottom: 1.6rem; }
+    .pp-swatch { flex: 1; aspect-ratio: 1; border-radius: 0.4rem; position: relative; max-width: 54px; }
+    .pp-swatch span { position: absolute; bottom: -1.4rem; left: 50%; transform: translateX(-50%); font-size: 0.55rem; color: var(--muted); letter-spacing: 0.04em; white-space: nowrap; }
+    .pp-typo-display { font-family: var(--font-display); font-size: 2.2rem; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
+    .pp-typo-body { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.25rem; }
+    .pp-typo-note { font-size: 0.75rem; color: var(--accent2); font-style: italic; }
+    .pp-territory { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .pp-tag { font-size: 0.75rem; padding: 0.3rem 0.9rem; border: 1px solid rgba(0,0,0,0.1); border-radius: 2rem; color: var(--muted); transition: all 0.2s; cursor: default; }
+    .pp-tag:hover { border-color: var(--accent1); color: var(--accent1); }
+
+    /* --- 04 CHIFFRES --- */
+    .chiffres-intro { font-size: 0.93rem; color: var(--muted); line-height: 1.75; margin-bottom: 2.5rem; max-width: 560px; }
+    .chiffres-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .chiffre-card {
+      background: var(--surface); border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 0.7rem; padding: 2rem 1.8rem;
+    }
+    .chiffre-card--rose {
+      background: linear-gradient(135deg, rgba(214,106,119,0.07), rgba(214,106,119,0.02));
+      border-color: rgba(214,106,119,0.15);
+    }
+    .chiffre-sport { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.8rem; }
+    .chiffre-num { font-family: var(--font-display); font-size: 3.6rem; line-height: 1; color: var(--text); margin-bottom: 0.5rem; }
+    .chiffre-card--rose .chiffre-num { color: var(--accent1); }
+    .chiffre-unit { font-size: 0.78rem; color: var(--muted); line-height: 1.5; margin-bottom: 1.2rem; }
+    .chiffre-bar { height: 3px; background: rgba(0,0,0,0.07); border-radius: 2px; overflow: hidden; }
+    .chiffre-fill {
+      height: 100%; width: 0;
+      background: linear-gradient(to right, var(--accent1), var(--accent2));
+      border-radius: 2px;
+      transition: width 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+    }
+    .chiffre-card.counted .chiffre-fill { width: var(--bar-w, 100%); }
+
+    /* --- 05 RÉSULTATS --- */
+    .resultats-intro { font-size: 0.93rem; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; }
+    .proj-gallery .proj-gallery-main { aspect-ratio: 16/9; }
+
+    @media (max-width: 900px) {
+      .brief-wrap { flex-direction: column; }
+      .postit { transform: rotate(-1.2deg) !important; max-width: 100%; margin-left: 0 !important; }
+      .chiffres-grid { grid-template-columns: 1fr; }
+      .partipris-grid { grid-template-columns: 1fr; }
+      .insight-block { padding: 2.5rem 2rem; }
+      .insight-big { white-space: normal; }
+      .pp-swatches { padding-bottom: 2rem; }
+      .proj-gallery { position: static; }
+    }
+  </style>
+  <title>Tenofort — On fait des bulles ?</title></head>
+<body>
   <nav>
     <a href="index.html" class="nav-logo">OnFaitDesBulles</a>
-    <ul class="nav-links">
-      <li><a href="services.html">Services</a></li>
+        <ul class="nav-links">      <li><a href="services.html">Services</a></li>
       <li><a href="projets.html" class="active">Projets</a></li>
       <li><a href="apropos.html">À propos</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -222,23 +364,19 @@
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-menu-close" onclick="toggleMenu()">&#x2715;</button>
-    <a href="index.html" onclick="toggleMenu()">Accueil</a>
-    <a href="services.html" onclick="toggleMenu()">Nos services</a>
+    <a href="index.html" onclick="toggleMenu()">Accueil</a>    <a href="services.html" onclick="toggleMenu()">Nos services</a>
     <a href="projets.html" onclick="toggleMenu()">Nos r&#233;alisations</a>
     <a href="apropos.html" onclick="toggleMenu()">&Agrave; propos</a>
     <a href="contact.html" onclick="toggleMenu()">Contact</a>
   </div>
 
-  <!-- DARK HERO -->
-  <div class="proj-hero">
-    <a href="projets.html" class="proj-back">← Retour aux projets</a>
-    <p class="proj-cat">Direction Artistique &amp; Print</p>
+  <header class="proj-hero">
+    <div class="proj-hero-grad"></div>
+    <a href="projets.html" class="proj-back">&larr; Retour aux projets</a>
+    <span class="proj-badge">Direction Artistique &middot; Print &middot; Communication m&eacute;dicale</span>
     <h1 class="proj-title">Tenofort</h1>
-    <div class="proj-meta">
-      <span class="proj-client">Labrha</span>
-      <span class="proj-theme-tag">Compléments alimentaires · Sport</span>
-    </div>
-  </div>
+    <p class="proj-sub">Compl&eacute;ment alimentaire articulaire &mdash; Labrha</p>
+  </header>
 
   <!-- WHITE CONTENT -->
   <div class="proj-content">
@@ -264,24 +402,160 @@
 
       <!-- TEXT -->
       <div class="proj-text">
-        <div class="proj-section reveal">
-          <h2 class="proj-section-title">Brief</h2>
-          <p>Créer une campagne d'affiches pour Tenofort, complément alimentaire Labrha dédié à la santé des tendons, en s'adressant aux sportifs pratiquant des activités à fort impact articulaire.</p>
-          <p>L'enjeu : rendre visible ce qui est invisible. Les tendons sont au cœur de chaque performance sportive, pourtant ils ne reçoivent que peu d'attention. La campagne devait changer ça.</p>
+
+        <!-- Progress dots -->
+        <div class="dos-progress">
+          <a href="#s-brief"     class="dos-dot active" title="Brief"></a>
+          <a href="#s-insight"   class="dos-dot" title="Insight"></a>
+          <a href="#s-partipris" class="dos-dot" title="Parti pris"></a>
+          <a href="#s-chiffres"  class="dos-dot" title="Chiffres clés"></a>
+          <a href="#s-resultats" class="dos-dot" title="Résultats"></a>
         </div>
-        <div class="proj-section reveal">
-          <h2 class="proj-section-title">Réalisation</h2>
-          <p>La direction artistique s'est construite autour d'un concept fort : <strong>la force derrière chaque geste</strong>. Dans le sport, on voit la puissance et la performance — mais derrière chaque mouvement spectaculaire se cache une mécanique invisible : les tendons.</p>
-          <p>Les visuels mettent en scène des sportifs dans l'effort — tennis, trail, natation, boxe — accompagnés d'éléments graphiques qui révèlent discrètement le produit. Tenofort devient ainsi la force silencieuse qui rend chaque geste possible.</p>
-          <p>Chaque affiche repose sur un chiffre fort ancré dans la réalité sportive : <em>250 revers par match, 1 500 foulées par km, 40 tractions par 50 mètres.</em> Des données qui traduisent l'effort invisible des tendons.</p>
-        </div>
+
+        <!-- ── 01 · LE BRIEF ── -->
+        <section class="dos-section" id="s-brief">
+          <div class="dos-label reveal">01 &mdash; Le brief</div>
+          <div class="brief-wrap">
+            <div class="brief-paper reveal">
+              <div class="brief-paper-header">
+                <div>
+                  <div class="bph-badge">Brief Cr&eacute;atif</div>
+                  <div class="bph-sub">Labrha &middot; Direction Artistique &amp; Print</div>
+                </div>
+                <div class="bph-ref">R&eacute;f. TEN-2024-001</div>
+              </div>
+              <div class="brief-fields">
+                <div class="bf">
+                  <span class="bf-label">Client</span>
+                  <span class="bf-val">Labrha</span>
+                </div>
+                <div class="bf">
+                  <span class="bf-label">Produit</span>
+                  <span class="bf-val">Tenofort</span>
+                </div>
+                <div class="bf">
+                  <span class="bf-label">Cible</span>
+                  <span class="bf-val">Sportifs &middot; Fort impact articulaire</span>
+                </div>
+                <div class="bf">
+                  <span class="bf-label">Format</span>
+                  <span class="bf-val">Campagne affiches print &amp; digitale</span>
+                </div>
+                <div class="bf bf-full">
+                  <span class="bf-label">Objectif</span>
+                  <span class="bf-val">Rendre visible ce qui est invisible &mdash; positionner Tenofort comme le compl&eacute;ment indispensable de chaque sportif expos&eacute; aux contraintes tendineuses.</span>
+                </div>
+              </div>
+              <div class="brief-validated">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="40" cy="40" r="36" stroke="#D66A77" stroke-width="3" opacity="0.8"/>
+                  <circle cx="40" cy="40" r="31" stroke="#D66A77" stroke-width="1" opacity="0.5"/>
+                  <text x="40" y="37" text-anchor="middle" font-family="'Bebas Neue', sans-serif" font-size="11" fill="#D66A77" opacity="0.9">VALID&#201;</text>
+                  <text x="40" y="50" text-anchor="middle" font-family="'Bebas Neue', sans-serif" font-size="7.5" fill="#D66A77" opacity="0.7">LABRHA 2024</text>
+                </svg>
+              </div>
+            </div>
+            <div class="postit reveal">
+              <span class="postit-arrow">&#x2191;</span>
+              L&rsquo;enjeu&nbsp;: rendre visible<br>ce qui est invisible.
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 02 · L'INSIGHT ── -->
+        <section class="dos-section" id="s-insight">
+          <div class="dos-label reveal">02 &mdash; L&rsquo;insight</div>
+          <div class="insight-block reveal">
+            <p class="insight-lead">Dans le sport, on c&eacute;l&egrave;bre les victoires, les records, la puissance. Mais derri&egrave;re chaque geste spectaculaire se cache une m&eacute;canique que personne ne voit.</p>
+            <div class="insight-reveal">
+              <div class="ir-line"></div>
+              <p class="insight-big">Les tendons.</p>
+              <div class="ir-line"></div>
+            </div>
+            <p class="insight-sub">Ils absorbent les chocs, transmettent la force, rendent chaque performance possible &mdash; et restent syst&eacute;matiquement ignor&eacute;s jusqu&rsquo;au jour o&ugrave; ils l&acirc;chent.</p>
+          </div>
+          <div class="postit postit-rose reveal" style="margin-left:auto; transform:rotate(1.8deg);">
+            <span class="postit-arrow">&#x2192;</span>
+            &laquo;&nbsp;La force derri&egrave;re<br>chaque geste&nbsp;&raquo;
+          </div>
+        </section>
+
+        <!-- ── 03 · LE PARTI PRIS ── -->
+        <section class="dos-section" id="s-partipris">
+          <div class="dos-label reveal">03 &mdash; Le parti pris cr&eacute;atif</div>
+          <div class="partipris-concept reveal">
+            <p class="pc-phrase">La force derri&egrave;re chaque geste</p>
+            <p class="pc-desc">Mettre en sc&egrave;ne des sportifs dans l&rsquo;effort &mdash; tennis, trail, natation, boxe &mdash; et r&eacute;v&eacute;ler discr&egrave;tement le produit, comme la m&eacute;canique cach&eacute;e derri&egrave;re la performance.</p>
+          </div>
+          <div class="partipris-grid reveal">
+            <div class="pp-card">
+              <div class="pp-card-label">Palette visuelle</div>
+              <div class="pp-swatches">
+                <div class="pp-swatch" style="background:#c47545;"><span>Terre battue</span></div>
+                <div class="pp-swatch" style="background:#7a9080;"><span>Brume</span></div>
+                <div class="pp-swatch" style="background:#2e3338;"><span>Nuit</span></div>
+                <div class="pp-swatch" style="background:#8ab82a;"><span>Tenofort</span></div>
+              </div>
+            </div>
+            <div class="pp-card">
+              <div class="pp-card-label">Direction typographique</div>
+              <div class="pp-typo">
+                <div class="pp-typo-display">TENOFORT</div>
+                <div class="pp-typo-body">Condens&eacute; &middot; Capitales &middot; Impact</div>
+                <div class="pp-typo-note">Chiffres factuels en serif</div>
+              </div>
+            </div>
+            <div class="pp-card pp-card-full">
+              <div class="pp-card-label">Territoire visuel</div>
+              <div class="pp-territory">
+                <span class="pp-tag">Sportif</span>
+                <span class="pp-tag">Factuel</span>
+                <span class="pp-tag">Invisible &rarr; visible</span>
+                <span class="pp-tag">Force silencieuse</span>
+                <span class="pp-tag">Anatomique</span>
+                <span class="pp-tag">Effort r&eacute;el</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 04 · LES CHIFFRES CLÉS ── -->
+        <section class="dos-section" id="s-chiffres">
+          <div class="dos-label reveal">04 &mdash; Les chiffres cl&eacute;s</div>
+          <p class="chiffres-intro reveal">Chaque affiche repose sur un chiffre fort ancr&eacute; dans la r&eacute;alit&eacute; sportive &mdash; des donn&eacute;es qui traduisent l&rsquo;effort invisible des tendons.</p>
+          <div class="chiffres-grid reveal">
+            <div class="chiffre-card">
+              <div class="chiffre-sport">Tennis</div>
+              <div class="chiffre-num" data-target="250">0</div>
+              <div class="chiffre-unit">revers<br>par match</div>
+              <div class="chiffre-bar"><div class="chiffre-fill" style="--bar-w:85%"></div></div>
+            </div>
+            <div class="chiffre-card chiffre-card--rose">
+              <div class="chiffre-sport">Trail</div>
+              <div class="chiffre-num" data-target="1500">0</div>
+              <div class="chiffre-unit">foul&eacute;es<br>par km</div>
+              <div class="chiffre-bar"><div class="chiffre-fill" style="--bar-w:100%"></div></div>
+            </div>
+            <div class="chiffre-card">
+              <div class="chiffre-sport">Natation</div>
+              <div class="chiffre-num" data-target="40">0</div>
+              <div class="chiffre-unit">tractions<br>par 50&nbsp;m</div>
+              <div class="chiffre-bar"><div class="chiffre-fill" style="--bar-w:32%"></div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 05 · LES RÉSULTATS (label avant la galerie) ── -->
+        <div class="dos-label reveal" id="s-resultats" style="margin-bottom:1.5rem;">05 &mdash; Les r&eacute;sultats</div>
+        <p class="resultats-intro reveal">Campagne print &amp; digitale &mdash; 4 affiches d&eacute;clin&eacute;es sport par sport, chacune port&eacute;e par ses donn&eacute;es r&eacute;elles.</p>
+
       </div>
 
     </div>
   </div>
 
   <footer>
-    <span>© 2026 On fait des bulles ?</span>
+    <span>&copy; 2026 On fait des bulles&nbsp;?</span>
     <span>Lyon, France</span>
   </footer>
 
@@ -346,10 +620,55 @@
       document.querySelectorAll('.proj-gallery-thumb').forEach(t => t.classList.remove('active'));
       thumb.classList.add('active');
     }
+
+    // ── Chiffres animés
+    function animateCounter(el, target, duration) {
+      var start = 0;
+      var startTime = null;
+      function tick(ts) {
+        if (!startTime) startTime = ts;
+        var progress = Math.min((ts - startTime) / duration, 1);
+        var ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(ease * target).toLocaleString('fr-FR');
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+    var chiffresObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var card = entry.target;
+          card.classList.add('counted');
+          var numEl = card.querySelector('.chiffre-num');
+          if (numEl && numEl.dataset.target) {
+            animateCounter(numEl, parseInt(numEl.dataset.target), 1100);
+          }
+          chiffresObs.unobserve(card);
+        }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.chiffre-card').forEach(function(c) { chiffresObs.observe(c); });
+
+    // ── Scroll spy pour les dots
+    var dosSectionIds = ['s-brief', 's-insight', 's-partipris', 's-chiffres', 's-resultats'];
+    var dosDots = document.querySelectorAll('.dos-dot');
+    if (dosDots.length) {
+      var spyObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var idx = dosSectionIds.indexOf(entry.target.id);
+            if (idx >= 0) dosDots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+          }
+        });
+      }, { threshold: 0.45, rootMargin: '-10% 0px -50% 0px' });
+      dosSectionIds.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) spyObs.observe(el);
+      });
+    }
   </script>
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
     <img id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
-  </div>
-</body>
+  </div></body>
 </html>

@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>  <meta charset="UTF-8" />  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@700;800&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #07060e; --surface: #0f0d1c;
-      --accent1: #7b4bff; --accent2: #00e5cc; --accent3: #ff3cac;
-      --text: #e8e4f0; --muted: #7a748f;
+      --bg: #ffffff; --surface: #f8f8f8;
+      --accent1: #D66A77; --accent2: #97BAED; --accent3: #D66A77;
+      --text: #1a1a2e; --muted: #666676;
       --font-display: 'Bebas Neue', sans-serif;
       --font-body: 'DM Sans', sans-serif;
     }
@@ -26,15 +24,15 @@
       cursor: none;
     }
     .cursor { width: 12px; height: 12px; background: var(--accent2); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: difference; }
-    .cursor-follower { width: 36px; height: 36px; border: 1px solid rgba(123,75,255,0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; }
+    .cursor-follower { width: 36px; height: 36px; border: 1px solid rgba(214,106,119,0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; }
     @media (max-width: 900px) { .cursor, .cursor-follower { display: none !important; } body { cursor: auto !important; } * { cursor: auto !important; } }
 
     /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); }
-    nav.light .nav-logo { background: linear-gradient(120deg, #111, #444, #7b4bff, #111); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    nav.light .nav-logo { background: linear-gradient(120deg, #D66A77, #97BAED, #D66A77); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     nav.light .nav-links a { color: #888; }
     nav.light .nav-links a:hover { color: var(--accent1); }
-    .nav-logo { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.08em; text-decoration: none; background: linear-gradient(120deg, #111, #444, #7b4bff, #111); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-logo { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.08em; text-decoration: none; background: linear-gradient(120deg, #D66A77, #97BAED, #D66A77); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a { color: #888; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--accent2); }
@@ -52,15 +50,14 @@
     .mobile-menu a:hover { background: #f5f5f5; }
 
     /* DARK HERO */
-    .proj-hero { background: var(--bg); color: var(--text); padding: 5.5rem 4rem 1.5rem; position: relative; z-index: 1; }
-    .proj-back { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--muted); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; transition: color 0.2s; }
-    .proj-back:hover { color: var(--accent2); }
-    .proj-cat { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent2); margin-bottom: 1rem; }
-    .proj-title { font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 4.5rem); line-height: 1; margin-bottom: 1rem; }
-    .proj-meta { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
-    .proj-client { font-size: 0.9rem; color: var(--muted); }
-    .proj-theme-tag { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.9rem; border: 1px solid rgba(255,255,255,0.12); border-radius: 2rem; color: var(--muted); }
-    .grain { position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); opacity: 0.4; pointer-events: none; z-index: 0; }
+    .proj-hero { position: relative; min-height: 58vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 8rem 4rem 4rem; overflow: hidden; background: #121624; }
+    .proj-hero-grad { position: absolute; inset: 0; background: linear-gradient(to top, #121624 45%, rgba(18,22,36,0.3)); pointer-events: none; }
+    .proj-back { display: inline-flex; align-items: center; gap: 0.6rem; color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; transition: color 0.2s; position: relative; z-index: 2; width: fit-content; }
+    .proj-back:hover { color: rgba(255,255,255,0.8); }
+    .proj-badge { display: inline-block; font-size: 0.65rem; letter-spacing: 0.26em; text-transform: uppercase; color: #8ba8d4; border: 1px solid rgba(139,168,212,0.35); padding: 0.28rem 0.85rem; border-radius: 2rem; margin-bottom: 1.2rem; position: relative; z-index: 2; }
+    .proj-title { font-family: var(--font-display); font-size: clamp(3rem,7vw,7rem); line-height: 0.93; color: #fff; margin-bottom: 1.2rem; position: relative; z-index: 2; }
+    .proj-sub { font-style: italic; font-size: 1rem; color: rgba(255,255,255,0.5); position: relative; z-index: 2; }
+    .grain { position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); opacity: 0.12; pointer-events: none; z-index: 0; }
 
     /* WHITE CONTENT AREA */
     .proj-content {
@@ -71,14 +68,14 @@
       padding: 5rem 4rem 6rem;
     }
     .proj-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
     }
 
     /* GALLERY */
-    .proj-gallery { position: sticky; top: 8rem; }
+    .proj-gallery { position: static; order: 2; width: 100%; }
+    .proj-text { order: 1; }
     .proj-gallery-main {
       width: 100%;
       aspect-ratio: 4/3;
@@ -168,7 +165,7 @@
     .reveal.visible { opacity: 1; transform: none; }
 
     @media (max-width: 900px) {
-      .proj-hero { background: var(--bg); color: var(--text); padding: 5.5rem 4rem 1.5rem; position: relative; z-index: 1; }
+      .proj-hero { padding: 7rem 2rem 3rem; }
       .proj-content { padding: 3rem 2rem 4rem; }
       .proj-layout { grid-template-columns: 1fr; gap: 2.5rem; }
       .proj-gallery { position: static; }
@@ -202,15 +199,160 @@
     }
     .lightbox-close:hover { opacity: 1; }
     .proj-gallery-main { cursor: zoom-in; }
-  </style>
-  <title>Vogalib — On fait des bulles ?</title>
-</head>
-<body>
 
+    /* ============================================
+       DOSSIER D'AGENCE — Vogalib
+    ============================================ */
+    .dos-progress {
+      position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 0.75rem; z-index: 500;
+    }
+    .dos-dot {
+      display: block; width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(0,0,0,0.18); transition: all 0.3s ease; text-decoration: none;
+    }
+    .dos-dot.active { background: var(--accent1); transform: scale(1.65); }
+    @media (max-width: 1100px) { .dos-progress { display: none; } }
+    .dos-label {
+      font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--accent1); margin-bottom: 1.6rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .dos-label::after { content: ''; flex: 1; height: 1px; background: rgba(0,0,0,0.08); }
+    .dos-section { margin-bottom: 5.5rem; scroll-margin-top: 6rem; }
+    /* Brief */
+    .brief-wrap { display: flex; gap: 2rem; align-items: flex-start; }
+    .brief-paper {
+      flex: 1; background: #fdf9f4;
+      border: 1px solid rgba(0,0,0,0.07); border-radius: 0.6rem;
+      padding: 2.8rem; position: relative; overflow: hidden;
+      box-shadow: 0 3px 24px rgba(0,0,0,0.06);
+    }
+    .brief-paper::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: repeating-linear-gradient(transparent, transparent 27px, rgba(0,0,0,0.028) 27px, rgba(0,0,0,0.028) 28px);
+    }
+    .brief-paper-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid rgba(0,0,0,0.05);
+    }
+    .bph-badge {
+      display: inline-block; font-family: var(--font-display); font-size: 1.1rem;
+      letter-spacing: 0.12em; color: var(--accent1);
+      border: 2px solid var(--accent1); padding: 0.3rem 0.9rem;
+      border-radius: 3px; opacity: 0.8; margin-bottom: 0.4rem;
+    }
+    .bph-sub { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; }
+    .bph-ref { font-family: monospace; font-size: 0.72rem; color: var(--muted); text-align: right; line-height: 1.6; }
+    .brief-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 2rem; margin-bottom: 1rem; }
+    .bf { padding-bottom: 0.6rem; border-bottom: 1px dotted rgba(0,0,0,0.15); }
+    .bf-full { grid-column: 1 / -1; }
+    .bf-label { display: block; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+    .bf-val { font-size: 0.92rem; color: var(--text); line-height: 1.5; }
+    .brief-validated {
+      position: absolute; bottom: 2rem; right: 2rem;
+      width: 78px; height: 78px; opacity: 0.55; transform: rotate(-8deg);
+    }
+    .brief-validated svg { width: 100%; height: 100%; }
+    /* Post-its */
+    .postit {
+      background: #fef9c3; padding: 1.4rem 1.6rem; border-radius: 2px;
+      box-shadow: 2px 5px 18px rgba(0,0,0,0.13), 0 1px 4px rgba(0,0,0,0.08);
+      transform: rotate(-2.5deg);
+      font-family: 'Caveat', cursive; font-size: 1.15rem; line-height: 1.55;
+      color: #5c4400; max-width: 220px; flex-shrink: 0; position: relative; margin-top: 1.5rem;
+    }
+    .postit::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 26px; background: rgba(0,0,0,0.055); border-radius: 2px 2px 0 0;
+    }
+    .postit-blue { background: rgba(109,113,176,0.1); color: #2a2e58; border: 1px solid rgba(109,113,176,0.25); }
+    .postit-arrow { display: block; font-size: 0.9rem; margin-bottom: 0.25rem; opacity: 0.45; }
+    /* Insight */
+    .insight-block {
+      background: #2a2e58; color: #f0eef8;
+      border-radius: 0.8rem; padding: 3.5rem 3.5rem 3rem;
+      position: relative; overflow: hidden;
+    }
+    .insight-block::before {
+      content: '\201C'; position: absolute; top: -2rem; left: 1.5rem;
+      font-family: Georgia, serif; font-size: 18rem; color: rgba(255,255,255,0.04);
+      line-height: 1; pointer-events: none;
+    }
+    .insight-lead { font-size: 1rem; color: rgba(240,238,248,0.6); line-height: 1.85; margin-bottom: 2rem; max-width: 560px; }
+    .insight-reveal { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; }
+    .ir-line { flex: 1; height: 1px; background: rgba(109,113,176,0.5); }
+    .insight-big { font-family: var(--font-display); font-size: clamp(2.6rem, 5vw, 4.2rem); color: #97BAED; margin: 0; }
+    .insight-sub { font-size: 0.9rem; color: rgba(240,238,248,0.48); line-height: 1.85; max-width: 520px; }
+    /* Parti pris */
+    .partipris-concept { margin-bottom: 2.5rem; }
+    .pc-phrase { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1; color: var(--text); margin-bottom: 1rem; }
+    .pc-desc { font-size: 0.93rem; color: var(--muted); line-height: 1.8; max-width: 580px; }
+    .partipris-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .pp-card { background: var(--surface); border: 1px solid rgba(0,0,0,0.06); border-radius: 0.6rem; padding: 1.8rem; }
+    .pp-card-full { grid-column: 1 / -1; }
+    .pp-card-label { font-size: 0.64rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; }
+    .pp-swatches { display: flex; gap: 0.8rem; align-items: flex-end; padding-bottom: 1.6rem; }
+    .pp-swatch { flex: 1; aspect-ratio: 1; border-radius: 0.4rem; position: relative; max-width: 54px; }
+    .pp-swatch span { position: absolute; bottom: -1.4rem; left: 50%; transform: translateX(-50%); font-size: 0.55rem; color: var(--muted); letter-spacing: 0.04em; white-space: nowrap; }
+    .pp-typo-display { font-family: var(--font-display); font-size: 2.2rem; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
+    .pp-typo-body { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.25rem; }
+    .pp-typo-note { font-size: 0.75rem; color: var(--accent2); font-style: italic; }
+    .pp-territory { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .pp-tag { font-size: 0.75rem; padding: 0.3rem 0.9rem; border: 1px solid rgba(0,0,0,0.1); border-radius: 2rem; color: var(--muted); transition: all 0.2s; cursor: default; }
+    .pp-tag:hover { border-color: var(--accent1); color: var(--accent1); }
+    /* Nausée scale (section 04) */
+    .nausee-intro { font-size: 0.93rem; color: var(--muted); line-height: 1.75; margin-bottom: 2.5rem; max-width: 560px; }
+    .concept-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .concept-card {
+      border-radius: 0.7rem; padding: 2rem 1.8rem;
+      border: 1px solid rgba(0,0,0,0.06); background: var(--surface);
+      position: relative; overflow: hidden;
+    }
+    .concept-card::before {
+      content: attr(data-num);
+      position: absolute; bottom: -0.5rem; right: 0.8rem;
+      font-family: var(--font-display); font-size: 6rem; line-height: 1;
+      color: rgba(0,0,0,0.04); pointer-events: none;
+    }
+    .concept-card-title { font-family: var(--font-display); font-size: 1.6rem; color: var(--text); margin-bottom: 0.6rem; line-height: 1.1; }
+    .concept-card-tag { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent1); margin-bottom: 0.8rem; display: block; }
+    .concept-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+    /* Nausée gradient bar */
+    .nausee-bar-wrap { margin-top: 3rem; }
+    .nausee-bar-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; display: flex; justify-content: space-between; }
+    .nausee-bar {
+      height: 28px; border-radius: 14px;
+      background: linear-gradient(to right, #f9ccc9, #e87b78, #e63530, #c41e1a, #2a2e58);
+      position: relative; margin-bottom: 0.5rem;
+      box-shadow: 0 2px 12px rgba(230,53,48,0.2);
+    }
+    .nausee-bar::after {
+      content: 'Vogalib';
+      position: absolute; right: -0.5rem; top: 50%; transform: translateY(-50%);
+      font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 0.08em;
+      color: #6d71b0; white-space: nowrap; padding-left: 1.2rem;
+    }
+    .nausee-bar-sub { font-size: 0.72rem; color: var(--muted); font-style: italic; }
+    /* Résultats */
+    .resultats-intro { font-size: 0.93rem; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; }
+    .proj-gallery .proj-gallery-main { aspect-ratio: 16/9; }
+    @media (max-width: 900px) {
+      .brief-wrap { flex-direction: column; }
+      .postit { transform: rotate(-1.2deg) !important; max-width: 100%; margin-left: 0 !important; }
+      .concept-cards { grid-template-columns: 1fr; }
+      .partipris-grid { grid-template-columns: 1fr; }
+      .insight-block { padding: 2.5rem 2rem; }
+      .pp-swatches { padding-bottom: 2rem; }
+      .proj-gallery { position: static; }
+    }
+
+  </style>
+  <title>Vogalib — On fait des bulles ?</title></head>
+<body>
   <nav>
     <a href="index.html" class="nav-logo">OnFaitDesBulles</a>
-    <ul class="nav-links">
-      <li><a href="services.html">Services</a></li>
+        <ul class="nav-links">      <li><a href="services.html">Services</a></li>
       <li><a href="projets.html" class="active">Projets</a></li>
       <li><a href="apropos.html">À propos</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -222,23 +364,19 @@
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-menu-close" onclick="toggleMenu()">&#x2715;</button>
-    <a href="index.html" onclick="toggleMenu()">Accueil</a>
-    <a href="services.html" onclick="toggleMenu()">Nos services</a>
+    <a href="index.html" onclick="toggleMenu()">Accueil</a>    <a href="services.html" onclick="toggleMenu()">Nos services</a>
     <a href="projets.html" onclick="toggleMenu()">Nos r&#233;alisations</a>
     <a href="apropos.html" onclick="toggleMenu()">&Agrave; propos</a>
     <a href="contact.html" onclick="toggleMenu()">Contact</a>
   </div>
 
-  <!-- DARK HERO -->
-  <div class="proj-hero">
-    <a href="projets.html" class="proj-back">← Retour aux projets</a>
-    <p class="proj-cat">Direction Artistique &amp; Print</p>
+  <header class="proj-hero">
+    <div class="proj-hero-grad"></div>
+    <a href="projets.html" class="proj-back">&larr; Retour aux projets</a>
+    <span class="proj-badge">Direction Artistique &middot; Print &middot; Communication m&eacute;dicale</span>
     <h1 class="proj-title">Vogalib</h1>
-    <div class="proj-meta">
-      <span class="proj-client">Vogalib</span>
-      <span class="proj-theme-tag">Médicament</span>
-    </div>
-  </div>
+    <p class="proj-sub">Communication m&eacute;dicale &mdash; M&eacute;dicament</p>
+  </header>
 
   <!-- WHITE CONTENT -->
   <div class="proj-content">
@@ -261,21 +399,164 @@
 
       <!-- TEXT -->
       <div class="proj-text">
-        <div class="proj-section reveal">
-          <h2 class="proj-section-title">Brief</h2>
-          <p>Concevoir une campagne estivale pour Vogalib, médicament contre les nausées et vomissements, en s'adressant à une cible jeune et active pendant la saison estivale.</p>
-          <p>L'objectif : communiquer sur l'efficacité du produit de façon décalée et mémorable, en évitant les codes froids et cliniques habituels de la communication pharma.</p>
+
+        <div class="dos-progress">
+          <a href="#s-brief"     class="dos-dot active" title="Brief"></a>
+          <a href="#s-insight"   class="dos-dot" title="Insight"></a>
+          <a href="#s-partipris" class="dos-dot" title="Parti pris"></a>
+          <a href="#s-concept"   class="dos-dot" title="Concept"></a>
+          <a href="#s-resultats" class="dos-dot" title="Résultats"></a>
         </div>
-        <div class="proj-section reveal">
-          <h2 class="proj-section-title">Réalisation</h2>
-          <p>L'accroche <strong>« Good Vagues Only »</strong> détourne le célèbre « Good Vibes Only » pour créer un jeu de mots immédiatement parlant en été.</p>
-          <p>L'affiche met en scène un estomac envahi par des vagues — métaphore visuelle des nausées. Un surfeur y évolue, transformant l'inconført en terrain de jeu. Ce parti pris illustre l'efficacité du médicament : reprendre le contrôle et profiter pleinement de l'été.</p>
-          <p>Les vagues reprennent directement le motif graphique du packaging Vogalib, assurant cohérence et reconnaissance de l'univers produit.</p>
-        </div>
+
+        <!-- 01 BRIEF -->
+        <section class="dos-section" id="s-brief">
+          <div class="dos-label reveal">01 &mdash; Le brief</div>
+          <div class="brief-wrap">
+            <div class="brief-paper reveal">
+              <div class="brief-paper-header">
+                <div>
+                  <div class="bph-badge">Brief Créatif</div>
+                  <div class="bph-sub">Vogalib &middot; Communication Estivale</div>
+                </div>
+                <div class="bph-ref">Réf. VOG-2024-001</div>
+              </div>
+              <div class="brief-fields">
+                <div class="bf">
+                  <span class="bf-label">Client</span>
+                  <span class="bf-val">Sanofi Consumer Healthcare</span>
+                </div>
+                <div class="bf">
+                  <span class="bf-label">Produit</span>
+                  <span class="bf-val">Vogalib 7,5&nbsp;mg</span>
+                </div>
+                <div class="bf">
+                  <span class="bf-label">Cible</span>
+                  <span class="bf-val">Jeunes actifs &middot; Saison estivale</span>
+                </div>
+                <div class="bf">
+                  <span class="bf-label">Format</span>
+                  <span class="bf-val">Campagne affiche &amp; déclinaisons</span>
+                </div>
+                <div class="bf bf-full">
+                  <span class="bf-label">Objectif</span>
+                  <span class="bf-val">Communiquer sur l&rsquo;efficacité du produit de façon décalée et mémorable, en évitant les codes froids et cliniques habituels de la communication pharma.</span>
+                </div>
+              </div>
+              <div class="brief-validated">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="40" cy="40" r="36" stroke="#D66A77" stroke-width="3" opacity="0.8"/>
+                  <circle cx="40" cy="40" r="31" stroke="#D66A77" stroke-width="1" opacity="0.5"/>
+                  <text x="40" y="37" text-anchor="middle" font-family="'Bebas Neue', sans-serif" font-size="11" fill="#D66A77" opacity="0.9">VALIDÉ</text>
+                  <text x="40" y="50" text-anchor="middle" font-family="'Bebas Neue', sans-serif" font-size="7.5" fill="#D66A77" opacity="0.7">SANOFI 2024</text>
+                </svg>
+              </div>
+            </div>
+            <div class="postit reveal">
+              <span class="postit-arrow">&#x2191;</span>
+              Briser les codes<br>de la pharma.
+            </div>
+          </div>
+        </section>
+
+        <!-- 02 INSIGHT -->
+        <section class="dos-section" id="s-insight">
+          <div class="dos-label reveal">02 &mdash; L&rsquo;insight</div>
+          <div class="insight-block reveal">
+            <p class="insight-lead">Les médicaments anti-nausées s&rsquo;adressent aux malades, dans l&rsquo;urgence et l&rsquo;inconfort. Mais leur cible, ce sont aussi des gens qui veulent juste profiter de leur été.</p>
+            <div class="insight-reveal">
+              <div class="ir-line"></div>
+              <p class="insight-big">Parler aux vivants.</p>
+              <div class="ir-line"></div>
+            </div>
+            <p class="insight-sub">La communication pharma parle à des patients. Vogalib peut parler à des surfeurs, des festivaliers, des voyageurs &mdash; et leur dire que rien ne les arrête.</p>
+          </div>
+          <div class="postit postit-blue reveal" style="margin-left:auto; transform:rotate(1.8deg);">
+            <span class="postit-arrow">&#x2192;</span>
+            «&nbsp;Good Vagues<br>Only&nbsp;»
+          </div>
+        </section>
+
+        <!-- 03 PARTI PRIS -->
+        <section class="dos-section" id="s-partipris">
+          <div class="dos-label reveal">03 &mdash; Le parti pris créatif</div>
+          <div class="partipris-concept reveal">
+            <p class="pc-phrase">Good Vagues Only*</p>
+            <p class="pc-desc">Détourner «&nbsp;Good Vibes Only&nbsp;» pour ancrer immédiatement Vogalib dans l&rsquo;univers estival. L&rsquo;estomac devient un océan à dompter, le surfeur incarne la légèreté après traitement.</p>
+          </div>
+          <div class="partipris-grid reveal">
+            <div class="pp-card">
+              <div class="pp-card-label">Palette de la campagne</div>
+              <div class="pp-swatches">
+                <div class="pp-swatch" style="background:#6d71b0;"><span>Apaisement</span></div>
+                <div class="pp-swatch" style="background:#2a2e58;"><span>Profondeur</span></div>
+                <div class="pp-swatch" style="background:#e63530;"><span>Nausée</span></div>
+                <div class="pp-swatch" style="background:#f5f4f9;"><span>Légèreté</span></div>
+              </div>
+            </div>
+            <div class="pp-card">
+              <div class="pp-card-label">Registre visuel</div>
+              <div class="pp-typo">
+                <div class="pp-typo-display">VOGALIB</div>
+                <div class="pp-typo-body">Minimaliste &middot; Flat &middot; Vectoriel</div>
+                <div class="pp-typo-note">Surfeur = silhouette en ligne, planche = cachet</div>
+              </div>
+            </div>
+            <div class="pp-card pp-card-full">
+              <div class="pp-card-label">Territoire créatif</div>
+              <div class="pp-territory">
+                <span class="pp-tag">Estival</span>
+                <span class="pp-tag">Décalé</span>
+                <span class="pp-tag">Anti-pharma</span>
+                <span class="pp-tag">Métaphore</span>
+                <span class="pp-tag">Packaging → affiche</span>
+                <span class="pp-tag">Déclinable</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 04 LES 3 PILIERS DU CONCEPT -->
+        <section class="dos-section" id="s-concept">
+          <div class="dos-label reveal">04 &mdash; Les piliers du concept</div>
+          <p class="nausee-intro reveal">Trois éléments structurent le concept et assurent sa cohérence visuelle et mémorielle.</p>
+          <div class="concept-cards reveal">
+            <div class="concept-card" data-num="01">
+              <span class="concept-card-tag">L&rsquo;accroche</span>
+              <div class="concept-card-title">Good Vagues Only*</div>
+              <p class="concept-card-desc">Détournement de «&nbsp;Good Vibes Only&nbsp;» &mdash; immédiatement lisible, estival, mémorable. L&rsquo;astérisque renvoie au discours légal, intrigué dans l&rsquo;univers de la publicité pharma.</p>
+            </div>
+            <div class="concept-card" data-num="02">
+              <span class="concept-card-tag">La métaphore</span>
+              <div class="concept-card-title">Estomac Océan</div>
+              <p class="concept-card-desc">L&rsquo;estomac devient un terrain de surf. Les nausées sont des vagues à dompter. Le surfeur minimaliste &mdash; dont la planche évoque le cachet &mdash; incarne la légèreté de l&rsquo;après-traitement.</p>
+            </div>
+            <div class="concept-card" data-num="03">
+              <span class="concept-card-tag">La continuité</span>
+              <div class="concept-card-title">Pack &rarr; Affiche</div>
+              <p class="concept-card-desc">Les vagues de l&rsquo;affiche reprennent directement le motif graphique du packaging Vogalib. La campagne prolonge l&rsquo;univers produit plutôt que de le trahir.</p>
+            </div>
+          </div>
+          <!-- Nausée scale -->
+          <div class="nausee-bar-wrap reveal">
+            <div class="nausee-bar-label">
+              <span>Nausée légère</span>
+              <span>Nausée intense</span>
+            </div>
+            <div class="nausee-bar"></div>
+            <p class="nausee-bar-sub">Les différentes nuances de rouge représentent les seuils de la nausée &mdash; Vogalib en traite tous les niveaux. Le bleu, c&rsquo;est la promesse&nbsp;: l&rsquo;apaisement.</p>
+          </div>
+        </section>
+
+        <!-- 05 LES RÉSULTATS -->
+        <div class="dos-label reveal" id="s-resultats" style="margin-bottom:1.5rem;">05 &mdash; Les résultats</div>
+        <p class="resultats-intro reveal">Affiche principale + mockup abribus &mdash; une campagne déclinable à l&rsquo;infini (palettes, décors, saisons).</p>
+
+      </div>
+
   </div>
 
   <footer>
-    <span>© 2026 On fait des bulles ?</span>
+    <span>&copy; 2026 On fait des bulles&nbsp;?</span>
     <span>Lyon, France</span>
   </footer>
 
@@ -340,10 +621,27 @@
       document.querySelectorAll('.proj-gallery-thumb').forEach(t => t.classList.remove('active'));
       thumb.classList.add('active');
     }
+
+    // ── Scroll spy pour les dots (Vogalib)
+    var dosSectionIds = ['s-brief', 's-insight', 's-partipris', 's-concept', 's-resultats'];
+    var dosDots = document.querySelectorAll('.dos-dot');
+    if (dosDots.length) {
+      var spyObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var idx = dosSectionIds.indexOf(entry.target.id);
+            if (idx >= 0) dosDots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+          }
+        });
+      }, { threshold: 0.45, rootMargin: '-10% 0px -50% 0px' });
+      dosSectionIds.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) spyObs.observe(el);
+      });
+    }
   </script>
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
     <img id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
-  </div>
-</body>
+  </div></body>
 </html>
