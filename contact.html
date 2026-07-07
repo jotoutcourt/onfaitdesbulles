@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    @font-face { font-family: 'Agrandir'; src: url('assets/fonts/agrandir-grand-heavy.otf') format('opentype'); font-weight: 800; font-style: normal; font-display: swap; }
     :root {
       --bg: #07060e; --surface: #0f0d1c;
       --accent1: #7b4bff; --accent2: #00e5cc; --accent3: #ff3cac;
@@ -149,7 +150,7 @@
   <title>Contact — On fait des bulles ?</title>
   <style>
     .contact-wrap { max-width: 680px; margin: 0 auto; }
-    .contact-title { font-family: var(--font-display); font-size: clamp(3rem, 6vw, 6rem); line-height: 0.95; margin-bottom: 1.5rem; }
+    .contact-title { font-family: 'Agrandir', var(--font-display); font-weight: 800; font-size: clamp(3rem, 6vw, 6rem); line-height: 0.95; margin-bottom: 1.5rem; }
     .contact-sub { color: var(--muted); font-size: 1rem; line-height: 1.8; margin-bottom: 3rem; }
     .contact-team { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
     .contact-person { padding: 2rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.5rem; background: var(--surface); }
@@ -158,7 +159,7 @@
     .contact-link { display: flex; align-items: center; gap: 0.8rem; color: var(--text); text-decoration: none; font-size: 0.85rem; padding: 0.7rem 0; border-top: 1px solid rgba(255,255,255,0.06); transition: color 0.2s; }
     .contact-link:hover { color: var(--accent2); }
     .divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 2rem 0; }
-    .availability { display: flex; align-items: center; gap: 0.8rem; font-size: 0.9rem; color: var(--muted); }
+    .availability { display: flex; align-items: center; gap: 0.8rem; font-size: 0.9rem; color: var(--muted); margin-bottom: 2rem; }
     .dot { width: 8px; height: 8px; background: var(--accent2); border-radius: 50%; animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
     @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
     @media (max-width: 600px) { .contact-team { grid-template-columns: 1fr; } }
