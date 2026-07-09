@@ -179,6 +179,7 @@ body.on-dark-page .burger span { background: #fff; }
 @media (max-width: 980px) { .hero-grid { grid-template-columns: 1fr; } }
 .hero-copy h1 { font-size: clamp(2.4rem, 4.6vw, 3.6rem); max-width: 12ch; }
 .hero-copy p { color: var(--muted); margin: 1.3rem 0 1.8rem; max-width: 42ch; font-size: 1.02rem; }
+.hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
 .hero-media { position: relative; border-radius: var(--radius-xl); overflow: hidden; aspect-ratio: 4/3.4; }
 .hero-media img { width: 100%; height: 100%; object-fit: cover; }
 .hero-badges { position: absolute; inset: 0; pointer-events: none; }
@@ -186,6 +187,12 @@ body.on-dark-page .burger span { background: #fff; }
 .hero-badges .hb1 { top: 1.2rem; left: 1.2rem; }
 .hero-badges .hb2 { bottom: 1.2rem; right: 1.2rem; }
 @media (max-width: 980px) { .hero-badges .glass-card { width: 140px; padding: 1rem 1.1rem; } }
+@media (max-width: 640px) {
+  .hero { padding: 7.5rem 0 4rem; }
+  .hero-copy p { margin: 1.1rem 0 1.6rem; }
+  .hero-cta-row { flex-direction: column; align-items: stretch; gap: 0.8rem; }
+  .hero-cta-row .btn-pill, .hero-cta-row .btn-outline { justify-content: center; width: 100%; }
+}
 
 /* ---------- Statement (manifesto) ---------- */
 .statement-section {
