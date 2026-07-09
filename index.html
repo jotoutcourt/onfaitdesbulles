@@ -123,6 +123,10 @@
       margin-bottom: 2.5rem;
     }
     @keyframes bl-irid { 0%{background-position:0% 0%} 100%{background-position:250% 0%} }
+    @media (max-width: 480px) {
+      .bl-wrap { width: 94vw; }
+      .bl-name { font-size: clamp(2rem, 10vw, 2.6rem); overflow-wrap: break-word; }
+    }
     .bl-list {
       list-style: none;
       display: flex; flex-direction: column; gap: 0.85rem;
