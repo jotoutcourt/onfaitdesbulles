@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ateliers — .bloom, fleuriste à Lyon</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-nav" id="siteNav">
+    <button class="menu-trigger" id="menuTrigger">Menu</button>
+    <a href="index.html" class="wordmark">.bloom</a>
+    <div class="nav-icons">
+      <button id="searchTrigger" aria-label="Rechercher"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+      <button aria-label="Favoris"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 20s-7-4.4-9.5-9A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 21.5 11c-2.5 4.6-9.5 9-9.5 9Z"/></svg></button>
+      <button class="cart-trigger" id="cartTrigger" aria-label="Panier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="cart-badge empty" id="cartBadge">0</span></button>
+    </div>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay">
+    <button class="menu-close" id="menuClose">&#x2715;</button>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="catalogue.html">Catalogue</a>
+      <a href="evenements.html">Événements</a>
+      <a href="ateliers.html">Ateliers</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="menu-overlay-info">
+      6 rue des Tables Claudiennes, 69004 Lyon<br>
+      04 78 00 00 00 · bonjour@bloom-fleurs.fr<br>
+      Mar–Sam 9h–19h30 · Dim 9h–13h
+    </div>
+    <div class="menu-overlay-socials">
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+      <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M9.5 17c1-3 1.5-5 1.5-7a2 2 0 1 1 4 0c0 1.5-1 4-1 5.5a1.5 1.5 0 0 0 2.7 1"/></svg></a>
+      <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-5.3A8.5 8.5 0 1 1 21 11.5Z"/></svg></a>
+    </div>
+  </div>
+
+  <section class="page-header on-dark bg-bordeaux">
+    <div class="wrap">
+      <span class="eyebrow on-dark">Nos services</span>
+      <h1>Ateliers</h1>
+      <p>Apprenez l'art floral à votre rythme, deux fois par mois, dans notre atelier.</p>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="wrap split-feature reveal">
+      <div class="split-media">
+        <img src="images/workshop-hands.png" alt="Atelier d'art floral" />
+      </div>
+      <div class="split-text">
+        <span class="eyebrow">Ateliers</span>
+        <h2 class="title-block"><em>Apprenez l'art floral</em></h2>
+        <p>Deux fois par mois, nous ouvrons l'atelier pour un cours de composition florale en petit groupe (6 personnes maximum). Tout le matériel et les fleurs sont fournis — repartez avec votre création.</p>
+        <button type="button" id="bookTrigger" class="btn-outline">Réserver ma place <span class="arrow">→</span></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad bg-cream">
+    <div class="wrap reveal">
+      <div class="title-block" style="text-align:center;"><h2>Prochains ateliers</h2></div>
+      <p style="text-align:center; color:var(--muted); max-width:44ch; margin:0.8rem auto 0;">Deux créneaux sont ouverts ce mois-ci — places limitées à 6 personnes par session.</p>
+      <div class="workshop-dates">
+        <div class="workshop-card">
+          <span class="wdate">Samedi 8 août</span>
+          <h4>Bouquet rond classique</h4>
+          <p>Les bases de la technique du bouquet rond, pas à pas.</p>
+          <span class="wprice">45 € / personne</span>
+          <button type="button" class="btn-outline" style="margin-top:1rem;" data-book data-date="Samedi 8 août" data-theme="Bouquet rond classique" data-price="45">Réserver ce créneau</button>
+        </div>
+        <div class="workshop-card">
+          <span class="wdate">Samedi 22 août</span>
+          <h4>Couronne de fleurs séchées</h4>
+          <p>Créez une couronne durable à accrocher chez vous.</p>
+          <span class="wprice">50 € / personne</span>
+          <button type="button" class="btn-outline" style="margin-top:1rem;" data-book data-date="Samedi 22 août" data-theme="Couronne de fleurs séchées" data-price="50">Réserver ce créneau</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="wrap reveal" style="text-align:center;">
+      <div class="title-block"><h2>Un événement à organiser plutôt ?</h2></div>
+      <p style="color:var(--muted); max-width:44ch; margin:1rem auto 1.8rem;">Mariages, entreprises, anniversaires — découvrez notre service de compositions florales sur-mesure.</p>
+      <a href="evenements.html" class="btn-outline">Voir les événements <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-pad tight bg-bordeaux">
+    <div class="wrap reveal" style="text-align:center;">
+      <div class="title-block on-dark"><h2>Une question sur nos ateliers ?</h2></div>
+      <a href="contact.html" class="btn-pill" style="margin-top:1.6rem;">Nous écrire <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap footer-top-row">
+      <ul class="footer-nav">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="catalogue.html">Catalogue</a></li>
+        <li><a href="evenements.html">Événements</a></li>
+        <li><a href="ateliers.html">Ateliers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-cta">
+        <img src="images/footer-thumb.png" alt="" />
+      </div>
+    </div>
+    <div class="wrap"><div class="footer-giant">bloom</div></div>
+    <div class="wrap footer-bottom">
+      <span>bonjour@bloom-fleurs.fr</span>
+      <span>© 2026 .bloom — Lyon, France</span>
+    </div>
+  </footer>
+
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Votre panier</h3>
+      <button class="cart-close" id="cartClose" aria-label="Fermer">&#x2715;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="cart-empty">Votre panier est vide.</p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total"><span>Total</span><span id="cartTotal">0 €</span></div>
+      <button type="button" id="cartCheckout" class="btn-pill dark cart-checkout-btn">Passer commande <span class="arrow">→</span></button>
+      <p class="cart-note">Commande fictive à des fins de démonstration.</p>
+    </div>
+  </div>
+
+  <div class="checkout-backdrop" id="checkoutBackdrop"></div>
+  <div class="checkout-modal" id="checkoutModal">
+    <button class="checkout-close" id="checkoutClose" aria-label="Fermer">&#x2715;</button>
+    <div class="checkout-step" id="checkoutStepForm">
+      <h3>Finaliser la commande</h3>
+      <div class="checkout-summary" id="checkoutSummary"></div>
+      <div class="checkout-summary-total"><span>Total</span><span id="checkoutTotal">0 €</span></div>
+      <form class="order-form" id="checkoutForm">
+        <div class="form-row">
+          <div>
+            <label for="coName">Nom complet</label>
+            <input type="text" id="coName" required placeholder="Votre nom" />
+          </div>
+          <div>
+            <label for="coPhone">Téléphone</label>
+            <input type="tel" id="coPhone" required placeholder="06 00 00 00 00" />
+          </div>
+        </div>
+        <div>
+          <label for="coEmail">Email</label>
+          <input type="email" id="coEmail" required placeholder="vous@email.fr" />
+        </div>
+        <div>
+          <label for="coAddress">Adresse de livraison</label>
+          <input type="text" id="coAddress" required placeholder="Adresse, ville" />
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="coDate">Date souhaitée</label>
+            <input type="date" id="coDate" required />
+          </div>
+          <div>
+            <label for="coPayment">Paiement</label>
+            <select id="coPayment">
+              <option>Carte bancaire</option>
+              <option>PayPal</option>
+              <option>Apple Pay</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn-pill dark" style="width:100%; justify-content:center;">Confirmer la commande</button>
+      </form>
+    </div>
+    <div class="checkout-step checkout-success" id="checkoutStepSuccess" hidden>
+      <div class="checkout-check">&#10003;</div>
+      <h3>Merci <span id="successName"></span> !</h3>
+      <p>Votre commande <strong id="orderNumber"></strong> est confirmée.</p>
+      <p class="checkout-delivery">Livraison prévue le <span id="deliveryDate"></span></p>
+      <div class="checkout-summary" id="successSummary"></div>
+      <button type="button" class="btn-pill dark" id="checkoutDone" style="width:100%; justify-content:center; margin-top:1.4rem;">Retour à la boutique</button>
+      <p class="cart-note">Commande fictive à des fins de démonstration.</p>
+    </div>
+  </div>
+
+  <div class="checkout-backdrop" id="bookingBackdrop"></div>
+  <div class="checkout-modal" id="bookingModal">
+    <button class="checkout-close" id="bookingClose" aria-label="Fermer">&#x2715;</button>
+    <div class="checkout-step" id="bookingStepForm">
+      <h3>Réserver un atelier</h3>
+      <div class="date-options" id="dateOptions">
+        <button type="button" class="date-option" data-date="Samedi 8 août" data-theme="Bouquet rond classique" data-price="45">
+          <span class="do-left"><span class="do-date">Samedi 8 août</span><span class="do-theme">Bouquet rond classique</span></span>
+          <span class="do-price">45 € / pers.</span>
+        </button>
+        <button type="button" class="date-option" data-date="Samedi 22 août" data-theme="Couronne de fleurs séchées" data-price="50">
+          <span class="do-left"><span class="do-date">Samedi 22 août</span><span class="do-theme">Couronne de fleurs séchées</span></span>
+          <span class="do-price">50 € / pers.</span>
+        </button>
+      </div>
+
+      <form class="order-form" id="bookingForm">
+        <div>
+          <label>Nombre de personnes</label>
+          <div class="people-stepper">
+            <button type="button" data-people="-1" aria-label="Diminuer">&minus;</button>
+            <span id="peopleCount">1</span>
+            <button type="button" data-people="1" aria-label="Augmenter">+</button>
+            <span class="people-note">6 personnes maximum</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="bkName">Nom complet</label>
+            <input type="text" id="bkName" required placeholder="Votre nom" />
+          </div>
+          <div>
+            <label for="bkPhone">Téléphone</label>
+            <input type="tel" id="bkPhone" required placeholder="06 00 00 00 00" />
+          </div>
+        </div>
+        <div>
+          <label for="bkEmail">Email</label>
+          <input type="email" id="bkEmail" required placeholder="vous@email.fr" />
+        </div>
+        <div class="checkout-summary-total"><span>Total</span><span id="bookingTotal">45 €</span></div>
+        <button type="submit" class="btn-pill dark" style="width:100%; justify-content:center;">Confirmer ma réservation</button>
+      </form>
+    </div>
+
+    <div class="checkout-step checkout-success" id="bookingStepSuccess" hidden>
+      <div class="checkout-check">&#10003;</div>
+      <h3>Merci <span id="bookingSuccessName"></span> !</h3>
+      <p>Votre réservation <strong id="bookingRef"></strong> est confirmée.</p>
+      <p class="checkout-delivery" id="bookingSummaryLine"></p>
+      <button type="button" class="btn-pill dark" id="bookingDone" style="width:100%; justify-content:center; margin-top:1.4rem;">Retour aux ateliers</button>
+      <p class="cart-note">Réservation fictive à des fins de démonstration.</p>
+    </div>
+  </div>
+
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" placeholder="Rechercher une fleur, un bouquet…" autocomplete="off" />
+      <button class="search-close" id="searchClose" aria-label="Fermer">&#x2715;</button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <a href="https://jordan-join.fr/contact.html" target="_blank" rel="noopener" class="demo-badge">Maquette démo — Jordan Join, Directeur Artistique</a>
+
+  <script src="script.js"></script>
+</body>
+</html>

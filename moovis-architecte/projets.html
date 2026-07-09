@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nos projets, Moovis Architecte</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="loader">
+    <div class="loader-grid"></div>
+    <svg class="loader-mark" viewBox="0 0 32 32" fill="none">
+      <path d="M4 24 L11 8 L16 18 L21 8 L28 24"/>
+    </svg>
+    <div class="loader-word-wrap">
+      <span class="loader-word loader-word-ghost">MOOVIS</span>
+      <span class="loader-word loader-word-fill">MOOVIS</span>
+      <span class="loader-pen"></span>
+    </div>
+    <span class="loader-label">Architecture de l'habiter</span>
+  </div>
+
+
+  <div class="nav-wrap">
+    <header class="site-nav" id="siteNav">
+      <a href="index.html" class="logo-mark">
+        <svg viewBox="0 0 32 32" fill="none"><path d="M4 24 L11 8 L16 18 L21 8 L28 24" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <ul class="nav-center">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="projets.html" class="active">Projets</a></li>
+        <li><a href="agence.html">Agence</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="nav-socials">
+          <a href="https://www.instagram.com/moovisarchitecte/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 13v4"/></svg></a>
+        </div>
+        <a href="contact.html" class="nav-contact-btn"><span class="nc-label">Nous contacter</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.6 10.5c1.4 2.8 3.7 5.1 6.5 6.5l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.8c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.5Z"/></svg></a>
+        <button class="burger" id="burger"><span></span><span></span><span></span></button>
+      </div>
+    </header>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileClose">&#x2715;</button>
+    <a href="index.html">Accueil</a>
+    <a href="projets.html">Projets</a>
+    <a href="agence.html">Agence</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <section class="page-header">
+    <div class="wrap">
+      <span class="eyebrow">Nos réalisations</span>
+      <h1>Des lieux de vie pensés à taille humaine</h1>
+      <p>Logements collectifs, individuels, temporaires, formes mixtes et hôtellerie, un aperçu de nos réalisations dans l'ouest lyonnais et le Grand Lyon.</p>
+    </div>
+  </section>
+
+  <section class="section-pad tight">
+    <div class="wrap reveal">
+      <div class="filter-pills-primary">
+        <span class="filter-group-label">Filtrer par&nbsp;:</span>
+        <button class="filter-pill filter-pill-lg" data-filter="existant">Existants</button>
+        <button class="filter-pill filter-pill-lg" data-filter="neuf">Neufs</button>
+      </div>
+      <hr class="filter-divider" />
+      <div class="filter-pills">
+        <button class="filter-pill active" data-filter="all">Tout</button>
+        <button class="filter-pill" data-filter="collectifs">Logements collectifs</button>
+        <button class="filter-pill" data-filter="individuels">Logements individuels</button>
+        <button class="filter-pill" data-filter="temporaires">Logements temporaires</button>
+        <button class="filter-pill" data-filter="mixtes">Formes mixtes</button>
+        <button class="filter-pill" data-filter="hotellerie">Hôtellerie</button>
+      </div>
+
+            <div class="projects-grid">
+        <div class="project-card" data-cat="individuels neuf">
+          <div class="project-media compare">
+            <div class="compare-after"><img src="images/projets/villa-l2/apres-1.jpg" alt="Villa L2, après" /></div>
+            <div class="compare-before"><img src="images/projets/villa-l2/avant.jpg" alt="Villa L2, avant" /></div>
+            <div class="compare-handle"></div>
+            <div class="compare-labels"><span class="compare-label-before">Avant</span><span class="compare-label-after">Après</span></div>
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Villa L2</h4><span>Ouest lyonnais</span></div>
+            <button type="button" class="project-view-link" data-project="proj-1">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels neuf">
+          <div class="project-media">
+            <img src="images/projets/villa-l1/apres-1.jpg" alt="Villa L1" />
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Villa L1</h4><span>Craponne</span></div>
+            <button type="button" class="project-view-link" data-project="proj-2">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="collectifs neuf">
+          <div class="project-media">
+            <img src="images/projets/immeuble-rgb/apres-1.jpg" alt="Immeuble RGB" />
+            <span class="project-tag">Logement collectif</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Immeuble RGB</h4><span>Givors · 2017</span></div>
+            <button type="button" class="project-view-link" data-project="proj-3">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels neuf">
+          <div class="project-media compare">
+            <div class="compare-after"><img src="images/projets/villa-ia-orana/apres-1.jpg" alt="Villa Ia Orana, après" /></div>
+            <div class="compare-before"><img src="images/projets/villa-ia-orana/avant.jpg" alt="Villa Ia Orana, avant" /></div>
+            <div class="compare-handle"></div>
+            <div class="compare-labels"><span class="compare-label-before">Avant</span><span class="compare-label-after">Après</span></div>
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Villa Ia Orana</h4><span>Crêches-sur-Saône · 2017</span></div>
+            <button type="button" class="project-view-link" data-project="proj-4">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels neuf">
+          <div class="project-media">
+            <img src="images/projets/villa-c1/apres-1.jpg" alt="Villa C1" />
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Villa C1</h4><span>Chaponost · 2017</span></div>
+            <button type="button" class="project-view-link" data-project="proj-5">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels neuf">
+          <div class="project-media compare">
+            <div class="compare-after"><img src="images/projets/villa-m2/apres-1.jpg" alt="Villa M2, après" /></div>
+            <div class="compare-before"><img src="images/projets/villa-m2/avant.jpg" alt="Villa M2, avant" /></div>
+            <div class="compare-handle"></div>
+            <div class="compare-labels"><span class="compare-label-before">Avant</span><span class="compare-label-after">Après</span></div>
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Villa M2</h4><span>Cournon-d'Auvergne · 2014</span></div>
+            <button type="button" class="project-view-link" data-project="proj-6">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels neuf">
+          <div class="project-media">
+            <img src="images/projets/villa-d1/apres-1.jpg" alt="Villa D1" />
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Villa D1</h4><span>Buxy · 2013</span></div>
+            <button type="button" class="project-view-link" data-project="proj-7">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels neuf">
+          <div class="project-media">
+            <img src="images/projets/villa-v1/apres-1.jpg" alt="Villa V1" />
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Villa V1</h4><span>Chaponost · 2012</span></div>
+            <button type="button" class="project-view-link" data-project="proj-8">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="collectifs neuf">
+          <div class="project-media compare">
+            <div class="compare-after"><img src="images/projets/quatre-pavillons-grury/apres-1.jpg" alt="Quatre pavillons à Grury, après" /></div>
+            <div class="compare-before"><img src="images/projets/quatre-pavillons-grury/avant.jpg" alt="Quatre pavillons à Grury, avant" /></div>
+            <div class="compare-handle"></div>
+            <div class="compare-labels"><span class="compare-label-before">Avant</span><span class="compare-label-after">Après</span></div>
+            <span class="project-tag">Logement collectif</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Quatre pavillons à Grury</h4><span>Grury · 2011</span></div>
+            <button type="button" class="project-view-link" data-project="proj-9">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels neuf">
+          <div class="project-media">
+            <img src="images/projets/villa-m1/apres-1.jpg" alt="Villa M1" />
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Villa M1</h4><span>Viernoz · 2007</span></div>
+            <button type="button" class="project-view-link" data-project="proj-10">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels neuf existant">
+          <div class="project-media">
+            <img src="images/projets/maison-b-bron/apres-1.jpg" alt="Maison B." />
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Maison B.</h4><span>Bron · 2018</span></div>
+            <button type="button" class="project-view-link" data-project="proj-11">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels existant">
+          <div class="project-media">
+            <img src="images/projets/appartement-b/apres-1.jpg" alt="Appartement B" />
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Appartement B</h4><span>Lyon</span></div>
+            <button type="button" class="project-view-link" data-project="proj-12">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels existant">
+          <div class="project-media compare">
+            <div class="compare-after"><img src="images/projets/maison-b-plan-favier/apres-1.jpg" alt="Maison B., Plan Favier, après" /></div>
+            <div class="compare-before"><img src="images/projets/maison-b-plan-favier/avant.jpg" alt="Maison B., Plan Favier, avant" /></div>
+            <div class="compare-handle"></div>
+            <div class="compare-labels"><span class="compare-label-before">Avant</span><span class="compare-label-after">Après</span></div>
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Maison B., Plan Favier</h4><span>Ouest lyonnais</span></div>
+            <button type="button" class="project-view-link" data-project="proj-13">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels existant">
+          <div class="project-media">
+            <img src="images/projets/villa-t/apres-1.jpg" alt="Villa T." />
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Villa T.</h4><span>Fleurieux-sur-Saône</span></div>
+            <button type="button" class="project-view-link" data-project="proj-14">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="collectifs existant">
+          <div class="project-media">
+            <img src="images/projets/duplex-combles/apres-1.jpg" alt="Duplex sous les combles" />
+            <span class="project-tag">Logement collectif</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Duplex sous les combles</h4><span>Ouest lyonnais</span></div>
+            <button type="button" class="project-view-link" data-project="proj-15">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels existant">
+          <div class="project-media">
+            <img src="images/projets/maison-g-l/apres-1.jpg" alt="Maison G-L" />
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Maison G-L</h4><span>Chaponost</span></div>
+            <button type="button" class="project-view-link" data-project="proj-16">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels existant">
+          <div class="project-media">
+            <img src="images/projets/maison-s-p/apres-1.jpg" alt="Maison S-P" />
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Maison S-P</h4><span>Ouest lyonnais</span></div>
+            <button type="button" class="project-view-link" data-project="proj-17">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels existant">
+          <div class="project-media">
+            <img src="images/projets/maison-ch/apres-1.jpg" alt="Maison Ch." />
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Maison Ch.</h4><span>Soucieu-en-Jarrest</span></div>
+            <button type="button" class="project-view-link" data-project="proj-18">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels existant">
+          <div class="project-media compare">
+            <div class="compare-after"><img src="images/projets/villa-c2/apres-1.jpg" alt="Villa C2, après" /></div>
+            <div class="compare-before"><img src="images/projets/villa-c2/avant.jpg" alt="Villa C2, avant" /></div>
+            <div class="compare-handle"></div>
+            <div class="compare-labels"><span class="compare-label-before">Avant</span><span class="compare-label-after">Après</span></div>
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Villa C2</h4><span>Genas</span></div>
+            <button type="button" class="project-view-link" data-project="proj-19">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels existant">
+          <div class="project-media compare">
+            <div class="compare-after"><img src="images/projets/villa-g-l-craponne/apres-1.jpg" alt="Villa G-L, après" /></div>
+            <div class="compare-before"><img src="images/projets/villa-g-l-craponne/avant.jpg" alt="Villa G-L, avant" /></div>
+            <div class="compare-handle"></div>
+            <div class="compare-labels"><span class="compare-label-before">Avant</span><span class="compare-label-after">Après</span></div>
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Villa G-L</h4><span>Craponne</span></div>
+            <button type="button" class="project-view-link" data-project="proj-20">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels existant">
+          <div class="project-media compare">
+            <div class="compare-after"><img src="images/projets/maison-d-goeulzin/apres-1.jpg" alt="Maison D., après" /></div>
+            <div class="compare-before"><img src="images/projets/maison-d-goeulzin/avant.jpg" alt="Maison D., avant" /></div>
+            <div class="compare-handle"></div>
+            <div class="compare-labels"><span class="compare-label-before">Avant</span><span class="compare-label-after">Après</span></div>
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Maison D.</h4><span>Goeulzin · 2016</span></div>
+            <button type="button" class="project-view-link" data-project="proj-21">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels existant">
+          <div class="project-media compare">
+            <div class="compare-after"><img src="images/projets/maison-sp-anglo-normand/apres-1.jpg" alt="Maison SP, Anglo-normand, après" /></div>
+            <div class="compare-before"><img src="images/projets/maison-sp-anglo-normand/avant.jpg" alt="Maison SP, Anglo-normand, avant" /></div>
+            <div class="compare-handle"></div>
+            <div class="compare-labels"><span class="compare-label-before">Avant</span><span class="compare-label-after">Après</span></div>
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Maison SP, Anglo-normand</h4><span>Chaponost · 2017</span></div>
+            <button type="button" class="project-view-link" data-project="proj-22">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels existant">
+          <div class="project-media compare">
+            <div class="compare-after"><img src="images/projets/maison-annees-30/apres-1.jpg" alt="Maison des Années 30, après" /></div>
+            <div class="compare-before"><img src="images/projets/maison-annees-30/avant.jpg" alt="Maison des Années 30, avant" /></div>
+            <div class="compare-handle"></div>
+            <div class="compare-labels"><span class="compare-label-before">Avant</span><span class="compare-label-after">Après</span></div>
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Maison des Années 30</h4><span>Bron · 2013</span></div>
+            <button type="button" class="project-view-link" data-project="proj-23">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels existant">
+          <div class="project-media">
+            <img src="images/projets/maison-f/apres-1.jpg" alt="Maison F." />
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Maison F.</h4><span>Brindas · 2009</span></div>
+            <button type="button" class="project-view-link" data-project="proj-24">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels existant">
+          <div class="project-media">
+            <img src="images/projets/maison-rouge/apres-1.jpg" alt="Maison rouge" />
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Maison rouge</h4><span>Lucey · 2014</span></div>
+            <button type="button" class="project-view-link" data-project="proj-25">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels existant">
+          <div class="project-media">
+            <img src="images/projets/garage-atelier/apres-1.jpg" alt="Garage et atelier" />
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Garage et atelier</h4><span>Longecourt-en-Plaine · 2009</span></div>
+            <button type="button" class="project-view-link" data-project="proj-26">Voir le projet →</button>
+          </div>
+        </div>
+        <div class="project-card" data-cat="individuels existant">
+          <div class="project-media">
+            <img src="images/projets/maison-b-lyon/apres-1.jpg" alt="Maison B., Lyon" />
+            <span class="project-tag">Logement individuel</span>
+          </div>
+          <div class="project-info">
+            <div><h4>Maison B., Lyon</h4><span>Lyon · 2008</span></div>
+            <button type="button" class="project-view-link" data-project="proj-27">Voir le projet →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-pad tight bg-navy">
+    <div class="wrap reveal" style="text-align:center;">
+      <div class="title-block"><h2>Votre projet mérite la même attention</h2></div>
+      <a href="contact.html" class="btn-pill gold" style="margin-top:1.6rem;">Prendre contact</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap footer-top-row">
+      <div class="footer-brand">
+        <a href="index.html" class="logo-mark">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M4 24 L11 8 L16 18 L21 8 L28 24" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/moovisarchitecte/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 13v4"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h5>Plan du site</h5>
+          <a href="index.html">Accueil</a>
+          <a href="projets.html">Projets</a>
+          <a href="agence.html">Agence</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <a href="tel:+33478879320">04 78 87 93 20</a>
+          <a href="mailto:contact@moovis-architecte.com">contact@moovis-architecte.com</a>
+        </div>
+        <div class="footer-col">
+          <h5>Agence</h5>
+          <span style="display:block; color:var(--muted-on-dark); font-size:0.88rem;">9 Vieille Route, 69630 Chaponost<br>Ouest lyonnais &amp; Grand Lyon</span>
+        </div>
+      </div>
+    </div>
+    <div class="wrap"><div class="footer-giant">MOOVIS</div></div>
+    <div class="wrap footer-bottom">
+      <span>© 2026 Moovis Architecte</span>
+      <span>Chaponost, France</span>
+      <span>Site réalisé par <a href="https://faisonsdesbulles.com" target="_blank" rel="noopener">On fait des bulles</a>, Jordan Join</span>
+    </div>
+  </footer>
+
+  <div class="project-modal-backdrop" id="projectModalBackdrop"></div>
+  <div class="project-modal" id="projectModal">
+    <button class="project-modal-close" id="projectModalClose" aria-label="Fermer">&#x2715;</button>
+    <div class="pgallery">
+      <div class="pgallery-track" id="pgalleryTrack"></div>
+      <button type="button" class="pgallery-arrow pgallery-prev" aria-label="Photo précédente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button type="button" class="pgallery-arrow pgallery-next" aria-label="Photo suivante">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+      <div class="pgallery-dots" id="pgalleryDots"></div>
+    </div>
+    <div class="pmodal-info">
+      <div class="pmodal-tags" id="pmodalTags"></div>
+      <h3 id="pmodalName"></h3>
+      <span class="pmodal-location" id="pmodalLocation"></span>
+      <p id="pmodalDescription"></p>
+    </div>
+  </div>
+
+  <a href="https://jordan-join.fr/contact.html" target="_blank" rel="noopener" class="demo-badge">Maquette démo, Jordan Join, Directeur Artistique</a>
+
+  <script src="script.js"></script>
+</body>
+</html>

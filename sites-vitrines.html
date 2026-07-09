@@ -72,7 +72,87 @@
   </style>
   <title>Sites vitrines — On fait des bulles ?</title>
   <style>
-    .placeholder-note { max-width: 600px; color: var(--muted); line-height: 1.8; }
+    .placeholder-note { max-width: 600px; color: var(--muted); line-height: 1.8; margin-bottom: 3rem; }
+
+    /* ── STRIP DE CARTES (repris de projets.html) ── */
+    .cards-strip { display: flex; flex-wrap: wrap; gap: 3px; }
+
+    .proj-card {
+      position: relative;
+      flex: 1 1 calc((100% - 2 * 3px) / 3);
+      min-width: 0;
+      height: 420px;
+      overflow: hidden;
+      cursor: none;
+      transition: flex 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      text-decoration: none;
+      color: #fff;
+      background: #111;
+      will-change: flex;
+      transform: translateZ(0);
+    }
+    .proj-card:hover { flex: 1.6 1 calc((100% - 2 * 3px) / 3); }
+
+    .proj-card-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s;
+      filter: brightness(0.75);
+    }
+    .proj-card:hover .proj-card-bg { transform: scale(1.04); filter: brightness(0.45); }
+
+    .proj-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 55%);
+      pointer-events: none;
+    }
+
+    .proj-card-content {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 1.4rem 1.2rem;
+    }
+
+    .proj-card-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.2vw, 2rem);
+      line-height: 1.05; text-transform: uppercase; letter-spacing: .02em;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .proj-card:hover .proj-card-title { white-space: normal; }
+
+    .proj-card-client {
+      font-size: 0.7rem; letter-spacing: .15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6); margin-top: 0.25rem;
+    }
+
+    .proj-card-desc {
+      font-size: 0.82rem; line-height: 1.5; color: rgba(255,255,255,0.85);
+      margin-top: 0.75rem; max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height 0.4s ease 0.1s, opacity 0.35s ease 0.15s;
+    }
+    .proj-card:hover .proj-card-desc { max-height: 6rem; opacity: 1; }
+
+    .proj-card-arrow {
+      position: absolute; top: 1.1rem; right: 1.1rem;
+      width: 32px; height: 32px;
+      border: 1px solid rgba(255,255,255,0.4); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; z-index: 2;
+      opacity: 0; transform: translateY(4px);
+      transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+    }
+    .proj-card:hover .proj-card-arrow { opacity: 1; transform: translateY(0); }
+
+    @media(max-width:900px){
+      .cards-strip { gap: 8px; }
+      .proj-card { flex: 1 1 calc(50% - 4px); height: 260px; }
+      .proj-card:hover { flex: 1 1 calc(50% - 4px); }
+      .proj-card-title { font-size: 1rem; white-space: normal; }
+      .proj-card-desc { display: none; }
+      .proj-card-arrow { opacity: 1; transform: none; }
+    }
+    @media(max-width:500px){ .proj-card { width: 100%; flex: 1 1 100%; } }
   </style>
 </head>
 <body>
@@ -93,7 +173,42 @@
     <div class="reveal">
       <p class="section-label">Nos réalisations</p>
       <h1 class="section-title">Sites vitrines</h1>
-      <p class="placeholder-note">Cette page est en construction — les projets de sites vitrines arrivent bientôt.</p>
+      <p class="placeholder-note">Conception et développement de sites vitrines complets — de la maquette de démarchage au site livré pour un client réel.</p>
+    </div>
+    <div class="cat-section reveal">
+      <div class="cards-strip">
+
+        <a href="moovis-architecte/index.html" target="_blank" rel="noopener" class="proj-card">
+          <div class="proj-card-bg" style="background-image:url('moovis-architecte/images/hero/accueil.jpg')"></div>
+          <span class="proj-card-arrow">↗</span>
+          <div class="proj-card-content">
+            <p class="proj-card-title">Moovis Architecte</p>
+            <p class="proj-card-client">Client réel · Architecture</p>
+            <p class="proj-card-desc">Site vitrine complet pour une agence d'architecture — accueil, portfolio de 27 projets avec galeries avant/après, page agence et contact.</p>
+          </div>
+        </a>
+
+        <a href="clinique-ophtalmo/index.html" target="_blank" rel="noopener" class="proj-card">
+          <div class="proj-card-bg" style="background-image:url('clinique-ophtalmo/images/hero-surgeons.png')"></div>
+          <span class="proj-card-arrow">↗</span>
+          <div class="proj-card-content">
+            <p class="proj-card-title">Clinique Ophtalmo</p>
+            <p class="proj-card-client">Maquette démo · Santé</p>
+            <p class="proj-card-desc">Maquette de démarchage pour une clinique d'ophtalmologie — présentation de l'équipe, pathologies traitées et prise de rendez-vous.</p>
+          </div>
+        </a>
+
+        <a href="fleuriste-bloom/index.html" target="_blank" rel="noopener" class="proj-card">
+          <div class="proj-card-bg" style="background-image:url('fleuriste-bloom/images/hero-hand.png')"></div>
+          <span class="proj-card-arrow">↗</span>
+          <div class="proj-card-content">
+            <p class="proj-card-title">.bloom</p>
+            <p class="proj-card-client">Maquette démo · Fleuriste</p>
+            <p class="proj-card-desc">Maquette de démarchage pour un fleuriste — boutique en ligne, recherche produits et réservation d'ateliers.</p>
+          </div>
+        </a>
+
+      </div>
     </div>
   </div>
 <footer><span>© 2026 On fait des bulles ?</span><span>Lyon, France</span></footer>
