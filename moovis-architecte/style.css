@@ -192,6 +192,21 @@ body.on-dark-page .burger span { background: #fff; }
 }
 .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; width: 100%; }
 @media (max-width: 980px) { .hero-grid { grid-template-columns: 1fr; } }
+
+.hero-sketch { display: none; }
+@media (max-width: 980px) {
+  .hero-copy { position: relative; }
+  .hero-sketch {
+    display: block; position: absolute; top: -1.5rem; right: -1rem;
+    width: 240px; height: auto; opacity: 0.09; color: var(--navy); z-index: -1; pointer-events: none;
+  }
+}
+.hero-sketch path { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.reveal.visible .hero-sketch path { animation: heroSketchDraw 1.6s ease forwards; }
+.reveal.visible .hero-sketch path:nth-child(2) { animation-delay: 1.05s; }
+.reveal.visible .hero-sketch path:nth-child(3) { animation-delay: 1.25s; }
+.reveal.visible .hero-sketch path:nth-child(4) { animation-delay: 1.45s; }
+@keyframes heroSketchDraw { to { stroke-dashoffset: 0; } }
 .hero-copy h1 { font-size: clamp(2.4rem, 4.6vw, 3.6rem); max-width: 12ch; }
 .hero-copy p { color: var(--muted); margin: 1.3rem 0 1.8rem; max-width: 42ch; font-size: 1.02rem; }
 .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -642,4 +657,5 @@ footer.site-footer { background: var(--navy); color: #fff; padding-top: 4rem; po
   .loader-pen { opacity: 0; }
   .story-quote blockquote .tw-char { animation: none !important; opacity: 1; transform: none; }
   .story-quote blockquote .tw-cursor { display: none; }
+  .hero-sketch path { animation: none !important; stroke-dashoffset: 0; }
 }
