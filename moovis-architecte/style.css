@@ -436,6 +436,9 @@ body.on-dark-page .burger span { background: #fff; }
 .founder-media { border-radius: var(--radius-xl); overflow: hidden; aspect-ratio: 3/4; }
 .founder-media img { width: 100%; height: 100%; object-fit: cover; }
 .founder-text p { color: var(--muted); margin: 1.1rem 0 1.4rem; max-width: 52ch; }
+.founder-quote { border-left: 3px solid var(--gold); padding-left: 1.4rem; margin: 1.6rem 0; }
+.founder-quote blockquote { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; line-height: 1.4; color: var(--text); }
+.founder-quote cite { display: block; margin-top: 0.6rem; font-size: 0.85rem; font-style: normal; color: var(--gold); letter-spacing: 0.04em; }
 
 .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
 @media (max-width: 900px) { .values-grid { grid-template-columns: 1fr; } }
