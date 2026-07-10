@@ -121,7 +121,6 @@ body.on-dark-page header.site-nav { background: rgba(16,28,48,0.85); }
   -webkit-mask-position: left center; mask-position: left center;
 }
 .logo-mark .logo-mark-img { width: 63px; height: 24px; }
-.logo-mark span { display: none; }
 body.on-dark-page .logo-mark { color: #fff; }
 .footer-brand .logo-mark { color: #fff; }
 .footer-brand .logo-mark .logo-mark-img { width: 78px; height: 30px; }
