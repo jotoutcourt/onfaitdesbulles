@@ -95,7 +95,22 @@ header.site-nav {
   transition: background 0.3s ease;
 }
 body.on-dark-page header.site-nav { background: rgba(16,28,48,0.85); }
-@media (max-width: 900px) { .nav-wrap { padding: 0 1rem; top: 0.9rem; } header.site-nav { padding: 0.55rem 0.55rem 0.55rem 1rem; } }
+@media (max-width: 900px) {
+  .nav-wrap { padding: 0 1rem; top: 0.9rem; }
+  header.site-nav { background: none; backdrop-filter: none; box-shadow: none; padding: 0; }
+  .logo-mark {
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(14px);
+    border-radius: var(--radius-pill); padding: 0.65rem 0.9rem;
+    box-shadow: 0 10px 34px rgba(16,28,48,0.1);
+  }
+  body.on-dark-page .logo-mark { background: rgba(16,28,48,0.85); }
+  .nav-right {
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(14px);
+    border-radius: var(--radius-pill); padding: 0.5rem 0.5rem;
+    box-shadow: 0 10px 34px rgba(16,28,48,0.1);
+  }
+  body.on-dark-page .nav-right { background: rgba(16,28,48,0.85); }
+}
 
 .logo-mark { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; flex-shrink: 0; color: var(--navy); }
 .logo-mark svg { width: 26px; height: 26px; }
