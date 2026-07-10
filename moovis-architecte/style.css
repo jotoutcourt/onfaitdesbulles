@@ -113,11 +113,18 @@ body.on-dark-page header.site-nav { background: rgba(16,28,48,0.85); }
 }
 
 .logo-mark { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; flex-shrink: 0; color: var(--navy); }
-.logo-mark svg { width: 26px; height: 26px; }
+.logo-mark-img {
+  display: block; background-color: currentColor;
+  -webkit-mask-image: url('images/logo-moovis.png'); mask-image: url('images/logo-moovis.png');
+  -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: left center; mask-position: left center;
+}
+.logo-mark .logo-mark-img { width: 63px; height: 24px; }
 .logo-mark span { display: none; }
 body.on-dark-page .logo-mark { color: #fff; }
 .footer-brand .logo-mark { color: #fff; }
-.footer-brand .logo-mark svg { width: 32px; height: 32px; }
+.footer-brand .logo-mark .logo-mark-img { width: 78px; height: 30px; }
 
 .nav-center { display: flex; gap: 1.8rem; list-style: none; }
 .nav-center a {
@@ -185,8 +192,9 @@ body.on-dark-page .burger span { background: #fff; }
 }
 .hero-watermark {
   position: absolute; bottom: -1vw; left: 50%; transform: translate(-50%, 0);
-  width: clamp(340px, 70vw, 1100px); height: auto;
-  opacity: 0.5; user-select: none; pointer-events: none; z-index: 0;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(9rem, 27vw, 20rem); line-height: 1;
+  color: rgba(16,28,48,0.06); white-space: nowrap; user-select: none; pointer-events: none; z-index: 0;
   will-change: transform;
 }
 .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; width: 100%; }
@@ -522,7 +530,6 @@ body.on-dark-page .burger span { background: #fff; }
 footer.site-footer { background: var(--navy); color: #fff; padding-top: 4rem; position: relative; overflow: hidden; }
 .footer-top-row { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2.5rem; padding-bottom: 3rem; }
 .footer-brand { display: flex; flex-direction: column; gap: 1.2rem; }
-.footer-brand .logo-mark svg { width: 34px; height: 34px; }
 .footer-socials { display: flex; gap: 0.6rem; }
 .footer-socials a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; }
 .footer-socials svg { width: 14px; height: 14px; }
