@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Chef Kenji Tanaka — Kōhaku, Restaurant Japonais Lyon</title>
+<meta name="description" content="Découvrez le parcours du Chef Kenji Tanaka, formé à Kyoto puis à Lyon, et la philosophie culinaire du restaurant Kōhaku.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">K<span>ō</span>haku</a>
+    <nav class="main-nav">
+      <a href="index.html">Accueil</a>
+      <a href="carte.html">La Carte</a>
+      <a href="click-collect.html">Click &amp; Collect</a>
+      <a href="chef.html" class="active">Le Chef</a>
+      <a href="reservation.html" class="nav-cta">Réserver</a>
+    </nav>
+    <div class="nav-right">
+      <button class="cart-trigger" id="cartTrigger" aria-label="Panier click &amp; collect">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="cart-badge" id="cartBadge" hidden>0</span>
+      </button>
+      <button class="nav-toggle" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="hero-bg" style="background-image:url('assets/hero-chef.png');"></div>
+    <div class="container hero-content">
+      <span class="eyebrow">L'histoire</span>
+      <h1 class="page-hero-title">Le Chef Kenji Tanaka</h1>
+      <p class="page-hero-lead">De Kyoto à Lyon, un parcours d'exigence au service d'une cuisine japonaise sincère et contemporaine.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="chef-hero-block">
+        <img class="reveal" src="assets/portrait-chef.png" alt="Portrait du Chef Kenji Tanaka" loading="lazy">
+        <div class="reveal">
+          <span class="eyebrow">Biographie</span>
+          <h2 class="section-title">Une vocation née à Kyoto</h2>
+          <p style="color: var(--gris-texte);">Né près de Kyoto, Kenji Tanaka grandit entre les étals du marché de Nishiki et la cuisine de sa grand-mère, où il apprend très tôt la rigueur du geste et le respect du produit brut. Formé pendant huit ans auprès de maîtres sushi traditionnels, il y acquiert une discipline exigeante&nbsp;: celle du silence, de la précision, et du temps long.</p>
+          <p style="color: var(--gris-texte); margin-top: 1.2rem;">Arrivé en France en 2014, il rejoint plusieurs tables étoilées lyonnaises où il découvre une autre exigence, celle de la gastronomie française — le travail des sauces, des cuissons lentes, des produits du terroir. De cette double formation naît une cuisine hybride et personnelle, fidèle à ses racines japonaises mais nourrie des produits et du terroir de la région lyonnaise.</p>
+          <p class="signature">— Kenji Tanaka</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="section-header center reveal">
+        <span class="eyebrow">Parcours</span>
+        <h2 class="section-title">Un chemin entre deux cultures</h2>
+      </div>
+
+      <div class="timeline reveal">
+        <div class="timeline-item">
+          <span class="timeline-year">2005</span>
+          <div>
+            <h3>Débuts à Kyoto</h3>
+            <p>Apprentissage auprès de maîtres sushi traditionnels dans le quartier de Gion, formation aux techniques ancestrales du poisson cru et du riz vinaigré.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2011</span>
+          <div>
+            <h3>Chef de partie à Tokyo</h3>
+            <p>Perfectionnement dans une maison spécialisée en cuisine kaiseki, où il approfondit l'art de la saisonnalité et de la présentation.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2014</span>
+          <div>
+            <h3>Arrivée en France</h3>
+            <p>Installation à Lyon, immersion dans la gastronomie française au sein de plusieurs cuisines étoilées de la région.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2019</span>
+          <div>
+            <h3>Chef exécutif</h3>
+            <p>Prise de responsabilité en cuisine, développement d'une identité culinaire propre mêlant précision japonaise et produits locaux.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2023</span>
+          <div>
+            <h3>Ouverture de Kōhaku</h3>
+            <p>Naissance du restaurant Kōhaku sur la Presqu'île de Lyon, aboutissement d'une vision culinaire mûrie pendant près de vingt ans.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-header center reveal">
+        <span class="eyebrow">Philosophie</span>
+        <h2 class="section-title">Trois principes, une exigence</h2>
+        <p class="section-lead center">Au-delà de la technique, une cuisine guidée par des valeurs simples et constantes.</p>
+      </div>
+
+      <div class="values-grid reveal">
+        <div class="value-item">
+          <span class="num">01</span>
+          <h3>Saisonnalité</h3>
+          <p>La carte évolue au rythme des saisons et de l'arrivage, jamais l'inverse. Chaque produit est servi au moment de sa pleine expression.</p>
+        </div>
+        <div class="value-item">
+          <span class="num">02</span>
+          <h3>Circuits courts</h3>
+          <p>Légumes de maraîchers de la région lyonnaise, poissons sélectionnés directement auprès de pêcheurs partenaires, viandes d'élevages locaux.</p>
+        </div>
+        <div class="value-item">
+          <span class="num">03</span>
+          <h3>Précision du geste</h3>
+          <p>Chaque découpe, chaque cuisson, chaque dressage obéit à une discipline héritée des maisons traditionnelles de Kyoto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="section-header center reveal">
+        <span class="eyebrow">Ambiance</span>
+        <h2 class="section-title">La salle et la cuisine</h2>
+        <p class="section-lead center">Un écrin sobre et feutré, pensé pour sublimer le travail en cuisine ouverte.</p>
+      </div>
+
+      <div class="gallery-grid reveal">
+        <a href="#" tabindex="-1" aria-hidden="true">
+          <img src="assets/galerie1.png" alt="Salle du restaurant Kōhaku" loading="lazy">
+        </a>
+        <a href="#" tabindex="-1" aria-hidden="true" class="tall">
+          <img src="assets/galerie2.png" alt="Cuisine ouverte du restaurant Kōhaku" loading="lazy">
+        </a>
+        <a href="#" tabindex="-1" aria-hidden="true">
+          <img src="assets/galerie5.png" alt="Salle du restaurant Kōhaku, ambiance feutrée" loading="lazy">
+        </a>
+        <a href="#" tabindex="-1" aria-hidden="true">
+          <img src="assets/galerie3.png" alt="Détail d'un plat du restaurant Kōhaku" loading="lazy">
+        </a>
+        <a href="#" tabindex="-1" aria-hidden="true">
+          <img src="assets/galerie4.png" alt="Détail d'un plat, salade de wakamé" loading="lazy">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="reservation-band">
+    <div class="hero-bg" style="background-image:url('assets/bandeau-chef-braise.png');"></div>
+    <div class="container band-content reveal">
+      <span class="eyebrow center">Rencontrez sa cuisine</span>
+      <h2>Venez découvrir l'univers du Chef Tanaka</h2>
+      <p>Sur réservation, du mardi au samedi, en service midi et soir.</p>
+      <a href="reservation.html" class="btn btn-fill">Réserver une table</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">K<span>ō</span>haku</span>
+        <p>Restaurant gastronomique japonais au cœur de la Presqu'île de Lyon. Cuisine du Chef Kenji Tanaka.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="index.html">Accueil</a>
+        <a href="carte.html">La Carte</a>
+        <a href="click-collect.html">Click &amp; Collect</a>
+        <a href="chef.html">Le Chef</a>
+        <a href="reservation.html">Réservation</a>
+      </div>
+      <div class="footer-col">
+        <h4>Adresse</h4>
+        <p>8 rue Mercière</p>
+        <p>69002 Lyon</p>
+        <p>Presqu'île</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact &amp; horaires</h4>
+        <a href="tel:+33478XXXXXX">04 78 XX XX XX</a>
+        <a href="mailto:reservation@kohaku-lyon.fr">reservation@kohaku-lyon.fr</a>
+        <p>Mar–Sam, 12h–14h / 19h–22h30</p>
+        <p>Fermé dimanche et lundi</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Kōhaku — Tous droits réservés.</span>
+      <span>Maquette de démonstration</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://jordan-join.fr/contact.html" target="_blank" rel="noopener" class="demo-badge">Maquette démo — Jordan Join, Directeur Artistique</a>
+
+
+<div class="cart-backdrop" id="cartBackdrop"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer-head">
+    <h3>Votre commande</h3>
+    <button class="cart-close" id="cartClose" aria-label="Fermer le panier">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-drawer-foot">
+    <div class="cart-total-row"><span>Total</span><span id="cartTotal">0 €</span></div>
+    <button type="button" class="btn btn-fill is-disabled" id="cartCheckoutBtn" disabled>Finaliser la commande</button>
+  </div>
+</aside>
+
+<div class="checkout-backdrop" id="checkoutBackdrop"></div>
+<div class="checkout-modal" id="checkoutModal">
+  <button class="checkout-close" id="checkoutClose" aria-label="Fermer">&times;</button>
+
+  <div id="checkoutStepForm">
+    <span class="eyebrow">Click &amp; Collect</span>
+    <h3>Retrait en boutique</h3>
+    <div class="checkout-summary" id="checkoutSummary"></div>
+    <form class="checkout-form" id="checkoutForm">
+      <div class="form-field">
+        <label for="ccName">Nom et prénom</label>
+        <input type="text" id="ccName" name="ccName" placeholder="Votre nom complet" required>
+      </div>
+      <div class="form-field">
+        <label for="ccPhone">Téléphone</label>
+        <input type="tel" id="ccPhone" name="ccPhone" placeholder="06 XX XX XX XX" required>
+      </div>
+      <div class="form-field full">
+        <label for="ccEmail">Email</label>
+        <input type="email" id="ccEmail" name="ccEmail" placeholder="vous@email.fr" required>
+      </div>
+      <div class="form-field full">
+        <label for="ccSlot">Créneau de retrait</label>
+        <select id="ccSlot" name="ccSlot" required>
+          <option value="">Sélectionner</option>
+          <optgroup label="Aujourd'hui — midi">
+            <option value="12h00 - 12h15">12h00 - 12h15</option>
+            <option value="12h15 - 12h30">12h15 - 12h30</option>
+            <option value="12h30 - 12h45">12h30 - 12h45</option>
+            <option value="13h00 - 13h15">13h00 - 13h15</option>
+            <option value="13h15 - 13h30">13h15 - 13h30</option>
+          </optgroup>
+          <optgroup label="Aujourd'hui — soir">
+            <option value="19h00 - 19h15">19h00 - 19h15</option>
+            <option value="19h15 - 19h30">19h15 - 19h30</option>
+            <option value="19h30 - 19h45">19h30 - 19h45</option>
+            <option value="20h00 - 20h15">20h00 - 20h15</option>
+            <option value="20h15 - 20h30">20h15 - 20h30</option>
+          </optgroup>
+        </select>
+      </div>
+      <p class="checkout-note">Ce tunnel de commande est une maquette de démonstration et n'envoie aucune donnée réelle.</p>
+      <button type="submit" class="btn btn-fill">Confirmer la commande</button>
+    </form>
+  </div>
+
+  <div id="checkoutStepLoading" class="checkout-loading" hidden>
+    <div class="checkout-spinner"></div>
+    <p>Confirmation de votre commande auprès du restaurant…</p>
+  </div>
+
+  <div id="checkoutStepSuccess" class="checkout-success" hidden>
+    <div class="checkout-success-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5"/></svg>
+    </div>
+    <span class="eyebrow">Commande confirmée</span>
+    <h3>Merci <span id="ccSuccessName">vous</span>, à tout à l'heure !</h3>
+    <p>Votre commande <span class="order-number" id="ccOrderNumber">#KHK-00000</span> sera prête à emporter le temps du créneau choisi.</p>
+    <p>Créneau de retrait&nbsp;: <strong id="ccPickupSlot"></strong></p>
+    <div class="checkout-summary" id="ccSuccessSummary"></div>
+    <button type="button" class="btn" id="checkoutDone">Fermer</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

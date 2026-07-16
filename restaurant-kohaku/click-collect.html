@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Click &amp; Collect — Kōhaku, Restaurant Japonais Lyon</title>
+<meta name="description" content="Commandez à emporter chez Kōhaku : bento, sushi, ramen et desserts, à retirer sur un créneau choisi rue Mercière à Lyon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">K<span>ō</span>haku</a>
+    <nav class="main-nav">
+      <a href="index.html">Accueil</a>
+      <a href="carte.html">La Carte</a>
+      <a href="click-collect.html" class="active">Click &amp; Collect</a>
+      <a href="chef.html">Le Chef</a>
+      <a href="reservation.html" class="nav-cta">Réserver</a>
+    </nav>
+    <div class="nav-right">
+      <button class="cart-trigger" id="cartTrigger" aria-label="Panier click &amp; collect">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="cart-badge" id="cartBadge" hidden>0</span>
+      </button>
+      <button class="nav-toggle" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="hero-bg" style="background-image:url('assets/hero-click-collect.png');"></div>
+    <div class="container hero-content">
+      <span class="eyebrow">Click &amp; Collect</span>
+      <h1 class="page-hero-title">Kōhaku à emporter</h1>
+      <p class="page-hero-lead">Un répertoire pensé pour la route&nbsp;: bento, coffrets sushi et ramen à finir chez vous. Commandez en ligne, choisissez votre créneau, récupérez rue Mercière.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-header center reveal">
+        <span class="eyebrow">Comment ça marche</span>
+        <h2 class="section-title">Trois étapes, zéro attente</h2>
+      </div>
+
+      <div class="cc-steps">
+        <div class="cc-step reveal">
+          <span class="cc-step-num">1</span>
+          <h3>Composez votre commande</h3>
+          <p>Ajoutez au panier les plats de notre répertoire à emporter, préparés à la commande.</p>
+        </div>
+        <div class="cc-step reveal">
+          <span class="cc-step-num">2</span>
+          <h3>Choisissez un créneau</h3>
+          <p>Sélectionnez un créneau de retrait de 15 minutes, aujourd'hui midi ou soir.</p>
+        </div>
+        <div class="cc-step reveal">
+          <span class="cc-step-num">3</span>
+          <h3>Récupérez sur place</h3>
+          <p>Présentez votre numéro de commande au comptoir, 8 rue Mercière.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="section-header center reveal">
+        <span class="eyebrow">Le répertoire à emporter</span>
+        <h2 class="section-title">La carte Click &amp; Collect</h2>
+        <p class="section-lead center">Une sélection distincte de notre carte sur place, pensée pour voyager sans perdre en justesse.</p>
+      </div>
+
+      <div class="togo-grid">
+
+        <div class="togo-card reveal">
+          <div class="togo-card-img">
+            <img src="assets/emporter1.png" alt="Bento Kōhaku à emporter" loading="lazy">
+          </div>
+          <div class="togo-card-body">
+            <h3>Bento Kōhaku</h3>
+            <p>Saumon mariné shoyu, riz vinaigré, edamame, salade wakamé.</p>
+            <div class="togo-card-foot">
+              <span class="togo-price">22€</span>
+              <button type="button" class="togo-add" data-id="togo-bento" data-name="Bento Kōhaku" data-price="22">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="togo-card reveal">
+          <div class="togo-card-img">
+            <img src="assets/emporter2.png" alt="Coffret sushi deluxe à emporter" loading="lazy">
+          </div>
+          <div class="togo-card-body">
+            <h3>Coffret Sushi Deluxe</h3>
+            <p>Douze pièces, assortiment de nigiri &amp; maki du Chef selon arrivage.</p>
+            <div class="togo-card-foot">
+              <span class="togo-price">28€</span>
+              <button type="button" class="togo-add" data-id="togo-coffret" data-name="Coffret Sushi Deluxe" data-price="28">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="togo-card reveal">
+          <div class="togo-card-img">
+            <img src="assets/emporter3.png" alt="Bol chirashi à emporter" loading="lazy">
+          </div>
+          <div class="togo-card-body">
+            <h3>Bol Chirashi</h3>
+            <p>Riz vinaigré, poissons du jour, avocat, tobiko, sésame torréfié.</p>
+            <div class="togo-card-foot">
+              <span class="togo-price">24€</span>
+              <button type="button" class="togo-add" data-id="togo-chirashi" data-name="Bol Chirashi" data-price="24">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="togo-card reveal">
+          <div class="togo-card-img">
+            <img src="assets/emporter4.png" alt="Donburi poulet teriyaki à emporter" loading="lazy">
+          </div>
+          <div class="togo-card-body">
+            <h3>Donburi Poulet Teriyaki</h3>
+            <p>Riz, poulet fermier laqué, légumes sautés, oignon nouveau.</p>
+            <div class="togo-card-foot">
+              <span class="togo-price">18€</span>
+              <button type="button" class="togo-add" data-id="togo-donburi" data-name="Donburi Poulet Teriyaki" data-price="18">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="togo-card reveal">
+          <div class="togo-card-img">
+            <img src="assets/emporter5.png" alt="Ramen dashi à emporter" loading="lazy">
+          </div>
+          <div class="togo-card-body">
+            <h3>Ramen Dashi de la Mer</h3>
+            <p>Bouillon et nouilles séparés pour un service à la minute chez vous.</p>
+            <div class="togo-card-foot">
+              <span class="togo-price">16€</span>
+              <button type="button" class="togo-add" data-id="togo-ramen" data-name="Ramen Dashi de la Mer" data-price="16">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="togo-card reveal">
+          <div class="togo-card-img">
+            <img src="assets/emporter6.png" alt="Gyoza de canette à emporter" loading="lazy">
+          </div>
+          <div class="togo-card-body">
+            <h3>Gyoza de Canette (6 pièces)</h3>
+            <p>Raviolis vapeur puis snackés, sauce soja-vinaigre.</p>
+            <div class="togo-card-foot">
+              <span class="togo-price">9€</span>
+              <button type="button" class="togo-add" data-id="togo-gyoza" data-name="Gyoza de Canette" data-price="9">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="togo-card reveal">
+          <div class="togo-card-img">
+            <img src="assets/emporter7.png" alt="Mochi glacés à emporter" loading="lazy">
+          </div>
+          <div class="togo-card-body">
+            <h3>Mochi Glacés (trio)</h3>
+            <p>Yuzu, thé vert, sésame noir.</p>
+            <div class="togo-card-foot">
+              <span class="togo-price">10€</span>
+              <button type="button" class="togo-add" data-id="togo-mochi" data-name="Mochi Glacés" data-price="10">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="togo-card reveal">
+          <div class="togo-card-img">
+            <img src="assets/emporter8.png" alt="Thé matcha glacé à emporter" loading="lazy">
+          </div>
+          <div class="togo-card-body">
+            <h3>Thé Matcha Glacé</h3>
+            <p>Matcha de Uji infusé, glaçons.</p>
+            <div class="togo-card-foot">
+              <span class="togo-price">5€</span>
+              <button type="button" class="togo-add" data-id="togo-the" data-name="Thé Matcha Glacé" data-price="5">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-header center reveal" style="margin-bottom: 0;">
+        <span class="eyebrow center">Adresse de retrait</span>
+        <h2 class="section-title">8 rue Mercière, 69002 Lyon</h2>
+        <p class="section-lead center">Comptoir Click &amp; Collect ouvert aux mêmes horaires que la salle&nbsp;: mardi–samedi, 12h–14h &amp; 19h–22h30.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">K<span>ō</span>haku</span>
+        <p>Restaurant gastronomique japonais au cœur de la Presqu'île de Lyon. Cuisine du Chef Kenji Tanaka.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="index.html">Accueil</a>
+        <a href="carte.html">La Carte</a>
+        <a href="click-collect.html">Click &amp; Collect</a>
+        <a href="chef.html">Le Chef</a>
+        <a href="reservation.html">Réservation</a>
+      </div>
+      <div class="footer-col">
+        <h4>Adresse</h4>
+        <p>8 rue Mercière</p>
+        <p>69002 Lyon</p>
+        <p>Presqu'île</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact &amp; horaires</h4>
+        <a href="tel:+33478XXXXXX">04 78 XX XX XX</a>
+        <a href="mailto:reservation@kohaku-lyon.fr">reservation@kohaku-lyon.fr</a>
+        <p>Mar–Sam, 12h–14h / 19h–22h30</p>
+        <p>Fermé dimanche et lundi</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Kōhaku — Tous droits réservés.</span>
+      <span>Maquette de démonstration</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://jordan-join.fr/contact.html" target="_blank" rel="noopener" class="demo-badge">Maquette démo — Jordan Join, Directeur Artistique</a>
+
+<div class="cart-backdrop" id="cartBackdrop"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer-head">
+    <h3>Votre commande</h3>
+    <button class="cart-close" id="cartClose" aria-label="Fermer le panier">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-drawer-foot">
+    <div class="cart-total-row"><span>Total</span><span id="cartTotal">0 €</span></div>
+    <button type="button" class="btn btn-fill is-disabled" id="cartCheckoutBtn" disabled>Finaliser la commande</button>
+  </div>
+</aside>
+
+<div class="checkout-backdrop" id="checkoutBackdrop"></div>
+<div class="checkout-modal" id="checkoutModal">
+  <button class="checkout-close" id="checkoutClose" aria-label="Fermer">&times;</button>
+
+  <div id="checkoutStepForm">
+    <span class="eyebrow">Click &amp; Collect</span>
+    <h3>Retrait en boutique</h3>
+    <div class="checkout-summary" id="checkoutSummary"></div>
+    <form class="checkout-form" id="checkoutForm">
+      <div class="form-field">
+        <label for="ccName">Nom et prénom</label>
+        <input type="text" id="ccName" name="ccName" placeholder="Votre nom complet" required>
+      </div>
+      <div class="form-field">
+        <label for="ccPhone">Téléphone</label>
+        <input type="tel" id="ccPhone" name="ccPhone" placeholder="06 XX XX XX XX" required>
+      </div>
+      <div class="form-field full">
+        <label for="ccEmail">Email</label>
+        <input type="email" id="ccEmail" name="ccEmail" placeholder="vous@email.fr" required>
+      </div>
+      <div class="form-field full">
+        <label for="ccSlot">Créneau de retrait</label>
+        <select id="ccSlot" name="ccSlot" required>
+          <option value="">Sélectionner</option>
+          <optgroup label="Aujourd'hui — midi">
+            <option value="12h00 - 12h15">12h00 - 12h15</option>
+            <option value="12h15 - 12h30">12h15 - 12h30</option>
+            <option value="12h30 - 12h45">12h30 - 12h45</option>
+            <option value="13h00 - 13h15">13h00 - 13h15</option>
+            <option value="13h15 - 13h30">13h15 - 13h30</option>
+          </optgroup>
+          <optgroup label="Aujourd'hui — soir">
+            <option value="19h00 - 19h15">19h00 - 19h15</option>
+            <option value="19h15 - 19h30">19h15 - 19h30</option>
+            <option value="19h30 - 19h45">19h30 - 19h45</option>
+            <option value="20h00 - 20h15">20h00 - 20h15</option>
+            <option value="20h15 - 20h30">20h15 - 20h30</option>
+          </optgroup>
+        </select>
+      </div>
+      <p class="checkout-note">Ce tunnel de commande est une maquette de démonstration et n'envoie aucune donnée réelle.</p>
+      <button type="submit" class="btn btn-fill">Confirmer la commande</button>
+    </form>
+  </div>
+
+  <div id="checkoutStepLoading" class="checkout-loading" hidden>
+    <div class="checkout-spinner"></div>
+    <p>Confirmation de votre commande auprès du restaurant…</p>
+  </div>
+
+  <div id="checkoutStepSuccess" class="checkout-success" hidden>
+    <div class="checkout-success-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5"/></svg>
+    </div>
+    <span class="eyebrow">Commande confirmée</span>
+    <h3>Merci <span id="ccSuccessName">vous</span>, à tout à l'heure !</h3>
+    <p>Votre commande <span class="order-number" id="ccOrderNumber">#KHK-00000</span> sera prête à emporter le temps du créneau choisi.</p>
+    <p>Créneau de retrait&nbsp;: <strong id="ccPickupSlot"></strong></p>
+    <div class="checkout-summary" id="ccSuccessSummary"></div>
+    <button type="button" class="btn" id="checkoutDone">Fermer</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

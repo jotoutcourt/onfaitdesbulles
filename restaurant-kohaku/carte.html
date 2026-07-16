@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Carte — Kōhaku, Restaurant Japonais Lyon</title>
+<meta name="description" content="Découvrez la carte du restaurant Kōhaku à Lyon : amuse-bouche, sashimi, sushi & maki, plats chauds, menu omakase et desserts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">K<span>ō</span>haku</a>
+    <nav class="main-nav">
+      <a href="index.html">Accueil</a>
+      <a href="carte.html" class="active">La Carte</a>
+      <a href="click-collect.html">Click &amp; Collect</a>
+      <a href="chef.html">Le Chef</a>
+      <a href="reservation.html" class="nav-cta">Réserver</a>
+    </nav>
+    <div class="nav-right">
+      <button class="cart-trigger" id="cartTrigger" aria-label="Panier click &amp; collect">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="cart-badge" id="cartBadge" hidden>0</span>
+      </button>
+      <button class="nav-toggle" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="hero-bg" style="background-image:url('assets/hero-carte.png');"></div>
+    <div class="container hero-content">
+      <span class="eyebrow">Notre carte</span>
+      <h1 class="page-hero-title">Un répertoire de saison</h1>
+      <p class="page-hero-lead">Amuse-bouche, sashimi, sushi &amp; maki, plats chauds à la braise et menu omakase — l'ensemble de notre répertoire, renouvelé au fil des saisons et de l'arrivage.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <nav class="menu-nav reveal" aria-label="Navigation de la carte">
+        <a href="#entrees">Amuse-bouche</a>
+        <a href="#sashimi">Sashimi</a>
+        <a href="#sushi">Sushi &amp; Maki</a>
+        <a href="#plats-chauds">Plats chauds</a>
+        <a href="#omakase">Omakase</a>
+        <a href="#desserts">Desserts</a>
+      </nav>
+
+      <div id="entrees" class="menu-section reveal">
+        <div class="menu-section-head">
+          <span class="eyebrow">Pour commencer</span>
+          <h2>Entrées &amp; Amuse-bouche</h2>
+          <div class="divider center"></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Edamame au sel de Guérande</h3>
+            <p>Fèves de soja vapeur, fleur de sel</p>
+          </div>
+          <span class="menu-item-price">7€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Chawanmushi aux champignons shiitaké</h3>
+            <p>Flan de dashi vapeur, œuf fermier, champignons shiitaké de la Dombes</p>
+          </div>
+          <span class="menu-item-price">14€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Tataki de bœuf du Charolais</h3>
+            <p>Fine tranche saisie, ponzu maison, oignon nouveau</p>
+          </div>
+          <span class="menu-item-price">18€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Salade de wakamé et concombre</h3>
+            <p>Algues wakamé, vinaigrette au sésame torréfié</p>
+          </div>
+          <span class="menu-item-price">11€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Gyoza de canette</h3>
+            <p>Raviolis vapeur puis snackés, canette du Bugey, sauce soja-vinaigre</p>
+          </div>
+          <span class="menu-item-price">13€</span>
+        </div>
+      </div>
+
+      <div id="sashimi" class="menu-section reveal">
+        <div class="menu-section-head">
+          <span class="eyebrow">Poissons crus</span>
+          <h2>Sashimi</h2>
+          <div class="divider center"></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Sashimi de thon rouge Akami</h3>
+            <p>Cinq tranches, wasabi frais râpé, shiso</p>
+          </div>
+          <span class="menu-item-price">22€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Sashimi de daurade royale</h3>
+            <p>Levée du jour, zeste de yuzu, fleur de sel</p>
+          </div>
+          <span class="menu-item-price">19€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Sashimi de saumon d'Écosse</h3>
+            <p>Cinq tranches, sauce ponzu, ciboulette</p>
+          </div>
+          <span class="menu-item-price">18€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Sashimi de Saint-Jacques</h3>
+            <p>Noix de Saint-Jacques, huile de yuzu, sel de mer</p>
+          </div>
+          <span class="menu-item-price">24€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Moriawase du Chef</h3>
+            <p>Assortiment de cinq poissons selon arrivage, présentation sur glace</p>
+          </div>
+          <span class="menu-item-price">32€</span>
+        </div>
+      </div>
+
+      <div id="sushi" class="menu-section reveal">
+        <div class="menu-section-head">
+          <span class="eyebrow">Riz vinaigré</span>
+          <h2>Sushi &amp; Maki</h2>
+          <div class="divider center"></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Nigiri Omakase (8 pièces)</h3>
+            <p>Sélection du Chef selon arrivage du marché</p>
+          </div>
+          <span class="menu-item-price">28€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Maki thon &amp; avocat</h3>
+            <p>Six pièces, riz vinaigré, algue nori</p>
+          </div>
+          <span class="menu-item-price">14€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>California ebi tempura</h3>
+            <p>Crevette tempura, avocat, tobiko, mayonnaise au yuzu</p>
+          </div>
+          <span class="menu-item-price">16€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Temaki au saumon mariné</h3>
+            <p>Cône de nori, riz vinaigré, saumon mariné shoyu</p>
+          </div>
+          <span class="menu-item-price">12€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Sushi unagi</h3>
+            <p>Anguille grillée laquée, sauce tare maison</p>
+          </div>
+          <span class="menu-item-price">17€</span>
+        </div>
+      </div>
+
+      <div id="plats-chauds" class="menu-section reveal">
+        <div class="menu-section-head">
+          <span class="eyebrow">De la braise à l'assiette</span>
+          <h2>Plats chauds</h2>
+          <div class="divider center"></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Wagyu à la braise, sauce yakiniku</h3>
+            <p>Bœuf wagyu grillé au binchōtan, légumes de saison</p>
+          </div>
+          <span class="menu-item-price">48€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Black cod mariné au miso</h3>
+            <p>Morue noire, marinade miso saikyo 48h, laquée à la braise</p>
+          </div>
+          <span class="menu-item-price">34€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Tempura de légumes de saison</h3>
+            <p>Panier de légumes croustillants, sel matcha, sauce tentsuyu</p>
+          </div>
+          <span class="menu-item-price">19€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Donburi au poulet fermier</h3>
+            <p>Riz, poulet fermier laqué, œuf mollet, oignon nouveau</p>
+          </div>
+          <span class="menu-item-price">24€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Ramen dashi de la mer</h3>
+            <p>Bouillon dashi iodé, nouilles maison, palourdes, algue nori</p>
+          </div>
+          <span class="menu-item-price">26€</span>
+        </div>
+      </div>
+
+      <div id="omakase" class="menu-section reveal">
+        <div class="menu-section-head">
+          <span class="eyebrow">L'expérience ultime</span>
+          <h2>Menu Omakase</h2>
+          <div class="divider center"></div>
+        </div>
+
+        <div class="omakase-box">
+          <h3>« Laissez-vous porter »</h3>
+          <p>Un menu surprise en sept temps, composé chaque jour par le Chef Kenji Tanaka selon l'arrivage du marché : amuse-bouche, sashimi, nigiri, plat chaud et dessert. Une lecture complète de notre cuisine.</p>
+          <span class="menu-item-price">95€ / personne</span>
+          <p style="font-size: 0.82rem;">Sur réservation uniquement, pour l'ensemble de la table. Accord mets &amp; saké possible sur demande.</p>
+          <a href="reservation.html" class="btn">Réserver le menu Omakase</a>
+        </div>
+      </div>
+
+      <div id="desserts" class="menu-section reveal">
+        <div class="menu-section-head">
+          <span class="eyebrow">Pour finir</span>
+          <h2>Desserts</h2>
+          <div class="divider center"></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Mont de Matcha</h3>
+            <p>Mousse au thé matcha de Uji, biscuit sésame noir, éclats de yuzu</p>
+          </div>
+          <span class="menu-item-price">12€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Cheesecake au sésame noir</h3>
+            <p>Texture crémeuse, coulis de fruits rouges</p>
+          </div>
+          <span class="menu-item-price">11€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Mochi glacés (trio)</h3>
+            <p>Yuzu, thé vert, sésame noir</p>
+          </div>
+          <span class="menu-item-price">10€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3>Fondant chocolat &amp; miso</h3>
+            <p>Cœur coulant, pointe de miso, glace vanille de Madagascar</p>
+          </div>
+          <span class="menu-item-price">13€</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">K<span>ō</span>haku</span>
+        <p>Restaurant gastronomique japonais au cœur de la Presqu'île de Lyon. Cuisine du Chef Kenji Tanaka.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="index.html">Accueil</a>
+        <a href="carte.html">La Carte</a>
+        <a href="click-collect.html">Click &amp; Collect</a>
+        <a href="chef.html">Le Chef</a>
+        <a href="reservation.html">Réservation</a>
+      </div>
+      <div class="footer-col">
+        <h4>Adresse</h4>
+        <p>8 rue Mercière</p>
+        <p>69002 Lyon</p>
+        <p>Presqu'île</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact &amp; horaires</h4>
+        <a href="tel:+33478XXXXXX">04 78 XX XX XX</a>
+        <a href="mailto:reservation@kohaku-lyon.fr">reservation@kohaku-lyon.fr</a>
+        <p>Mar–Sam, 12h–14h / 19h–22h30</p>
+        <p>Fermé dimanche et lundi</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Kōhaku — Tous droits réservés.</span>
+      <span>Maquette de démonstration</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://jordan-join.fr/contact.html" target="_blank" rel="noopener" class="demo-badge">Maquette démo — Jordan Join, Directeur Artistique</a>
+
+
+<div class="cart-backdrop" id="cartBackdrop"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer-head">
+    <h3>Votre commande</h3>
+    <button class="cart-close" id="cartClose" aria-label="Fermer le panier">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-drawer-foot">
+    <div class="cart-total-row"><span>Total</span><span id="cartTotal">0 €</span></div>
+    <button type="button" class="btn btn-fill is-disabled" id="cartCheckoutBtn" disabled>Finaliser la commande</button>
+  </div>
+</aside>
+
+<div class="checkout-backdrop" id="checkoutBackdrop"></div>
+<div class="checkout-modal" id="checkoutModal">
+  <button class="checkout-close" id="checkoutClose" aria-label="Fermer">&times;</button>
+
+  <div id="checkoutStepForm">
+    <span class="eyebrow">Click &amp; Collect</span>
+    <h3>Retrait en boutique</h3>
+    <div class="checkout-summary" id="checkoutSummary"></div>
+    <form class="checkout-form" id="checkoutForm">
+      <div class="form-field">
+        <label for="ccName">Nom et prénom</label>
+        <input type="text" id="ccName" name="ccName" placeholder="Votre nom complet" required>
+      </div>
+      <div class="form-field">
+        <label for="ccPhone">Téléphone</label>
+        <input type="tel" id="ccPhone" name="ccPhone" placeholder="06 XX XX XX XX" required>
+      </div>
+      <div class="form-field full">
+        <label for="ccEmail">Email</label>
+        <input type="email" id="ccEmail" name="ccEmail" placeholder="vous@email.fr" required>
+      </div>
+      <div class="form-field full">
+        <label for="ccSlot">Créneau de retrait</label>
+        <select id="ccSlot" name="ccSlot" required>
+          <option value="">Sélectionner</option>
+          <optgroup label="Aujourd'hui — midi">
+            <option value="12h00 - 12h15">12h00 - 12h15</option>
+            <option value="12h15 - 12h30">12h15 - 12h30</option>
+            <option value="12h30 - 12h45">12h30 - 12h45</option>
+            <option value="13h00 - 13h15">13h00 - 13h15</option>
+            <option value="13h15 - 13h30">13h15 - 13h30</option>
+          </optgroup>
+          <optgroup label="Aujourd'hui — soir">
+            <option value="19h00 - 19h15">19h00 - 19h15</option>
+            <option value="19h15 - 19h30">19h15 - 19h30</option>
+            <option value="19h30 - 19h45">19h30 - 19h45</option>
+            <option value="20h00 - 20h15">20h00 - 20h15</option>
+            <option value="20h15 - 20h30">20h15 - 20h30</option>
+          </optgroup>
+        </select>
+      </div>
+      <p class="checkout-note">Ce tunnel de commande est une maquette de démonstration et n'envoie aucune donnée réelle.</p>
+      <button type="submit" class="btn btn-fill">Confirmer la commande</button>
+    </form>
+  </div>
+
+  <div id="checkoutStepLoading" class="checkout-loading" hidden>
+    <div class="checkout-spinner"></div>
+    <p>Confirmation de votre commande auprès du restaurant…</p>
+  </div>
+
+  <div id="checkoutStepSuccess" class="checkout-success" hidden>
+    <div class="checkout-success-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5"/></svg>
+    </div>
+    <span class="eyebrow">Commande confirmée</span>
+    <h3>Merci <span id="ccSuccessName">vous</span>, à tout à l'heure !</h3>
+    <p>Votre commande <span class="order-number" id="ccOrderNumber">#KHK-00000</span> sera prête à emporter le temps du créneau choisi.</p>
+    <p>Créneau de retrait&nbsp;: <strong id="ccPickupSlot"></strong></p>
+    <div class="checkout-summary" id="ccSuccessSummary"></div>
+    <button type="button" class="btn" id="checkoutDone">Fermer</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
