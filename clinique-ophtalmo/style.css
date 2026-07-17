@@ -147,11 +147,15 @@ header.site-nav.scrolled {
 .nav-socials a:hover { border-color: var(--terracotta); background: rgba(181,98,58,0.18); }
 .nav-socials svg { width: 15px; height: 15px; }
 
-.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 600; }
-.burger span { width: 22px; height: 1.5px; background: #fff; display: block; }
+.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 600; justify-self: end; }
+.burger span { width: 22px; height: 1.5px; background: #fff; display: block; transition: transform 0.3s ease, opacity 0.3s ease; }
+.burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 @media (max-width: 900px) {
   .nav-center, .nav-right { display: none; }
   .burger { display: flex; }
+  header.site-nav, header.site-nav.scrolled { grid-template-columns: 1fr auto; }
 }
 .mobile-menu {
   position: fixed; inset: 0; background: var(--ink); z-index: 590;

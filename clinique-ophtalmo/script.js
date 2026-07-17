@@ -31,9 +31,13 @@
   if (burger && mobileMenu) {
     burger.addEventListener('click', function () {
       mobileMenu.classList.toggle('open');
+      burger.classList.toggle('open');
     });
     mobileMenu.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () { mobileMenu.classList.remove('open'); });
+      a.addEventListener('click', function () {
+        mobileMenu.classList.remove('open');
+        burger.classList.remove('open');
+      });
     });
   }
 
