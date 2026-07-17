@@ -197,7 +197,7 @@ header.site-nav.scrolled {
 }
 .hero-banner strong { font-weight: 600; }
 .hero-banner em { font-style: italic; font-weight: 400; }
-@media (max-width: 900px) { .hero-banner { padding: 1.2rem 1.4rem; font-size: 1.05rem; } }
+@media (max-width: 900px) { .hero-banner { padding: 1.2rem 1.4rem 3rem; font-size: 1.05rem; } }
 
 /* ---------- Section title block ---------- */
 .title-block h2 {
@@ -389,12 +389,12 @@ footer.site-footer { background: var(--ink); color: #fff; padding-top: 3.5rem; }
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(15,13,10,0.94) 0%, rgba(15,13,10,0.35) 55%, rgba(15,13,10,0.18) 100%);
 }
-.page-hero-content { position: relative; z-index: 1; padding: 10rem 0 3.5rem; color: #fff; }
+.page-hero-content { position: relative; z-index: 1; padding-top: 10rem; padding-bottom: 3.5rem; color: #fff; }
 .page-hero-content .eyebrow { color: var(--terracotta); text-shadow: 0 2px 8px rgba(0,0,0,0.7); }
 .page-hero-content h1 { font-family: var(--font-serif); font-size: clamp(2.1rem, 4.4vw, 3.4rem); font-weight: 500; max-width: 18ch; text-shadow: 0 3px 14px rgba(0,0,0,0.55); }
 .page-hero-content h1 em { font-style: italic; color: var(--terracotta); font-weight: 400; }
 .page-hero-content p { color: var(--muted-light); margin-top: 1.1rem; max-width: 56ch; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
-@media (max-width: 900px) { .page-hero-content { padding: 8rem 0 2.5rem; } }
+@media (max-width: 900px) { .page-hero-content { padding-top: 8rem; padding-bottom: 2.5rem; } }
 
 /* ---------- Doctor full profile blocks ---------- */
 .doc-profile { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 3.5rem; align-items: center; }
@@ -494,6 +494,19 @@ footer.site-footer { background: var(--ink); color: #fff; padding-top: 3.5rem; }
   backdrop-filter: blur(6px);
 }
 .demo-badge:hover { opacity: 1; background: var(--terracotta-dark); }
+.demo-badge .db-short { display: none; }
+@media (max-width: 900px) {
+  .demo-badge {
+    position: static;
+    display: block;
+    width: fit-content;
+    margin: 1.4rem auto 1.6rem;
+    font-size: 0.68rem; letter-spacing: 0.02em; white-space: nowrap;
+    padding: 0.5rem 0.8rem;
+  }
+  .demo-badge .db-full { display: none; }
+  .demo-badge .db-short { display: inline; }
+}
 
 /* ---------- Loader (liquide "O.") ---------- */
 #loader {
