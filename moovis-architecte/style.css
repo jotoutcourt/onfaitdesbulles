@@ -188,6 +188,7 @@ body.on-dark-page .burger span { background: #fff; }
   background: var(--offwhite);
   display: flex; align-items: center;
   padding: 9rem 0 9rem;
+  overflow: hidden;
 }
 .hero-watermark {
   position: absolute; bottom: -1vw; left: 50%; transform: translate(-50%, 0);
@@ -281,7 +282,10 @@ body.on-dark-page .burger span { background: #fff; }
 .stats-main .glass-card { position: absolute; width: 170px; text-align: left; }
 .stats-main .sm1 { top: 1.4rem; left: 1.4rem; }
 .stats-main .sm2 { bottom: 1.4rem; left: 1.4rem; }
-@media (max-width: 900px) { .stats-main .glass-card { width: 140px; padding: 1rem 1.2rem; } }
+@media (max-width: 900px) {
+  .stats-main .glass-card { width: 140px; padding: 1rem 1.2rem; }
+  .stats-main .sm2 { left: auto; right: 1.4rem; }
+}
 
 /* ---------- Value marquee (text with inline image chips) ---------- */
 .marquee-section { background: var(--navy); color: #fff; padding: 6.5rem 0; text-align: center; }
