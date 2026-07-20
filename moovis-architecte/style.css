@@ -217,26 +217,15 @@ body.on-dark-page .burger span { background: #fff; }
 .hero-copy h1 { font-size: clamp(2.4rem, 4.6vw, 3.6rem); max-width: 12ch; }
 .hero-copy p { color: var(--muted); margin: 1.3rem 0 1.8rem; max-width: 42ch; font-size: 1.02rem; }
 .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
-.hero-media { position: relative; border-radius: var(--radius-xl); overflow: hidden; aspect-ratio: 4/3.4; }
+.hero-media { border-radius: var(--radius-xl); overflow: hidden; aspect-ratio: 4/3.4; }
 .hero-media img { width: 100%; height: 100%; object-fit: cover; }
-.hero-badges { position: absolute; inset: 0; pointer-events: none; }
-.hero-badges .glass-card { position: absolute; pointer-events: auto; width: 168px; }
-.hero-badges .hb1 { top: 1.2rem; left: 1.2rem; }
-.hero-badges .hb2 { bottom: 1.2rem; right: 1.2rem; }
-@media (max-width: 980px) {
-  /* Overlaid corner badges don't leave enough room on narrow phones —
-     drop them below the image instead, where they can never overlap. */
-  .hero-media { overflow: visible; aspect-ratio: auto; }
-  .hero-media img { aspect-ratio: 4/3.4; height: auto; border-radius: var(--radius-xl); }
-  .hero-badges {
-    position: static; inset: auto; pointer-events: auto;
-    display: flex; flex-wrap: wrap; gap: 0.8rem;
-    margin-top: 1rem;
-  }
-  .hero-badges .glass-card {
-    position: static; width: 140px; padding: 1rem 1.1rem;
-    background: var(--navy-soft); backdrop-filter: none; border-color: transparent;
-  }
+/* Stat badges sit below the image in normal flow — never overlaid on
+   the photo, so they can neither collide with each other nor lose
+   contrast against whatever the photo happens to show. */
+.hero-badges { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 0.8rem; }
+.hero-badges .glass-card {
+  flex: 1 1 140px; min-width: 140px; max-width: 220px;
+  background: var(--navy-soft); backdrop-filter: none; border-color: transparent;
 }
 @media (max-width: 640px) {
   .hero { padding: 7.5rem 0 4rem; }
@@ -276,11 +265,15 @@ body.on-dark-page .burger span { background: #fff; }
 .process-item .pnum { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--gold); }
 .process-item h4 { font-size: 1.15rem; margin-bottom: 0.35rem; }
 .process-item p { font-size: 0.88rem; color: var(--muted-on-dark); max-width: 40ch; }
-.process-media { position: relative; border-radius: var(--radius-xl); overflow: hidden; aspect-ratio: 3/4; }
-.process-media img { width: 100%; height: 100%; object-fit: cover; }
-.process-media .glass-card { position: absolute; width: 150px; }
-.process-media .pm1 { top: 1.2rem; left: 1.2rem; }
-.process-media .pm2 { bottom: 1.2rem; right: 1.2rem; }
+/* Stat badges sit below the image in normal flow — never overlaid on
+   the photo, so they can neither collide with each other nor lose
+   contrast against whatever the photo happens to show. */
+.process-media { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.process-media img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: var(--radius-xl); }
+.process-media .glass-card {
+  flex: 1 1 140px; min-width: 140px; max-width: 220px;
+  background: var(--navy-soft); backdrop-filter: none; border-color: transparent;
+}
 
 /* ---------- Stats showcase ---------- */
 .stats-section { background: var(--navy); color: #fff; padding: 2rem 0 6.5rem; text-align: center; }
@@ -291,24 +284,14 @@ body.on-dark-page .burger span { background: #fff; }
 @media (max-width: 900px) { .stats-showcase { grid-template-columns: 1fr; } }
 .stats-side { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3.6; }
 .stats-side img { width: 100%; height: 100%; object-fit: cover; }
-.stats-main { position: relative; border-radius: var(--radius-xl); overflow: hidden; aspect-ratio: 16/11; }
-.stats-main img { width: 100%; height: 100%; object-fit: cover; }
-.stats-main .glass-card { position: absolute; width: 170px; text-align: left; }
-.stats-main .sm1 { top: 1.4rem; left: 1.4rem; }
-.stats-main .sm2 { bottom: 1.4rem; right: 1.4rem; }
-@media (max-width: 1050px) {
-  /* Overlaid corner badges don't leave enough room once .stats-showcase's
-     3-column grid narrows this column — drop them below the image
-     instead, where they can never overlap. */
-  .stats-main {
-    overflow: visible; aspect-ratio: auto;
-    display: flex; flex-wrap: wrap; gap: 0.8rem;
-  }
-  .stats-main img { width: 100%; height: auto; aspect-ratio: 16/11; border-radius: var(--radius-xl); }
-  .stats-main .glass-card {
-    position: static; width: 140px; padding: 1rem 1.2rem;
-    background: var(--navy-soft); backdrop-filter: none; border-color: transparent;
-  }
+/* Stat badges sit below the image in normal flow — never overlaid on
+   the photo, so they can neither collide with each other nor lose
+   contrast against whatever the photo happens to show. */
+.stats-main { display: flex; flex-wrap: wrap; gap: 0.8rem; text-align: left; }
+.stats-main img { width: 100%; aspect-ratio: 16/11; object-fit: cover; border-radius: var(--radius-xl); }
+.stats-main .glass-card {
+  flex: 1 1 160px; min-width: 160px; max-width: 260px;
+  background: var(--navy-soft); backdrop-filter: none; border-color: transparent;
 }
 
 /* ---------- Value marquee (text with inline image chips) ---------- */
