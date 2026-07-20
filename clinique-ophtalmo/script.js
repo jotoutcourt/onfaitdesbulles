@@ -52,6 +52,11 @@
     });
   }, { threshold: 0.12 });
   reveals.forEach(function (r) { observer.observe(r); });
+  // Safety net: never leave content stuck invisible if the observer
+  // doesn't fire (unsupported browser, oversized target, etc.)
+  setTimeout(function () {
+    reveals.forEach(function (r) { r.classList.add('visible'); });
+  }, 2000);
 
   // Testimonials horizontal scroll arrows
   var track = document.querySelector('.testi-track');
