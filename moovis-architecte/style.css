@@ -233,7 +233,10 @@ body.on-dark-page .burger span { background: #fff; }
     display: flex; flex-wrap: wrap; gap: 0.8rem;
     margin-top: 1rem;
   }
-  .hero-badges .glass-card { position: static; width: 140px; padding: 1rem 1.1rem; }
+  .hero-badges .glass-card {
+    position: static; width: 140px; padding: 1rem 1.1rem;
+    background: var(--navy-soft); backdrop-filter: none; border-color: transparent;
+  }
 }
 @media (max-width: 640px) {
   .hero { padding: 7.5rem 0 4rem; }
@@ -304,6 +307,7 @@ body.on-dark-page .burger span { background: #fff; }
   .stats-main img { width: 100%; height: auto; aspect-ratio: 16/11; border-radius: var(--radius-xl); }
   .stats-main .glass-card {
     position: static; width: 140px; padding: 1rem 1.2rem;
+    background: var(--navy-soft); backdrop-filter: none; border-color: transparent;
   }
 }
 
