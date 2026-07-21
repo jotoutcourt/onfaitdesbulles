@@ -366,14 +366,14 @@ footer.site-footer { background: var(--ink); color: #fff; padding-top: 3.5rem; }
 .footer-cols {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
   border-top: 1px solid var(--line-dark);
-  padding: 2.5rem 0;
+  padding-top: 2.5rem; padding-bottom: 2.5rem;
 }
 @media (max-width: 900px) { .footer-cols { grid-template-columns: 1fr; gap: 1.8rem; } }
 .footer-cols h5 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.7rem; }
 .footer-cols p, .footer-cols a { color: var(--muted-light); font-size: 0.88rem; line-height: 1.6; text-decoration: none; }
 .footer-bottom {
   border-top: 1px solid var(--line-dark);
-  padding: 1.4rem 0 2rem;
+  padding-top: 1.4rem; padding-bottom: 2rem;
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;
   font-size: 0.78rem; color: rgba(247,244,239,0.45);
 }
