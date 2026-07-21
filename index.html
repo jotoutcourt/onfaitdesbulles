@@ -413,7 +413,7 @@
     <img class="hero-bubble-img" src="assets/bulle.svg" alt="">
     <img class="hero-bubble-img" src="assets/bulle.svg" alt="">
     <div class="hero-content">
-      <span class="hero-tag"><span id="heroTagText">Direction Artistique · Marketing · Communication</span></span>
+      <span class="hero-tag"><span id="heroTagText">Agence Web Lyonnaise</span></span>
       <h1 class="hero-title"><span class="word-iris">On</span> <span class="word-iris">fait</span><br><span class="word-iris">des</span> <span class="word-iris">bulles ?</span></h1>
       <p class="hero-sub">Direction artistique, identité visuelle, stratégie marketing et communication. Un profil 360° qui oeuvre à la cohérence globale d'un projet — du concept à l'exécution.</p>
       <div class="hero-cta">
@@ -461,28 +461,6 @@
       entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80); });
     }, { threshold: 0.1 });
     reveals.forEach(r => observer.observe(r));
-  </script>
-
-  <script>
-    // Rotation du badge hero (3 encarts)
-    (function() {
-      var tags = [
-        "Direction Artistique · Marketing · Communication",
-        "Identité Visuelle · Sites Web · Créa",
-        "Campagnes ADS · Community Management · SEO"
-      ];
-      var el = document.getElementById('heroTagText');
-      if (!el) return;
-      var i = 0;
-      setInterval(function() {
-        i = (i + 1) % tags.length;
-        el.style.opacity = 0;
-        setTimeout(function() {
-          el.textContent = tags[i];
-          el.style.opacity = 1;
-        }, 400);
-      }, 3200);
-    })();
   </script>
 
 </html>
