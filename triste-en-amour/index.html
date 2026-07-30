@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triste en amour — Jo</title>
+<meta property="og:title" content="Triste en amour — Jo">
+<meta property="og:description" content="Nouvel EP de Jo — 6 titres. 2 révélés, 4 à deviner vendredi.">
+<meta property="og:image" content="https://faisonsdesbulles.com/triste-en-amour/assets/cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://faisonsdesbulles.com/triste-en-amour/assets/cover.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/triste-en-amour/style.css">
+</head>
+<body>
+
+<div class="loading-screen" id="loadingScreen">
+  <img src="/triste-en-amour/assets/mockup-1.png" alt="" class="loading-mockup">
+  <div class="loading-stage">
+    <p class="loading-kicker">nouvel ep</p>
+    <p class="loading-title">Triste en amour</p>
+    <p class="loading-artist">Jo</p>
+    <p class="loading-soon">bientôt disponible</p>
+    <button type="button" class="loading-discover" id="loadingDiscoverBtn">découvrir</button>
+  </div>
+</div>
+
+<div class="grain"></div>
+
+<!-- SECTION 1 : HERO — le titre écrit à même la photo -->
+<section class="photo-section hero-section">
+  <img src="/triste-en-amour/assets/cover.png" alt="" class="bg-photo bg-photo--hero">
+  <video class="bg-video bg-video--hero" autoplay muted loop playsinline>
+    <source src="/triste-en-amour/assets/hero-mobile.mp4" type="video/mp4">
+  </video>
+  <div class="scrim scrim--hero"></div>
+  <div class="hero-content">
+    <p class="hero-kicker">nouvel EP</p>
+    <h1 class="hero-title">Triste en amour</h1>
+    <p class="hero-artist">Jo</p>
+
+    <div class="hero-buttons">
+      <a href="#tracklistSection" class="hero-btn hero-btn--solid">écoutez les titres disponibles</a>
+      <a href="#notifyForm" class="hero-btn">être prévenu·e</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 : TRACKLIST — écrite sur la photo du verso -->
+<section class="photo-section tracklist-section" id="tracklistSection">
+  <img src="/triste-en-amour/assets/verso.png" alt="" class="bg-photo bg-photo--tracklist">
+  <div class="scrim scrim--tracklist"></div>
+  <div class="tracklist-content">
+    <p class="section-kicker">la tracklist</p>
+    <ol class="tracklist-plain">
+      <li>
+        <span class="track-num">01</span>
+        <span class="track-title">Amoureux</span>
+        <button type="button" class="track-listen" data-track="Amoureux">écoutez</button>
+      </li>
+      <li>
+        <span class="track-num">02</span>
+        <span class="track-title">Tinder</span>
+        <button type="button" class="track-listen" data-track="Tinder">écoutez</button>
+      </li>
+      <li><span class="track-num">03</span><span class="track-title track-title--unknown"></span></li>
+      <li><span class="track-num">04</span><span class="track-title track-title--unknown"></span></li>
+      <li><span class="track-num">05</span><span class="track-title track-title--unknown"></span></li>
+      <li><span class="track-num">06</span><span class="track-title track-title--unknown"></span></li>
+    </ol>
+
+    <form action="https://formsubmit.co/jordan.join@icloud.com" method="POST" class="notify-form" id="notifyForm">
+      <input type="hidden" name="_subject" value="Nouvelle inscription — Triste en amour">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://faisonsdesbulles.com/triste-en-amour?merci=1">
+      <input type="email" name="email" placeholder="ton email" required class="notify-input">
+      <button type="submit" class="notify-btn">être prévenu·e</button>
+    </form>
+    <p class="notify-success" id="notifySuccess">merci, on te préviendra ✓</p>
+  </div>
+</section>
+
+  <div class="listen-modal" id="listenModal">
+    <div class="listen-modal-content">
+      <button type="button" class="listen-modal-close" id="listenModalClose" aria-label="Fermer">✕</button>
+      <p class="listen-modal-title" id="listenModalTitle">Amoureux</p>
+      <p class="listen-modal-sub">écoutez sur :</p>
+      <div class="listen-modal-links">
+        <a href="#" class="cta-btn" data-platform-link="spotify" target="_blank" rel="noopener">Spotify</a>
+        <a href="#" class="cta-btn" data-platform-link="apple" target="_blank" rel="noopener">Apple Music <span class="soon-badge">bientôt</span></a>
+        <a href="#" class="cta-btn" data-platform-link="deezer" target="_blank" rel="noopener">Deezer <span class="soon-badge">bientôt</span></a>
+        <a href="#" class="cta-btn" data-platform-link="amazon" target="_blank" rel="noopener">Amazon Music <span class="soon-badge">bientôt</span></a>
+        <a href="#" class="cta-btn" data-platform-link="youtube" target="_blank" rel="noopener">YouTube Music</a>
+      </div>
+      <p class="listen-modal-toast" id="listenModalToast"></p>
+    </div>
+  </div>
+
+<footer class="footer">
+  <p class="footer-signature">Triste en amour</p>
+  <span class="footer-copy">© 2026 Jo</span>
+</footer>
+
+<script src="/triste-en-amour/script.js"></script>
+</body>
+</html>
