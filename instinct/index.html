@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>instinct — le quiz éclair pour couples</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Réponds en une seconde. Découvrez votre compatibilité.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="logo">inst<span class="dot">•</span>nct</div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </header>
+
+  <main id="stage">
+
+    <!-- ===== ACCUEIL ===== -->
+    <section class="screen active" id="screen-intro">
+      <div class="intro-content">
+        <div class="logo-hero">instinct</div>
+        <p class="tagline">Le quiz éclair pour duos.<br>Ne réfléchis pas. Réponds.</p>
+
+        <div class="mode-cards" id="onlineModes">
+          <button class="mode-card" id="btnHost">
+            <span class="mode-icon">✨</span>
+            <span class="mode-title">Créer une partie</span>
+            <span class="mode-sub">Génère un code, joue sur ton téléphone</span>
+          </button>
+          <button class="mode-card" id="btnJoin">
+            <span class="mode-icon">🔑</span>
+            <span class="mode-title">Rejoindre une partie</span>
+            <span class="mode-sub">Entre le code reçu par ton/ta partenaire</span>
+          </button>
+        </div>
+
+        <button class="link-btn" id="btnHotseatFallback">Jouer à deux sur ce même téléphone</button>
+        <p class="offline-note" id="offlineNote" hidden>Mode deux-téléphones pas encore branché ici — vous jouez à tour de rôle sur cet appareil.</p>
+      </div>
+    </section>
+
+    <!-- ===== CREER : PSEUDO ===== -->
+    <section class="screen" id="screen-host-name">
+      <div class="form-content">
+        <div class="form-icon">✨</div>
+        <h2>Ton prénom ?</h2>
+        <input type="text" id="hostNameInput" class="text-input" placeholder="Ex. Jordan" maxlength="16" autocomplete="off">
+        <button class="btn-primary" id="hostCreateBtn">Créer la partie</button>
+        <button class="link-btn" id="hostBack">← Retour</button>
+      </div>
+    </section>
+
+    <!-- ===== CREER : PARTAGE DU CODE ===== -->
+    <section class="screen" id="screen-host-share">
+      <div class="form-content">
+        <div class="form-icon">💌</div>
+        <h2>Envoie ce code</h2>
+        <p class="form-sub">Ton/ta partenaire l'entre sur son téléphone pour rejoindre.</p>
+        <div class="room-code" id="roomCodeDisplay">— — — — —</div>
+        <button class="btn-secondary" id="copyCodeBtn">Copier le code</button>
+        <div class="waiting-row">
+          <span class="pulse-dot"></span>
+          <span id="hostWaitingText">En attente que quelqu'un rejoigne…</span>
+        </div>
+        <button class="btn-primary" id="hostStartBtn">Répondre à mon tour →</button>
+      </div>
+    </section>
+
+    <!-- ===== REJOINDRE : CODE + PSEUDO ===== -->
+    <section class="screen" id="screen-join">
+      <div class="form-content">
+        <div class="form-icon">🔑</div>
+        <h2>Rejoindre la partie</h2>
+        <input type="text" id="joinCodeInput" class="text-input code-input" placeholder="CODE" maxlength="5" autocomplete="off">
+        <input type="text" id="joinNameInput" class="text-input" placeholder="Ton prénom" maxlength="16" autocomplete="off">
+        <button class="btn-primary" id="joinConfirmBtn">Rejoindre</button>
+        <button class="link-btn" id="joinBack">← Retour</button>
+        <p class="form-error" id="joinError" hidden></p>
+      </div>
+    </section>
+
+    <!-- ===== HOTSEAT : DEUX PRENOMS ===== -->
+    <section class="screen" id="screen-hotseat-names">
+      <div class="form-content">
+        <div class="form-icon">📱</div>
+        <h2>Deux prénoms</h2>
+        <input type="text" id="p1NameInput" class="text-input" placeholder="Prénom joueur 1" maxlength="16" autocomplete="off">
+        <input type="text" id="p2NameInput" class="text-input" placeholder="Prénom joueur 2" maxlength="16" autocomplete="off">
+        <button class="btn-primary" id="hotseatStartBtn">Commencer 🔥</button>
+        <button class="link-btn" id="hotseatBack">← Retour</button>
+      </div>
+    </section>
+
+    <!-- ===== HANDOFF (hotseat) ===== -->
+    <section class="screen" id="screen-handoff">
+      <div class="form-content">
+        <div class="form-icon">🔄</div>
+        <h2>Au tour de <span id="handoffName">—</span> !</h2>
+        <p class="form-sub">Passe le téléphone. Ne regarde pas les réponses 👀</p>
+        <button class="btn-primary" id="handoffBtn">C'est parti</button>
+      </div>
+    </section>
+
+    <!-- ===== JEU (cartes) ===== -->
+    <section class="screen" id="screen-game">
+      <div class="player-tag" id="playerTag">Joueur</div>
+      <div class="card-stack" id="cardStack"></div>
+      <div class="extra-choices">
+        <button class="extra-btn" id="btnNeither">🤷 Aucune des deux</button>
+        <button class="extra-btn" id="btnBoth">🤝 Trop dur, les deux</button>
+      </div>
+      <p class="instant-hint">Tape le premier choix qui te vient</p>
+    </section>
+
+    <!-- ===== ATTENTE DE L'AUTRE (online) ===== -->
+    <section class="screen" id="screen-waiting-result">
+      <div class="form-content">
+        <div class="form-icon spin-icon">⏳</div>
+        <h2>En attente de <span id="waitingForName">l'autre joueur</span></h2>
+        <p class="form-sub" id="waitingSub">Le verdict de la manche arrive dès que vous avez tous les deux répondu.</p>
+        <span class="pulse-dot"></span>
+      </div>
+    </section>
+
+    <!-- ===== VERDICT DE MANCHE ===== -->
+    <section class="screen" id="screen-round-result">
+      <div class="match-hero">
+        <div class="match-flame" id="roundEmoji">🔥</div>
+        <div class="match-percent" id="roundBadgeLabel">Match !</div>
+        <div class="match-label">Manche <span id="roundNumberLabel">1</span> — <span id="roundCommonCount">0</span>/5 réponses en commun</div>
+      </div>
+      <p class="running-stat" id="runningStat"></p>
+      <div class="results-list" id="roundResultsList"></div>
+      <div class="round-actions">
+        <button class="btn-primary" id="nextRoundBtn">Manche suivante ▶</button>
+        <button class="btn-secondary" id="endSessionBtn">Terminer la session</button>
+      </div>
+    </section>
+
+    <!-- ===== RECAP DE SESSION ===== -->
+    <section class="screen" id="screen-results">
+      <div class="match-hero">
+        <div class="match-flame">🏁</div>
+        <div class="match-percent" id="matchPercent">0%</div>
+        <div class="match-label">sur <span id="summaryRoundsCount">0</span> manche(s) — <span id="matchNames">vous deux</span></div>
+      </div>
+      <div class="results-list" id="resultsList"></div>
+      <button class="btn-primary" id="replayBtn">Rejouer depuis le début</button>
+    </section>
+
+  </main>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
