@@ -18,13 +18,13 @@
     { cat: 'Quotidien', ea: '📖', a: 'Livre', eb: '📺', b: 'Série' },
     { cat: 'Quotidien', ea: '🏃', a: 'Sportif du dimanche', eb: '💪', b: 'Sportif 7j/7' },
     { cat: 'Quotidien', ea: '🥾', a: 'Dimanche rando', eb: '🛌', b: 'Dimanche dodo' },
-    { cat: ‘Quotidien’, ea: ‘🎬’, a: ‘Choisir le film ou la série ce soir’, eb: ‘🤝’, b: ‘Laisser l’autre décider’ },
-    { cat: ‘Quotidien’, ea: ‘⏰’, a: ‘Alarme : une fois et debout’, eb: ‘🔁’, b: ‘Alarme : 5 créneaux minimum’ },
-    { cat: ‘Quotidien’, ea: ‘📱’, a: ‘Scroller au lit : 5 min’, eb: ‘🕳️’, b: ‘Scroller au lit : 2h’ },
-    { cat: ‘Quotidien’, ea: ‘😢’, a: ‘Pleurer devant un film : Souvent’, eb: ‘🧊’, b: ‘Pleurer devant un film : Jamais’ },
-    { cat: ‘Quotidien’, ea: ‘⏱️’, a: ‘Arriver en avance’, eb: ‘🏃’, b: ‘Arriver en retard’ },
-    { cat: ‘Quotidien’, ea: ‘🪫’, a: ‘Charger son tel à 5%’, eb: ‘🔋’, b: ‘Le brancher à 50%’ },
-    { cat: ‘Quotidien’, ea: ‘🧳’, a: ‘Défaire sa valise le jour même’, eb: ‘🫠’, b: ‘La valise traîne ouverte une semaine’ },
+    { cat: 'Quotidien', ea: '🎬', a: 'Choisir le film ou la série ce soir', eb: '🤝', b: 'Laisser l’autre décider' },
+    { cat: 'Quotidien', ea: '⏰', a: 'Alarme : une fois et debout', eb: '🔁', b: 'Alarme : 5 créneaux minimum' },
+    { cat: 'Quotidien', ea: '📱', a: 'Scroller au lit : 5 min', eb: '🕳️', b: 'Scroller au lit : 2h' },
+    { cat: 'Quotidien', ea: '😢', a: 'Pleurer devant un film : Souvent', eb: '🧊', b: 'Pleurer devant un film : Jamais' },
+    { cat: 'Quotidien', ea: '⏱️', a: 'Arriver en avance', eb: '🏃', b: 'Arriver en retard' },
+    { cat: 'Quotidien', ea: '🪫', a: 'Charger son tel à 5%', eb: '🔋', b: 'Le brancher à 50%' },
+    { cat: 'Quotidien', ea: '🧳', a: 'Défaire sa valise le jour même', eb: '🫠', b: 'La valise traîne ouverte une semaine' },
 
     // --- voyage ---
     { cat: 'Voyage', ea: '🎒', a: 'Sac à dos léger', eb: '🧳', b: 'Valise organisée' },
@@ -36,23 +36,23 @@
     { cat: 'Voyage', ea: '🏖️', a: 'Plage', eb: '🏔️', b: 'Montagne' },
     { cat: 'Voyage', ea: '🏙️', a: 'Vivre en ville', eb: '🌳', b: 'Vivre en campagne' },
     { cat: 'Voyage', ea: '🚗', a: 'Voyage en voiture', eb: '🚆', b: 'Voyage en train' },
-    { cat: ‘Voyage’, ea: ‘☀️’, a: ‘Bandeur d’été’, eb: ‘❄️’, b: ‘Bandeur d’hiver’ },
-    { cat: ‘Voyage’, ea: ‘🕐’, a: ‘Aéroport : 3h en avance’, eb: ‘🏃’, b: ‘Courir pour l’embarquement’ },
-    { cat: ‘Voyage’, ea: ‘😴’, a: ‘S’endormir en voiture en 5 min’, eb: ‘🗺️’, b: ‘Co-pilote infaillible’ },
+    { cat: 'Voyage', ea: '☀️', a: 'Bandeur d’été', eb: '❄️', b: 'Bandeur d’hiver' },
+    { cat: 'Voyage', ea: '🕐', a: 'Aéroport : 3h en avance', eb: '🏃', b: 'Courir pour l’embarquement' },
+    { cat: 'Voyage', ea: '😴', a: 'S’endormir en voiture en 5 min', eb: '🗺️', b: 'Co-pilote infaillible' },
 
     // --- argent ---
     { cat: 'Argent', ea: '🐖', a: 'Épargner', eb: '🎉', b: 'Profiter' },
     { cat: 'Argent', ea: '🛍️', a: 'Acheteur compulsif', eb: '🧠', b: 'Acheteur réfléchi' },
 
-    // --- langage de l'amour ---
+    // --- langage de l’amour ---
     { cat: 'Langage de l’amour', ea: '📣', a: 'Compliments', eb: '🛠️', b: 'Preuves par les actes' },
     { cat: 'Langage de l’amour', ea: '⚡', a: 'En reparler tout de suite', eb: '⏸️', b: 'Laisser retomber avant' },
     { cat: 'Langage de l’amour', ea: '😢', a: 'Montrer ses émotions', eb: '🧊', b: 'Les garder pour soi' },
     { cat: 'Langage de l’amour', ea: '🤗', a: 'Câlin', eb: '😘', b: 'Bisou' },
     { cat: 'Langage de l’amour', ea: '💬', a: 'Message', eb: '📞', b: 'Appel' },
     { cat: 'Langage de l’amour', ea: '🎁', a: 'Anniversaire surprise', eb: '🗓️', b: 'Anniversaire annoncé' },
-    { cat: ‘Langage de l’amour’, ea: ‘📱’, a: ‘Texto au réveil’, eb: ‘🌇’, b: ‘Silence radio le matin’ },
-    { cat: ‘Langage de l’amour’, ea: ‘🥄’, a: ‘Dormir en cuillère’, eb: ‘🛏️’, b: ‘Chacun de son côté sinon j’étouffe’ },
+    { cat: 'Langage de l’amour', ea: '📱', a: 'Texto au réveil', eb: '🌇', b: 'Silence radio le matin' },
+    { cat: 'Langage de l’amour', ea: '🥄', a: 'Dormir en cuillère', eb: '🛏️', b: 'Chacun de son côté sinon j’étouffe' },
     { cat: 'Langage de l’amour', ea: '🧠', a: 'Pardonner une infidélité émotionnelle', eb: '💋', b: 'Pardonner une infidélité physique' },
 
     // --- sexe ---
@@ -87,7 +87,7 @@
     // --- valeurs & projets de vie ---
     { cat: 'Valeurs & projets de vie', ea: '💼', a: 'Carrière ambitieuse', eb: '⚖️', b: 'Équilibre avant tout' },
     { cat: 'Valeurs & projets de vie', ea: '🏢', a: 'Bel appartement en ville', eb: '🏡', b: 'Grande maison à la campagne' },
-    { cat: 'Valeurs & projets de vie', ea: '👥', a: "Beaucoup d'amis", eb: '💎', b: 'Peu mais fidèles' },
+    { cat: 'Valeurs & projets de vie', ea: '👥', a: "Beaucoup d’amis", eb: '💎', b: 'Peu mais fidèles' },
     { cat: 'Valeurs & projets de vie', ea: '👶', a: 'Je veux des enfants', eb: '🚫', b: 'Je ne veux pas d’enfants' },
     { cat: 'Valeurs & projets de vie', ea: '🚬', a: 'Petite clope', eb: '🚭', b: 'Ne fume jamais' },
     { cat: 'Valeurs & projets de vie', ea: '🎲', a: 'Improviser', eb: '📋', b: 'Tout planifier' },
