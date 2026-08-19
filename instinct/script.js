@@ -4,8 +4,8 @@
   var PAIRS = [
     // --- quotidien ---
     { cat: 'Quotidien', ea: '🪥', a: 'Tube de dentifrice : écrasé', eb: '🌀', b: 'Tube bien roulé' },
-    { cat: 'Quotidien', ea: '🌪️', a: 'L'appart est : Bordélique', eb: '🗄️', b: 'Tout est rangé' },
-    { cat: 'Quotidien', ea: '💡', a: 'Dans l'appart : Lumière toujours allumée', eb: '🌑', b: 'Lumière toujours éteinte' },
+    { cat: 'Quotidien', ea: '🌪️', a: 'L’appart est : Bordélique', eb: '🗄️', b: 'Tout est rangé' },
+    { cat: 'Quotidien', ea: '💡', a: 'Dans l’appart : Lumière toujours allumée', eb: '🌑', b: 'Lumière toujours éteinte' },
     { cat: 'Quotidien', ea: '🍽️', a: 'Vaisselle tout de suite', eb: '🕰️', b: 'Vaisselle plus tard' },
     { cat: 'Quotidien', ea: '🤫', a: 'Silence pour dormir', eb: '📻', b: 'Bruit de fond pour dormir' },
     { cat: 'Quotidien', ea: '🌬️', a: 'Fenêtre ouverte la nuit', eb: '🚪', b: 'Fenêtre fermée' },
