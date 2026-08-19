@@ -162,7 +162,9 @@
     'screen-game': true,
     'screen-round-result': true,
     'screen-handoff': true,
-    'screen-results': true
+    'screen-results': true,
+    'screen-waiting-result': true,
+    'screen-host-share': true
   };
 
   function showScreen(id) {
