@@ -411,6 +411,42 @@ html, body {
     opacity: 0;
 }
 
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+    opacity: 0;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 3.5rem;
+}
+
+.countdown-num {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    background: linear-gradient(180deg, #d0d0d0 0%, #a0a0a0 45%, #707070 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.countdown-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 0.2rem;
+}
+
 .rsvp-form {
     margin-top: 1.5rem;
     display: flex;
@@ -491,7 +527,8 @@ html, body {
 #card-screen.active .divider      { animation: fadeInUp 0.7s ease 0.45s forwards; }
 #card-screen.active .details      { animation: fadeInUp 0.7s ease 0.6s forwards; }
 #card-screen.active .plus-one     { animation: fadeInUp 0.7s ease 0.75s forwards; }
-#card-screen.active .rsvp-form    { animation: fadeInUp 0.7s ease 0.9s forwards; }
+#card-screen.active .countdown    { animation: fadeInUp 0.7s ease 0.85s forwards; }
+#card-screen.active .rsvp-form    { animation: fadeInUp 0.7s ease 1s forwards; }
 
 @keyframes fadeInUp {
     from {
@@ -543,6 +580,8 @@ html, body {
     #card-screen.active .card-title,
     #card-screen.active .divider,
     #card-screen.active .details,
+    #card-screen.active .plus-one,
+    #card-screen.active .countdown,
     #card-screen.active .rsvp-form {
         animation: none !important;
         opacity: 1 !important;
@@ -597,6 +636,12 @@ html, body {
                     </div>
                 </div>
                 <p class="plus-one">Les +1 sont les bienvenus</p>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item"><span class="countdown-num" id="cd-days">--</span><span class="countdown-label">jours</span></div>
+                    <div class="countdown-item"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-label">heures</span></div>
+                    <div class="countdown-item"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-label">min</span></div>
+                    <div class="countdown-item"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-label">sec</span></div>
+                </div>
                 <form id="rsvp-form" class="rsvp-form">
                     <input type="text" name="prenom" placeholder="Ton pr&eacute;nom" required autocomplete="given-name">
                     <button type="submit" class="rsvp-btn">Je serai pr&eacute;sent</button>
@@ -707,6 +752,29 @@ html, body {
         playFallback.classList.add('hidden');
         video.play();
     });
+
+    var targetDate = new Date('2026-11-07T19:00:00').getTime();
+    function updateCountdown() {
+        var now = Date.now();
+        var diff = targetDate - now;
+        if (diff <= 0) {
+            $('#cd-days').textContent = '0';
+            $('#cd-hours').textContent = '0';
+            $('#cd-mins').textContent = '0';
+            $('#cd-secs').textContent = '0';
+            return;
+        }
+        var d = Math.floor(diff / 86400000);
+        var h = Math.floor((diff % 86400000) / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        $('#cd-days').textContent = d;
+        $('#cd-hours').textContent = h;
+        $('#cd-mins').textContent = ('0' + m).slice(-2);
+        $('#cd-secs').textContent = ('0' + s).slice(-2);
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
