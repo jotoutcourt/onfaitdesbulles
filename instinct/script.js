@@ -701,9 +701,11 @@
     var totalCommon = 0;
     state.sessionRounds.forEach(function (r) { totalCommon += r.common; });
     var runningPct = totalAnswered ? Math.round((totalCommon / totalAnswered) * 100) : 0;
-    $('runningStat').textContent =
-      'Vous avez répondu à ' + totalAnswered + ' question' + (totalAnswered > 1 ? 's' : '') +
-      ' sur ' + PAIRS.length + ', votre compatibilité est pour le moment de ' + runningPct + '%.';
+
+    $('globalStatPercent').textContent = runningPct + '%';
+    $('globalStatCount').textContent = totalAnswered;
+    $('globalStatTotal').textContent = PAIRS.length;
+    $('globalStatBarFill').style.width = runningPct + '%';
 
     showScreen('screen-round-result');
   }
