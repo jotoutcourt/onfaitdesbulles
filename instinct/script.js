@@ -95,6 +95,7 @@
 
   var CODE_CHARS = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
   var ROUND_SIZE = 5;
+  var MAX_ROUNDS = Math.floor(PAIRS.length / ROUND_SIZE);
   var SESSION_KEY = 'instinctOnlineSession';
 
   var firebaseReady = false;
@@ -167,13 +168,11 @@
   }
 
   function getRoundPairIndexes(seed, roundNumber) {
-    var perCycle = Math.floor(PAIRS.length / ROUND_SIZE);
-    var cycleIndex = Math.floor((roundNumber - 1) / perCycle);
-    var pos = (roundNumber - 1) % perCycle;
     var allIdx = [];
     for (var i = 0; i < PAIRS.length; i++) allIdx.push(i);
-    var shuffled = seededShuffle(allIdx, seededRng(seed + ':' + cycleIndex));
-    return shuffled.slice(pos * ROUND_SIZE, pos * ROUND_SIZE + ROUND_SIZE);
+    var shuffled = seededShuffle(allIdx, seededRng(seed));
+    var start = (roundNumber - 1) * ROUND_SIZE;
+    return shuffled.slice(start, start + ROUND_SIZE);
   }
 
   function updateProgress() {
@@ -456,6 +455,8 @@
         $('waitingForName').textContent = state.online.otherName || 'l’autre joueur';
         $('waitingSub').textContent = 'Manche ' + lastAnsweredByMe + ' — le verdict arrive dès que vous avez tous les deux répondu.';
         showScreen('screen-waiting-result');
+      } else if (lastAnsweredByMe >= MAX_ROUNDS) {
+        showFinalSummary();
       } else {
         state.round = lastAnsweredByMe + 1;
         state.pairsOrder = getRoundPairIndexes(saved.code, state.round);
@@ -813,11 +814,16 @@
     $('globalStatTotal').textContent = PAIRS.length;
     $('globalStatBarFill').style.width = runningPct + '%';
 
+    var allSeen = roundNumber >= MAX_ROUNDS;
+    $('nextRoundBtn').hidden = allSeen;
+    $('allQuestionsSeenNote').hidden = !allSeen;
+
     showScreen('screen-round-result');
   }
 
   function initRoundActions() {
     $('nextRoundBtn').addEventListener('click', function () {
+      if (state.round >= MAX_ROUNDS) { showFinalSummary(); return; }
       state.round++;
 
       if (state.mode === 'hotseat') {
