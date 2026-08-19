@@ -289,6 +289,7 @@
           pendingRevealRound: null
         };
         saveOnlineSession();
+        requestNotificationPermission();
 
         $('roomCodeDisplay').textContent = code.split('').join(' ');
         $('hostWaitingText').textContent = 'En attente que quelqu’un rejoigne…';
@@ -348,6 +349,7 @@
             pendingRevealRound: null
           };
           saveOnlineSession();
+          requestNotificationPermission();
           attachRoomListener(docRef);
           state.pairsOrder = getRoundPairIndexes(code, state.round);
           startRound(name, state.pairsOrder, state.round);
@@ -444,6 +446,7 @@
         state.lastNames = { name1: data.player1.name, name2: data.player2.name };
       }
 
+      requestNotificationPermission();
       attachRoomListener(docRef);
 
       var lastRoundData = rounds[String(lastAnsweredByMe)];
@@ -466,6 +469,25 @@
       console.warn('Reprise de partie impossible.', err);
       showScreen('screen-intro');
     });
+  }
+
+  // ---------- notifications ----------
+
+  function requestNotificationPermission() {
+    if (typeof Notification === 'undefined') return;
+    if (Notification.permission === 'default') {
+      try { Notification.requestPermission(); } catch (e) {}
+    }
+  }
+
+  function notifyPartnerDone(partnerName, roundNumber) {
+    if (typeof Notification === 'undefined' || Notification.permission !== 'granted') return;
+    if (document.visibilityState === 'visible' && document.hasFocus()) return;
+    try {
+      new Notification('First date 💕', {
+        body: (partnerName || 'Ton/ta partenaire') + ' a fini la manche ' + roundNumber + ' — viens voir le verdict !'
+      });
+    } catch (e) {}
   }
 
   // ---------- shared realtime listener ----------
@@ -491,6 +513,7 @@
         var roundData = data.rounds && data.rounds[String(pending)];
         if (roundData && roundData.player1 && roundData.player2) {
           state.online.pendingRevealRound = null;
+          notifyPartnerDone(state.online.otherName, pending);
           var pairIdx = getRoundPairIndexes(state.online.code, pending);
           revealRound(
             pending, pairIdx,
