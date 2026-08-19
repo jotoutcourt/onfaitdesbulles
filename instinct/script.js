@@ -158,11 +158,23 @@
 
   function $(id) { return document.getElementById(id); }
 
+  var historyScreens = {
+    'screen-game': true,
+    'screen-round-result': true,
+    'screen-handoff': true,
+    'screen-results': true
+  };
+
   function showScreen(id) {
     document.querySelectorAll('.screen').forEach(function (s) {
       s.classList.remove('active');
     });
     $(id).classList.add('active');
+    if (state.sessionRounds.length > 0 && historyScreens[id]) {
+      $('historyBtn').hidden = false;
+    } else {
+      $('historyBtn').hidden = true;
+    }
   }
 
   function escapeHtml(str) {
@@ -910,7 +922,6 @@
     $('nextRoundBtn').hidden = allSeen;
     $('allQuestionsSeenNote').hidden = !allSeen;
 
-    updateHistoryBtn();
     showScreen('screen-round-result');
   }
 
@@ -1002,10 +1013,6 @@
 
   // ---------- history overlay ----------
 
-  function updateHistoryBtn() {
-    $('historyBtn').hidden = state.sessionRounds.length === 0;
-  }
-
   function buildHistoryHtml() {
     if (state.sessionRounds.length === 0) {
       return '<p class="history-empty">Aucune manche terminée pour le moment.</p>';
@@ -1053,7 +1060,6 @@
       state.lastNames = null;
       customPairs = [];
       updateProgress();
-      updateHistoryBtn();
       $('joinCodeInput').value = '';
       $('joinNameInput').value = '';
       $('hostNameInput').value = '';
