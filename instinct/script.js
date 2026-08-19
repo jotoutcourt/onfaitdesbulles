@@ -3,9 +3,9 @@
 
   var PAIRS = [
     // --- quotidien ---
-    { cat: 'Quotidien', ea: '🪥', a: 'Tube de dentifrice écrasé', eb: '🌀', b: 'Tube bien roulé' },
-    { cat: 'Quotidien', ea: '🌪️', a: 'Bordélique', eb: '🗄️', b: 'Tout est rangé' },
-    { cat: 'Quotidien', ea: '💡', a: 'Lumière toujours allumée', eb: '🌑', b: 'Lumière toujours éteinte' },
+    { cat: 'Quotidien', ea: '🪥', a: 'Tube de dentifrice : écrasé', eb: '🌀', b: 'Tube bien roulé' },
+    { cat: 'Quotidien', ea: '🌪️', a: 'L'appart est : Bordélique', eb: '🗄️', b: 'Tout est rangé' },
+    { cat: 'Quotidien', ea: '💡', a: 'Dans l'appart : Lumière toujours allumée', eb: '🌑', b: 'Lumière toujours éteinte' },
     { cat: 'Quotidien', ea: '🍽️', a: 'Vaisselle tout de suite', eb: '🕰️', b: 'Vaisselle plus tard' },
     { cat: 'Quotidien', ea: '🤫', a: 'Silence pour dormir', eb: '📻', b: 'Bruit de fond pour dormir' },
     { cat: 'Quotidien', ea: '🌬️', a: 'Fenêtre ouverte la nuit', eb: '🚪', b: 'Fenêtre fermée' },
@@ -13,7 +13,7 @@
     { cat: 'Quotidien', ea: '🔥', a: 'Chauffage à fond', eb: '🧶', b: 'Pull à la maison' },
     { cat: 'Quotidien', ea: '🔔', a: 'Notifications activées', eb: '🔕', b: 'Téléphone en silencieux' },
     { cat: 'Quotidien', ea: '🧽', a: 'Petit ménage très souvent', eb: '🧹', b: 'Gros ménage une fois par semaine' },
-    { cat: 'Quotidien', ea: '⬅️', a: 'Côté gauche du lit', eb: '➡️', b: 'Côté droit du lit' },
+    { cat: 'Quotidien', ea: '⬅️', a: 'Côté gauche du lit', eb: '➡️', b: 'Côté droit du lit', comp: true },
     { cat: 'Quotidien', ea: '😴', a: 'Grasse matinée', eb: '🌅', b: 'Lever tôt' },
     { cat: 'Quotidien', ea: '📖', a: 'Livre', eb: '📺', b: 'Série' },
     { cat: 'Quotidien', ea: '🏃', a: 'Sportif du dimanche', eb: '💪', b: 'Sportif 7j/7' },
@@ -23,6 +23,8 @@
     { cat: ‘Quotidien’, ea: ‘📱’, a: ‘Scroller au lit : 5 min’, eb: ‘🕳️’, b: ‘Scroller au lit : 2h’ },
     { cat: ‘Quotidien’, ea: ‘😢’, a: ‘Pleurer devant un film : Souvent’, eb: ‘🧊’, b: ‘Pleurer devant un film : Jamais’ },
     { cat: ‘Quotidien’, ea: ‘⏱️’, a: ‘Arriver en avance’, eb: ‘🏃’, b: ‘Arriver en retard’ },
+    { cat: ‘Quotidien’, ea: ‘🪫’, a: ‘Charger son tel à 5%’, eb: ‘🔋’, b: ‘Le brancher à 50%’ },
+    { cat: ‘Quotidien’, ea: ‘🧳’, a: ‘Défaire sa valise le jour même’, eb: ‘🫠’, b: ‘La valise traîne ouverte une semaine’ },
 
     // --- voyage ---
     { cat: 'Voyage', ea: '🎒', a: 'Sac à dos léger', eb: '🧳', b: 'Valise organisée' },
@@ -49,17 +51,18 @@
     { cat: 'Langage de l’amour', ea: '🤗', a: 'Câlin', eb: '😘', b: 'Bisou' },
     { cat: 'Langage de l’amour', ea: '💬', a: 'Message', eb: '📞', b: 'Appel' },
     { cat: 'Langage de l’amour', ea: '🎁', a: 'Anniversaire surprise', eb: '🗓️', b: 'Anniversaire annoncé' },
-    { cat: 'Langage de l’amour', ea: '📱', a: 'Texto au réveil', eb: '🌇', b: 'Silence radio le matin' },
+    { cat: ‘Langage de l’amour’, ea: ‘📱’, a: ‘Texto au réveil’, eb: ‘🌇’, b: ‘Silence radio le matin’ },
+    { cat: ‘Langage de l’amour’, ea: ‘🥄’, a: ‘Dormir en cuillère’, eb: ‘🛏️’, b: ‘Chacun de son côté sinon j’étouffe’ },
     { cat: 'Langage de l’amour', ea: '🧠', a: 'Pardonner une infidélité émotionnelle', eb: '💋', b: 'Pardonner une infidélité physique' },
 
-    // --- intimité ---
-    { cat: 'Intimité', ea: '🌅', a: 'Sexe matinal', eb: '🌙', b: 'Sexe le soir' },
-    { cat: 'Intimité', ea: '🌳', a: 'Excitant en extérieur', eb: '🏠', b: 'Uniquement à la maison' },
-    { cat: 'Intimité', ea: '⬆️', a: 'Top', eb: '⬇️', b: 'Bottom' },
-    { cat: 'Intimité', ea: '🤗', a: 'Câlins après sexe', eb: '🚿', b: 'Direct sous la douche' },
-    { cat: 'Intimité', ea: '🕯️', a: 'Préliminaires longs et sensuels', eb: '⚡', b: 'Aller directement au but' },
-    { cat: 'Intimité', ea: '😈', a: 'Dominer', eb: '😌', b: 'Être dominé(e)' },
-    { cat: 'Intimité', ea: '🚿', a: 'Faire l’amour sous la douche', eb: '🛁', b: 'Faire l’amour dans un bain' },
+    // --- sexe ---
+    { cat: 'Sexe', ea: '🌅', a: 'Sexe matinal', eb: '🌙', b: 'Sexe le soir' },
+    { cat: 'Sexe', ea: '🌳', a: 'Excitant en extérieur', eb: '🏠', b: 'Uniquement à la maison' },
+    { cat: 'Sexe', ea: '⬆️', a: 'Top', eb: '⬇️', b: 'Bottom', comp: true },
+    { cat: 'Sexe', ea: '🤗', a: 'Câlins après sexe', eb: '🚿', b: 'Direct sous la douche' },
+    { cat: 'Sexe', ea: '🕯️', a: 'Préliminaires longs et sensuels', eb: '⚡', b: 'Aller directement au but' },
+    { cat: 'Sexe', ea: '😈', a: 'Dominer', eb: '😌', b: 'Être dominé(e)', comp: true },
+    { cat: 'Sexe', ea: '🚿', a: 'Faire l’amour sous la douche', eb: '🛁', b: 'Faire l’amour dans un bain' },
 
     // --- sorties ---
     { cat: 'Sorties', ea: '🕺', a: 'Sortir en boite', eb: '🍻', b: 'Sortir dans les bars' },
@@ -70,6 +73,7 @@
     { cat: 'Sorties', ea: '📺', a: 'Netflix', eb: '🎬', b: 'Cinéma' },
     { cat: 'Sorties', ea: '🐱', a: 'Chat', eb: '🐶', b: 'Chien' },
     { cat: 'Sorties', ea: '📸', a: 'Story Insta souvent', eb: '👻', b: 'Compte fantôme' },
+    { cat: 'Sorties', ea: '🎧', a: 'Playlist pour chaque humeur', eb: '🔁', b: 'Le même album en boucle 3 semaines' },
 
     // --- nourriture ---
     { cat: 'Nourriture', ea: '🍫', a: 'Sucré', eb: '🍟', b: 'Salé' },
@@ -88,6 +92,7 @@
     { cat: 'Valeurs & projets de vie', ea: '🚬', a: 'Petite clope', eb: '🚭', b: 'Ne fume jamais' },
     { cat: 'Valeurs & projets de vie', ea: '🎲', a: 'Improviser', eb: '📋', b: 'Tout planifier' },
     { cat: 'Valeurs & projets de vie', ea: '🏙️', a: 'Vivre en ville toute la vie', eb: '🌾', b: 'Finir à la campagne' },
+    { cat: 'Valeurs & projets de vie', ea: '🎂', a: 'Se souvenir de tous les anniversaires', eb: '🤷', b: 'Oublier même le tien' },
 
     // --- avis tranchés ---
     { cat: 'Avis tranchés', ea: '🎤', a: 'Taylor Swift : Reine', eb: '🙄', b: 'Taylor Swift : Surcotée' },
@@ -97,7 +102,26 @@
     { cat: 'Avis tranchés', ea: '🗼', a: 'Emily in Paris : Plaisir coupable', eb: '🙈', b: 'Emily in Paris : Honte nationale' },
     { cat: 'Avis tranchés', ea: '🏆', a: 'Regarder le foot : Pendant la coupe du monde', eb: '⚽', b: 'Regarder le foot : Je loupe aucun match' },
     { cat: 'Avis tranchés', ea: '⚡', a: 'Harry Potter : Culte', eb: '📈', b: 'Harry Potter : Trop hype' },
-    { cat: 'Avis tranchés', ea: '🦻', a: 'Ronfler : Mets des bouchons', eb: '🫀', b: 'Ronfler : Prend mon pouls pour vérifier si je suis en vie' }
+    { cat: 'Avis tranchés', ea: '🦻', a: 'Ronfler : Mets des bouchons', eb: '🫀', b: 'Ronfler : Prend mon pouls pour vérifier si je suis en vie' },
+    { cat: 'Avis tranchés', ea: '😂', a: 'Écrire "mdr"', eb: '😄', b: 'Écrire "haha"' },
+    { cat: 'Avis tranchés', ea: '😭', a: 'Pleurer en coupant des oignons : Toujours', eb: '🧅', b: 'Pleurer en coupant des oignons : Immunisé(e)' },
+    { cat: 'Avis tranchés', ea: '🎧', a: 'Écouter un album en entier', eb: '⏭️', b: 'Zapper après 30 sec' },
+    { cat: 'Avis tranchés', ea: '📖', a: 'Regarder un tuto pour monter un meuble', eb: '🔨', b: 'Foncer sans la notice' },
+    { cat: 'Avis tranchés', ea: '🎶', a: 'Jul : On l'écoute en secret', eb: '🔊', b: 'Jul : À fond, fenêtres ouvertes' },
+    { cat: 'Avis tranchés', ea: '🏰', a: 'Les films Disney : J'ai plus l'âge', eb: '🧸', b: 'Les films Disney : Réconfortants' },
+    { cat: 'Avis tranchés', ea: '🤘', a: 'Concert : Premier rang dans la fosse', eb: '🪑', b: 'Concert : Posé en tribune' },
+    { cat: 'Avis tranchés', ea: '🏝️', a: 'Koh-Lanta : Je survivrais', eb: '🚪', b: 'Koh-Lanta : Éliminé(e) jour 1' },
+    { cat: 'Avis tranchés', ea: '☕', a: 'Friends : Culte absolu', eb: '😴', b: 'Friends : Surcotée' },
+    { cat: 'Avis tranchés', ea: '🎤', a: 'La Star Academy : Rdv en octobre', eb: '📼', b: 'La Star Academy : Ça devait rester en 2001' },
+    { cat: 'Quotidien', ea: '👕', a: 'Plier le linge en sortant du sèche-linge', eb: '🪑', b: 'Le tas informe sur la chaise' },
+    { cat: 'Langage de l'amour', ea: '📲', a: 'Envoyer des memes toute la journée', eb: '🤐', b: 'Garder son fil pour soi' },
+    { cat: 'Avis tranchés', ea: '👍', a: 'Répondre "ok" : Normal', eb: '😤', b: 'Répondre "ok" : Passif-agressif' },
+    { cat: 'Avis tranchés', ea: '👻', a: 'Ghosting : Ça m'est arrivé', eb: '😈', b: 'Ghosting : J'ai déjà ghosté' },
+    { cat: 'Langage de l'amour', ea: '🥄', a: 'Petite cuillère', eb: '🍴', b: 'Grande cuillère', comp: true },
+    { cat: 'Avis tranchés', ea: '🍵', a: 'Matcha latte : Délicieux', eb: '🌿', b: 'Matcha latte : Du gazon liquide' },
+    { cat: 'Avis tranchés', ea: '🔍', a: 'Insta : Compte pour stalker', eb: '🚫', b: 'Insta : Pas besoin de compte secret' },
+    { cat: 'Avis tranchés', ea: '🛒', a: 'IKEA en couple : Épreuve du couple', eb: '💛', b: 'IKEA en couple : Date parfaite' },
+    { cat: 'Quotidien', ea: '🔊', a: 'Mettre la musique dans la douche', eb: '🎤', b: 'Chanter a capella' }
   ];
 
   var CODE_CHARS = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
@@ -444,7 +468,8 @@
         var r = rounds[key];
         if (r && r[saved.myKey] && n > lastAnsweredByMe) lastAnsweredByMe = n;
         if (r && r.player1 && r.player2) {
-          var common = countCommon(r.player1, r.player2);
+          var rIdx = getRoundPairIndexes(saved.code, n);
+          var common = countCommon(r.player1, r.player2, rIdx);
           state.sessionRounds.push({ round: n, common: common, tier: getRoundTier(common) });
         }
       });
@@ -780,10 +805,17 @@
     return { emoji: '🤏', label: 'Presque…' };
   }
 
-  function countCommon(answers1, answers2) {
+  function isMatchForPair(a1, a2, pair) {
+    if (pair.comp && (a1 === 'a' || a1 === 'b') && (a2 === 'a' || a2 === 'b')) {
+      return a1 !== a2;
+    }
+    return a1 === a2;
+  }
+
+  function countCommon(answers1, answers2, pairIdx) {
     var c = 0;
     for (var i = 0; i < answers1.length; i++) {
-      if (answers1[i] === answers2[i]) c++;
+      if (isMatchForPair(answers1[i], answers2[i], PAIRS[pairIdx[i]])) c++;
     }
     return c;
   }
@@ -802,7 +834,7 @@
       var pair = PAIRS[pairIdx[i]];
       var a1 = answers1[i];
       var a2 = answers2[i];
-      var isMatch = a1 === a2;
+      var isMatch = isMatchForPair(a1, a2, pair);
       var pick1 = pickLabel(a1, pair);
       var pick2 = pickLabel(a2, pair);
 
@@ -822,7 +854,7 @@
   }
 
   function revealRound(roundNumber, pairIdx, name1, answers1, name2, answers2) {
-    var common = countCommon(answers1, answers2);
+    var common = countCommon(answers1, answers2, pairIdx);
     var tier = getRoundTier(common);
 
     $('roundEmoji').textContent = tier.emoji;
