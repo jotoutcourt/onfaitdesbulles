@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<title>instinct — le quiz éclair pour couples</title>
+<title>First date — le quiz éclair pour couples</title>
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Réponds en une seconde. Découvrez votre compatibilité.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
 <div class="app">
 
   <header class="topbar">
-    <div class="logo">inst<span class="dot">•</span>nct</div>
+    <div class="logo">First<span class="dot">•</span>date</div>
     <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
   </header>
 
@@ -25,7 +25,7 @@
     <!-- ===== ACCUEIL ===== -->
     <section class="screen active" id="screen-intro">
       <div class="intro-content">
-        <div class="logo-hero">instinct</div>
+        <div class="logo-hero">First date</div>
         <p class="tagline">Le quiz éclair pour duos.<br>Ne réfléchis pas. Réponds.</p>
 
         <div class="mode-cards" id="onlineModes">
@@ -43,6 +43,18 @@
 
         <button class="link-btn" id="btnHotseatFallback">Jouer à deux sur ce même téléphone</button>
         <p class="offline-note" id="offlineNote" hidden>Mode deux-téléphones pas encore branché ici — vous jouez à tour de rôle sur cet appareil.</p>
+      </div>
+    </section>
+
+    <!-- ===== REPRISE D'UNE PARTIE EN COURS ===== -->
+    <section class="screen" id="screen-resume">
+      <div class="form-content">
+        <div class="form-icon">🔄</div>
+        <h2>Partie en cours</h2>
+        <p class="form-sub">Tu as une partie pas encore terminée, avec le code :</p>
+        <div class="room-code" id="resumeCode">— — — — —</div>
+        <button class="btn-primary" id="resumeContinueBtn">Reprendre la partie</button>
+        <button class="link-btn" id="resumeNewBtn">Commencer une nouvelle partie</button>
       </div>
     </section>
 

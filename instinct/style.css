@@ -369,6 +369,24 @@ body {
 
 .card-line { position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); }
 
+.card-topic {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
 .stamp {
   position: absolute;
   top: 26px;

@@ -3,98 +3,99 @@
 
   var PAIRS = [
     // --- quotidien ---
-    { ea: '🪥', a: 'Tube de dentifrice écrasé', eb: '🌀', b: 'Tube bien roulé' },
-    { ea: '🌪️', a: 'Bordélique', eb: '🗄️', b: 'Tout est rangé' },
-    { ea: '💡', a: 'Lumière toujours allumée', eb: '🌑', b: 'Lumière toujours éteinte' },
-    { ea: '🍽️', a: 'Vaisselle tout de suite', eb: '🕰️', b: 'Vaisselle plus tard' },
-    { ea: '🤫', a: 'Silence pour dormir', eb: '📻', b: 'Bruit de fond pour dormir' },
-    { ea: '🌬️', a: 'Fenêtre ouverte la nuit', eb: '🚪', b: 'Fenêtre fermée' },
-    { ea: '🌅', a: 'Douche le matin', eb: '🌙', b: 'Douche le soir' },
-    { ea: '🔥', a: 'Chauffage à fond', eb: '🧶', b: 'Pull à la maison' },
-    { ea: '🔔', a: 'Notifications activées', eb: '🔕', b: 'Téléphone en silencieux' },
-    { ea: '🧽', a: 'Petit ménage très souvent', eb: '🧹', b: 'Gros ménage une fois par semaine' },
-    { ea: '⬅️', a: 'Côté gauche du lit', eb: '➡️', b: 'Côté droit du lit' },
-    { ea: '😴', a: 'Grasse matinée', eb: '🌅', b: 'Lever tôt' },
-    { ea: '📖', a: 'Livre', eb: '📺', b: 'Série' },
-    { ea: '🏃', a: 'Sportif du dimanche', eb: '💪', b: 'Sportif 7j/7' },
-    { ea: '🥾', a: 'Dimanche rando', eb: '🛌', b: 'Dimanche dodo' },
-    { ea: '🎬', a: 'Choisir le film ou la série ce soir', eb: '🤝', b: 'Laisser l’autre décider' },
+    { cat: 'Quotidien', ea: '🪥', a: 'Tube de dentifrice écrasé', eb: '🌀', b: 'Tube bien roulé' },
+    { cat: 'Quotidien', ea: '🌪️', a: 'Bordélique', eb: '🗄️', b: 'Tout est rangé' },
+    { cat: 'Quotidien', ea: '💡', a: 'Lumière toujours allumée', eb: '🌑', b: 'Lumière toujours éteinte' },
+    { cat: 'Quotidien', ea: '🍽️', a: 'Vaisselle tout de suite', eb: '🕰️', b: 'Vaisselle plus tard' },
+    { cat: 'Quotidien', ea: '🤫', a: 'Silence pour dormir', eb: '📻', b: 'Bruit de fond pour dormir' },
+    { cat: 'Quotidien', ea: '🌬️', a: 'Fenêtre ouverte la nuit', eb: '🚪', b: 'Fenêtre fermée' },
+    { cat: 'Quotidien', ea: '🌅', a: 'Douche le matin', eb: '🌙', b: 'Douche le soir' },
+    { cat: 'Quotidien', ea: '🔥', a: 'Chauffage à fond', eb: '🧶', b: 'Pull à la maison' },
+    { cat: 'Quotidien', ea: '🔔', a: 'Notifications activées', eb: '🔕', b: 'Téléphone en silencieux' },
+    { cat: 'Quotidien', ea: '🧽', a: 'Petit ménage très souvent', eb: '🧹', b: 'Gros ménage une fois par semaine' },
+    { cat: 'Quotidien', ea: '⬅️', a: 'Côté gauche du lit', eb: '➡️', b: 'Côté droit du lit' },
+    { cat: 'Quotidien', ea: '😴', a: 'Grasse matinée', eb: '🌅', b: 'Lever tôt' },
+    { cat: 'Quotidien', ea: '📖', a: 'Livre', eb: '📺', b: 'Série' },
+    { cat: 'Quotidien', ea: '🏃', a: 'Sportif du dimanche', eb: '💪', b: 'Sportif 7j/7' },
+    { cat: 'Quotidien', ea: '🥾', a: 'Dimanche rando', eb: '🛌', b: 'Dimanche dodo' },
+    { cat: 'Quotidien', ea: '🎬', a: 'Choisir le film ou la série ce soir', eb: '🤝', b: 'Laisser l’autre décider' },
 
     // --- voyage ---
-    { ea: '🎒', a: 'Sac à dos léger', eb: '🧳', b: 'Valise organisée' },
-    { ea: '🎲', a: 'Improviser sur place', eb: '🗺️', b: 'Itinéraire détaillé' },
-    { ea: '🚗', a: 'Road trip en voiture', eb: '✈️', b: 'Vol direct' },
-    { ea: '🆕', a: 'Nouvelle destination', eb: '🔁', b: 'Retourner au même endroit' },
-    { ea: '🚐', a: 'Van aménagé', eb: '⛺', b: 'Tente et duvet' },
-    { ea: '🐌', a: 'Prendre son temps', eb: '🏃', b: 'Enchaîner les activités' },
-    { ea: '🏖️', a: 'Plage', eb: '🏔️', b: 'Montagne' },
-    { ea: '🏙️', a: 'Vivre en ville', eb: '🌳', b: 'Vivre en campagne' },
-    { ea: '🚗', a: 'Voyage en voiture', eb: '🚆', b: 'Voyage en train' },
-    { ea: '☀️', a: 'Bandeur d’été', eb: '❄️', b: 'Bandeur d’hiver' },
+    { cat: 'Voyage', ea: '🎒', a: 'Sac à dos léger', eb: '🧳', b: 'Valise organisée' },
+    { cat: 'Voyage', ea: '🎲', a: 'Improviser sur place', eb: '🗺️', b: 'Itinéraire détaillé' },
+    { cat: 'Voyage', ea: '🚗', a: 'Road trip en voiture', eb: '✈️', b: 'Vol direct' },
+    { cat: 'Voyage', ea: '🆕', a: 'Nouvelle destination', eb: '🔁', b: 'Retourner au même endroit' },
+    { cat: 'Voyage', ea: '🚐', a: 'Van aménagé', eb: '⛺', b: 'Tente et duvet' },
+    { cat: 'Voyage', ea: '🐌', a: 'Prendre son temps', eb: '🏃', b: 'Enchaîner les activités' },
+    { cat: 'Voyage', ea: '🏖️', a: 'Plage', eb: '🏔️', b: 'Montagne' },
+    { cat: 'Voyage', ea: '🏙️', a: 'Vivre en ville', eb: '🌳', b: 'Vivre en campagne' },
+    { cat: 'Voyage', ea: '🚗', a: 'Voyage en voiture', eb: '🚆', b: 'Voyage en train' },
+    { cat: 'Voyage', ea: '☀️', a: 'Bandeur d’été', eb: '❄️', b: 'Bandeur d’hiver' },
 
     // --- argent ---
-    { ea: '🐖', a: 'Épargner', eb: '🎉', b: 'Profiter' },
-    { ea: '🛍️', a: 'Acheteur compulsif', eb: '🧠', b: 'Acheteur réfléchi' },
+    { cat: 'Argent', ea: '🐖', a: 'Épargner', eb: '🎉', b: 'Profiter' },
+    { cat: 'Argent', ea: '🛍️', a: 'Acheteur compulsif', eb: '🧠', b: 'Acheteur réfléchi' },
 
     // --- langage de l'amour ---
-    { ea: '📣', a: 'Compliments', eb: '🛠️', b: 'Preuves par les actes' },
-    { ea: '⚡', a: 'En reparler tout de suite', eb: '⏸️', b: 'Laisser retomber avant' },
-    { ea: '😢', a: 'Montrer ses émotions', eb: '🧊', b: 'Les garder pour soi' },
-    { ea: '🤗', a: 'Câlin', eb: '😘', b: 'Bisou' },
-    { ea: '💬', a: 'Message', eb: '📞', b: 'Appel' },
-    { ea: '🎁', a: 'Anniversaire surprise', eb: '🗓️', b: 'Anniversaire annoncé' },
-    { ea: '📱', a: 'Texto au réveil', eb: '🌇', b: 'Silence radio le matin' },
-    { ea: '🧠', a: 'Pardonner une infidélité émotionnelle', eb: '💋', b: 'Pardonner une infidélité physique' },
+    { cat: 'Langage de l’amour', ea: '📣', a: 'Compliments', eb: '🛠️', b: 'Preuves par les actes' },
+    { cat: 'Langage de l’amour', ea: '⚡', a: 'En reparler tout de suite', eb: '⏸️', b: 'Laisser retomber avant' },
+    { cat: 'Langage de l’amour', ea: '😢', a: 'Montrer ses émotions', eb: '🧊', b: 'Les garder pour soi' },
+    { cat: 'Langage de l’amour', ea: '🤗', a: 'Câlin', eb: '😘', b: 'Bisou' },
+    { cat: 'Langage de l’amour', ea: '💬', a: 'Message', eb: '📞', b: 'Appel' },
+    { cat: 'Langage de l’amour', ea: '🎁', a: 'Anniversaire surprise', eb: '🗓️', b: 'Anniversaire annoncé' },
+    { cat: 'Langage de l’amour', ea: '📱', a: 'Texto au réveil', eb: '🌇', b: 'Silence radio le matin' },
+    { cat: 'Langage de l’amour', ea: '🧠', a: 'Pardonner une infidélité émotionnelle', eb: '💋', b: 'Pardonner une infidélité physique' },
 
     // --- intimité ---
-    { ea: '🌅', a: 'Sexe matinal', eb: '🌙', b: 'Sexe le soir' },
-    { ea: '🌳', a: 'Excitant en extérieur', eb: '🏠', b: 'Uniquement à la maison' },
-    { ea: '⬆️', a: 'Top', eb: '⬇️', b: 'Bottom' },
-    { ea: '🤗', a: 'Câlins après sexe', eb: '🚿', b: 'Direct sous la douche' },
-    { ea: '🕯️', a: 'Préliminaires longs et sensuels', eb: '⚡', b: 'Aller directement au but' },
-    { ea: '😈', a: 'Dominer', eb: '😌', b: 'Être dominé(e)' },
-    { ea: '🚿', a: 'Faire l’amour sous la douche', eb: '🛁', b: 'Faire l’amour dans un bain' },
+    { cat: 'Intimité', ea: '🌅', a: 'Sexe matinal', eb: '🌙', b: 'Sexe le soir' },
+    { cat: 'Intimité', ea: '🌳', a: 'Excitant en extérieur', eb: '🏠', b: 'Uniquement à la maison' },
+    { cat: 'Intimité', ea: '⬆️', a: 'Top', eb: '⬇️', b: 'Bottom' },
+    { cat: 'Intimité', ea: '🤗', a: 'Câlins après sexe', eb: '🚿', b: 'Direct sous la douche' },
+    { cat: 'Intimité', ea: '🕯️', a: 'Préliminaires longs et sensuels', eb: '⚡', b: 'Aller directement au but' },
+    { cat: 'Intimité', ea: '😈', a: 'Dominer', eb: '😌', b: 'Être dominé(e)' },
+    { cat: 'Intimité', ea: '🚿', a: 'Faire l’amour sous la douche', eb: '🛁', b: 'Faire l’amour dans un bain' },
 
     // --- sorties ---
-    { ea: '🕺', a: 'Sortir en boite', eb: '🍻', b: 'Sortir dans les bars' },
-    { ea: '💃', a: 'Danser toute la soirée', eb: '🗨️', b: 'Discuter dans un coin' },
-    { ea: '🏠', a: 'Organiser des soirées chez soi', eb: '🚪', b: 'C’est mieux chez les autres' },
-    { ea: '👨‍👩‍👧', a: 'Voir la famille souvent', eb: '📅', b: 'Voir la famille de temps en temps' },
-    { ea: '📸', a: 'Publier les moments du couple', eb: '🔒', b: 'Garder ça pour soi' },
-    { ea: '📺', a: 'Netflix', eb: '🎬', b: 'Cinéma' },
-    { ea: '🐱', a: 'Chat', eb: '🐶', b: 'Chien' },
+    { cat: 'Sorties', ea: '🕺', a: 'Sortir en boite', eb: '🍻', b: 'Sortir dans les bars' },
+    { cat: 'Sorties', ea: '💃', a: 'Danser toute la soirée', eb: '🗨️', b: 'Discuter dans un coin' },
+    { cat: 'Sorties', ea: '🏠', a: 'Organiser des soirées chez soi', eb: '🚪', b: 'C’est mieux chez les autres' },
+    { cat: 'Sorties', ea: '👨‍👩‍👧', a: 'Voir la famille souvent', eb: '📅', b: 'Voir la famille de temps en temps' },
+    { cat: 'Sorties', ea: '📸', a: 'Publier les moments du couple', eb: '🔒', b: 'Garder ça pour soi' },
+    { cat: 'Sorties', ea: '📺', a: 'Netflix', eb: '🎬', b: 'Cinéma' },
+    { cat: 'Sorties', ea: '🐱', a: 'Chat', eb: '🐶', b: 'Chien' },
 
     // --- nourriture ---
-    { ea: '🍫', a: 'Sucré', eb: '🍟', b: 'Salé' },
-    { ea: '🍕', a: 'Pizza', eb: '🍣', b: 'Sushi' },
-    { ea: '🍵', a: 'Thé', eb: '☕', b: 'Café' },
-    { ea: '👩‍🍳', a: 'Cuisiner', eb: '🥡', b: 'Commander' },
-    { ea: '🌶️', a: 'Épicé', eb: '🥛', b: 'Doux' },
-    { ea: '🍳', a: 'Petit-déj copieux', eb: '🍌', b: 'Petit-déj léger' },
-    { ea: '🍿', a: 'Grignoter toute la journée', eb: '🍽️', b: 'Trois repas fixes' },
+    { cat: 'Nourriture', ea: '🍫', a: 'Sucré', eb: '🍟', b: 'Salé' },
+    { cat: 'Nourriture', ea: '🍕', a: 'Pizza', eb: '🍣', b: 'Sushi' },
+    { cat: 'Nourriture', ea: '🍵', a: 'Thé', eb: '☕', b: 'Café' },
+    { cat: 'Nourriture', ea: '👩‍🍳', a: 'Cuisiner', eb: '🥡', b: 'Commander' },
+    { cat: 'Nourriture', ea: '🌶️', a: 'Épicé', eb: '🥛', b: 'Doux' },
+    { cat: 'Nourriture', ea: '🍳', a: 'Petit-déj copieux', eb: '🍌', b: 'Petit-déj léger' },
+    { cat: 'Nourriture', ea: '🍿', a: 'Grignoter toute la journée', eb: '🍽️', b: 'Trois repas fixes' },
 
     // --- valeurs & projets de vie ---
-    { ea: '💼', a: 'Carrière ambitieuse', eb: '⚖️', b: 'Équilibre avant tout' },
-    { ea: '🏢', a: 'Bel appartement en ville', eb: '🏡', b: 'Grande maison à la campagne' },
-    { ea: '👥', a: "Beaucoup d'amis", eb: '💎', b: 'Peu mais fidèles' },
-    { ea: '👶', a: 'Je veux des enfants', eb: '🚫', b: 'Je ne veux pas d’enfants' },
-    { ea: '🚬', a: 'Petite clope', eb: '🚭', b: 'Ne fume jamais' },
-    { ea: '🎲', a: 'Improviser', eb: '📋', b: 'Tout planifier' },
-    { ea: '🏙️', a: 'Vivre en ville toute la vie', eb: '🌾', b: 'Finir à la campagne' },
+    { cat: 'Valeurs & projets de vie', ea: '💼', a: 'Carrière ambitieuse', eb: '⚖️', b: 'Équilibre avant tout' },
+    { cat: 'Valeurs & projets de vie', ea: '🏢', a: 'Bel appartement en ville', eb: '🏡', b: 'Grande maison à la campagne' },
+    { cat: 'Valeurs & projets de vie', ea: '👥', a: "Beaucoup d'amis", eb: '💎', b: 'Peu mais fidèles' },
+    { cat: 'Valeurs & projets de vie', ea: '👶', a: 'Je veux des enfants', eb: '🚫', b: 'Je ne veux pas d’enfants' },
+    { cat: 'Valeurs & projets de vie', ea: '🚬', a: 'Petite clope', eb: '🚭', b: 'Ne fume jamais' },
+    { cat: 'Valeurs & projets de vie', ea: '🎲', a: 'Improviser', eb: '📋', b: 'Tout planifier' },
+    { cat: 'Valeurs & projets de vie', ea: '🏙️', a: 'Vivre en ville toute la vie', eb: '🌾', b: 'Finir à la campagne' },
 
     // --- avis tranchés ---
-    { ea: '🎤', a: 'Taylor Swift : Reine', eb: '🙄', b: 'Taylor Swift : Surcotée' },
-    { ea: '🥐', a: 'Pain au chocolat', eb: '🍫', b: 'Chocolatine' },
-    { ea: '🍍', a: 'Ananas sur la pizza : Délice', eb: '🚫', b: 'Ananas sur la pizza : Crime' },
-    { ea: '🦸', a: 'Marvel : Top', eb: '🤷', b: 'Marvel : Pas mon truc' },
-    { ea: '🗼', a: 'Emily in Paris : Plaisir coupable', eb: '🙈', b: 'Emily in Paris : Honte nationale' },
-    { ea: '🏆', a: 'Regarder le foot : Pendant la coupe du monde', eb: '⚽', b: 'Regarder le foot : Je loupe aucun match' },
-    { ea: '⚡', a: 'Harry Potter : Culte', eb: '📈', b: 'Harry Potter : Trop hype' },
-    { ea: '🦻', a: 'Ronfler : Mets des bouchons', eb: '🫀', b: 'Ronfler : Prend mon pouls pour vérifier si je suis en vie' }
+    { cat: 'Avis tranchés', ea: '🎤', a: 'Taylor Swift : Reine', eb: '🙄', b: 'Taylor Swift : Surcotée' },
+    { cat: 'Avis tranchés', ea: '🥐', a: 'Pain au chocolat', eb: '🍫', b: 'Chocolatine' },
+    { cat: 'Avis tranchés', ea: '🍍', a: 'Ananas sur la pizza : Délice', eb: '🚫', b: 'Ananas sur la pizza : Crime' },
+    { cat: 'Avis tranchés', ea: '🦸', a: 'Marvel : Top', eb: '🤷', b: 'Marvel : Pas mon truc' },
+    { cat: 'Avis tranchés', ea: '🗼', a: 'Emily in Paris : Plaisir coupable', eb: '🙈', b: 'Emily in Paris : Honte nationale' },
+    { cat: 'Avis tranchés', ea: '🏆', a: 'Regarder le foot : Pendant la coupe du monde', eb: '⚽', b: 'Regarder le foot : Je loupe aucun match' },
+    { cat: 'Avis tranchés', ea: '⚡', a: 'Harry Potter : Culte', eb: '📈', b: 'Harry Potter : Trop hype' },
+    { cat: 'Avis tranchés', ea: '🦻', a: 'Ronfler : Mets des bouchons', eb: '🫀', b: 'Ronfler : Prend mon pouls pour vérifier si je suis en vie' }
   ];
 
   var CODE_CHARS = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
   var ROUND_SIZE = 5;
+  var SESSION_KEY = 'instinctOnlineSession';
 
   var firebaseReady = false;
   var db = null;
@@ -288,6 +289,7 @@
           otherName: null,
           pendingRevealRound: null
         };
+        saveOnlineSession();
 
         $('roomCodeDisplay').textContent = code.split('').join(' ');
         $('hostWaitingText').textContent = 'En attente que quelqu’un rejoigne…';
@@ -346,6 +348,7 @@
             otherName: data.player1 ? data.player1.name : null,
             pendingRevealRound: null
           };
+          saveOnlineSession();
           attachRoomListener(docRef);
           state.pairsOrder = getRoundPairIndexes(code, state.round);
           startRound(name, state.pairsOrder, state.round);
@@ -364,6 +367,104 @@
     var el = $('joinError');
     el.textContent = msg;
     el.hidden = false;
+  }
+
+  // ---------- resume a session after closing the tab ----------
+
+  function saveOnlineSession() {
+    try {
+      localStorage.setItem(SESSION_KEY, JSON.stringify({
+        code: state.online.code,
+        myKey: state.online.myKey
+      }));
+    } catch (e) {}
+  }
+
+  function clearOnlineSession() {
+    try { localStorage.removeItem(SESSION_KEY); } catch (e) {}
+  }
+
+  function checkForSavedSession() {
+    if (!firebaseReady || !db) return;
+    var raw;
+    try { raw = localStorage.getItem(SESSION_KEY); } catch (e) { return; }
+    if (!raw) return;
+    var saved;
+    try { saved = JSON.parse(raw); } catch (e) { return; }
+    if (!saved || !saved.code || !saved.myKey) return;
+
+    $('resumeCode').textContent = saved.code.split('').join(' ');
+    showScreen('screen-resume');
+
+    $('resumeContinueBtn').onclick = function () { resumeOnlineSession(saved); };
+    $('resumeNewBtn').onclick = function () {
+      clearOnlineSession();
+      showScreen('screen-intro');
+    };
+  }
+
+  function resumeOnlineSession(saved) {
+    var docRef = db.collection('instinctSessions').doc(saved.code);
+
+    docRef.get().then(function (snap) {
+      if (!snap.exists) { clearOnlineSession(); showScreen('screen-intro'); return; }
+
+      var data = snap.data();
+      var me = data[saved.myKey];
+      if (!me || !me.name) { clearOnlineSession(); showScreen('screen-intro'); return; }
+
+      var otherKey = saved.myKey === 'player1' ? 'player2' : 'player1';
+      var other = data[otherKey];
+
+      state.mode = 'online';
+      state.online = {
+        docRef: docRef,
+        code: saved.code,
+        myKey: saved.myKey,
+        otherKey: otherKey,
+        myName: me.name,
+        otherName: other && other.name ? other.name : null,
+        pendingRevealRound: null
+      };
+
+      // reconstruct the rounds already played so the running compatibility stat stays accurate
+      state.sessionRounds = [];
+      var lastAnsweredByMe = 0;
+      var rounds = data.rounds || {};
+      Object.keys(rounds).forEach(function (key) {
+        var n = parseInt(key, 10);
+        var r = rounds[key];
+        if (r && r[saved.myKey] && n > lastAnsweredByMe) lastAnsweredByMe = n;
+        if (r && r.player1 && r.player2) {
+          var common = countCommon(r.player1, r.player2);
+          state.sessionRounds.push({ round: n, common: common, tier: getRoundTier(common) });
+        }
+      });
+      state.sessionRounds.sort(function (a, b) { return a.round - b.round; });
+      if (data.player1 && data.player2) {
+        state.lastNames = { name1: data.player1.name, name2: data.player2.name };
+      }
+
+      attachRoomListener(docRef);
+
+      var lastRoundData = rounds[String(lastAnsweredByMe)];
+      var otherAnsweredLast = lastAnsweredByMe > 0 && lastRoundData && lastRoundData[otherKey];
+
+      if (lastAnsweredByMe > 0 && !otherAnsweredLast) {
+        state.round = lastAnsweredByMe;
+        state.online.pendingRevealRound = lastAnsweredByMe;
+        $('waitingForName').textContent = state.online.otherName || 'l’autre joueur';
+        $('waitingSub').textContent = 'Manche ' + lastAnsweredByMe + ' — le verdict arrive dès que vous avez tous les deux répondu.';
+        showScreen('screen-waiting-result');
+      } else {
+        state.round = lastAnsweredByMe + 1;
+        state.pairsOrder = getRoundPairIndexes(saved.code, state.round);
+        startRound(me.name, state.pairsOrder, state.round);
+      }
+    }).catch(function (err) {
+      console.warn('Reprise de partie impossible.', err);
+      showScreen('screen-intro');
+    });
   }
 
   // ---------- shared realtime listener ----------
@@ -465,6 +566,11 @@
 
     var card = document.createElement('div');
     card.className = 'card';
+
+    var topicTag = document.createElement('span');
+    topicTag.className = 'card-topic';
+    topicTag.textContent = pair.cat;
+    card.appendChild(topicTag);
 
     var halfA = document.createElement('div');
     halfA.className = 'card-half side-a';
@@ -760,6 +866,7 @@
   function initReplay() {
     $('replayBtn').addEventListener('click', function () {
       if (roomListenerUnsub) { roomListenerUnsub(); roomListenerUnsub = null; }
+      clearOnlineSession();
       state.mode = null;
       state.online = null;
       state.hotseat = null;
@@ -790,5 +897,6 @@
     initRoundActions();
     initExtraChoices();
     initReplay();
+    checkForSavedSession();
   });
 })();
