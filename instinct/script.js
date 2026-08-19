@@ -18,7 +18,11 @@
     { cat: 'Quotidien', ea: '📖', a: 'Livre', eb: '📺', b: 'Série' },
     { cat: 'Quotidien', ea: '🏃', a: 'Sportif du dimanche', eb: '💪', b: 'Sportif 7j/7' },
     { cat: 'Quotidien', ea: '🥾', a: 'Dimanche rando', eb: '🛌', b: 'Dimanche dodo' },
-    { cat: 'Quotidien', ea: '🎬', a: 'Choisir le film ou la série ce soir', eb: '🤝', b: 'Laisser l’autre décider' },
+    { cat: ‘Quotidien’, ea: ‘🎬’, a: ‘Choisir le film ou la série ce soir’, eb: ‘🤝’, b: ‘Laisser l’autre décider’ },
+    { cat: ‘Quotidien’, ea: ‘⏰’, a: ‘Alarme : une fois et debout’, eb: ‘🔁’, b: ‘Alarme : 5 créneaux minimum’ },
+    { cat: ‘Quotidien’, ea: ‘📱’, a: ‘Scroller au lit : 5 min’, eb: ‘🕳️’, b: ‘Scroller au lit : 2h’ },
+    { cat: ‘Quotidien’, ea: ‘😢’, a: ‘Pleurer devant un film : Souvent’, eb: ‘🧊’, b: ‘Pleurer devant un film : Jamais’ },
+    { cat: ‘Quotidien’, ea: ‘⏱️’, a: ‘Arriver en avance’, eb: ‘🏃’, b: ‘Arriver en retard’ },
 
     // --- voyage ---
     { cat: 'Voyage', ea: '🎒', a: 'Sac à dos léger', eb: '🧳', b: 'Valise organisée' },
@@ -30,7 +34,9 @@
     { cat: 'Voyage', ea: '🏖️', a: 'Plage', eb: '🏔️', b: 'Montagne' },
     { cat: 'Voyage', ea: '🏙️', a: 'Vivre en ville', eb: '🌳', b: 'Vivre en campagne' },
     { cat: 'Voyage', ea: '🚗', a: 'Voyage en voiture', eb: '🚆', b: 'Voyage en train' },
-    { cat: 'Voyage', ea: '☀️', a: 'Bandeur d’été', eb: '❄️', b: 'Bandeur d’hiver' },
+    { cat: ‘Voyage’, ea: ‘☀️’, a: ‘Bandeur d’été’, eb: ‘❄️’, b: ‘Bandeur d’hiver’ },
+    { cat: ‘Voyage’, ea: ‘🕐’, a: ‘Aéroport : 3h en avance’, eb: ‘🏃’, b: ‘Courir pour l’embarquement’ },
+    { cat: ‘Voyage’, ea: ‘😴’, a: ‘S’endormir en voiture en 5 min’, eb: ‘🗺️’, b: ‘Co-pilote infaillible’ },
 
     // --- argent ---
     { cat: 'Argent', ea: '🐖', a: 'Épargner', eb: '🎉', b: 'Profiter' },
@@ -63,6 +69,7 @@
     { cat: 'Sorties', ea: '📸', a: 'Publier les moments du couple', eb: '🔒', b: 'Garder ça pour soi' },
     { cat: 'Sorties', ea: '📺', a: 'Netflix', eb: '🎬', b: 'Cinéma' },
     { cat: 'Sorties', ea: '🐱', a: 'Chat', eb: '🐶', b: 'Chien' },
+    { cat: 'Sorties', ea: '📸', a: 'Story Insta souvent', eb: '👻', b: 'Compte fantôme' },
 
     // --- nourriture ---
     { cat: 'Nourriture', ea: '🍫', a: 'Sucré', eb: '🍟', b: 'Salé' },
