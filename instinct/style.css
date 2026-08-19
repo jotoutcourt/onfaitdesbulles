@@ -558,6 +558,39 @@ body {
 .summary-row .round-name { color: var(--ink-soft); font-weight: 500; font-size: 0.82rem; }
 .summary-row .round-badge { font-weight: 700; }
 
+/* ---------- remaining counter ---------- */
+.remaining-count {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+/* ---------- add question form ---------- */
+.add-question-form {
+  background: var(--card-bg);
+  border: 1.5px solid var(--line);
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.add-question-form h3 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.add-question-vs {
+  color: var(--ink-soft);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
 /* ---------- responsive niceties ---------- */
 @media (max-width: 360px) {
   .card-emoji { font-size: 2.5rem; }

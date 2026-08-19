@@ -126,8 +126,14 @@
 
   var CODE_CHARS = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
   var ROUND_SIZE = 5;
-  var MAX_ROUNDS = Math.floor(PAIRS.length / ROUND_SIZE);
+  var ORIGINAL_COUNT = PAIRS.length;
   var SESSION_KEY = 'instinctOnlineSession';
+
+  var customPairs = [];
+
+  function getTotalPairsCount() { return ORIGINAL_COUNT + customPairs.length; }
+  function getMaxRounds() { return Math.floor(getTotalPairsCount() / ROUND_SIZE); }
+  function getPair(idx) { return idx < ORIGINAL_COUNT ? PAIRS[idx] : customPairs[idx - ORIGINAL_COUNT]; }
 
   var firebaseReady = false;
   var db = null;
@@ -200,8 +206,9 @@
 
   function getRoundPairIndexes(seed, roundNumber) {
     var allIdx = [];
-    for (var i = 0; i < PAIRS.length; i++) allIdx.push(i);
+    for (var i = 0; i < ORIGINAL_COUNT; i++) allIdx.push(i);
     var shuffled = seededShuffle(allIdx, seededRng(seed));
+    for (var j = 0; j < customPairs.length; j++) shuffled.push(ORIGINAL_COUNT + j);
     var start = (roundNumber - 1) * ROUND_SIZE;
     return shuffled.slice(start, start + ROUND_SIZE);
   }
@@ -459,7 +466,12 @@
         pendingRevealRound: null
       };
 
-      // reconstruct the rounds already played so the running compatibility stat stays accurate
+      if (data.customPairs && Array.isArray(data.customPairs)) {
+        customPairs = data.customPairs.map(function (p) {
+          return { cat: 'Perso', ea: '✏️', a: p.a, eb: '✏️', b: p.b };
+        });
+      }
+
       state.sessionRounds = [];
       var lastAnsweredByMe = 0;
       var rounds = data.rounds || {};
@@ -490,7 +502,7 @@
         $('waitingForName').textContent = state.online.otherName || 'l’autre joueur';
         $('waitingSub').textContent = 'Manche ' + lastAnsweredByMe + ' — le verdict arrive dès que vous avez tous les deux répondu.';
         showScreen('screen-waiting-result');
-      } else if (lastAnsweredByMe >= MAX_ROUNDS) {
+      } else if (lastAnsweredByMe >= getMaxRounds()) {
         showFinalSummary();
       } else {
         state.round = lastAnsweredByMe + 1;
@@ -530,6 +542,13 @@
     roomListenerUnsub = docRef.onSnapshot(function (snap) {
       if (!snap.exists || !state.online) return;
       var data = snap.data();
+
+      if (data.customPairs && Array.isArray(data.customPairs)) {
+        customPairs = data.customPairs.map(function (p) {
+          return { cat: 'Perso', ea: '✏️', a: p.a, eb: '✏️', b: p.b };
+        });
+      }
+
       var other = data[state.online.otherKey];
 
       if (other && other.name && !state.online.otherName) {
@@ -618,7 +637,11 @@
     stack.appendChild(ghost1);
 
     var pairIndex = state.pairsOrder[state.currentIndex];
-    var pair = PAIRS[pairIndex];
+    var pair = getPair(pairIndex);
+
+    var played = (state.round - 1) * ROUND_SIZE + state.currentIndex;
+    var remaining = getTotalPairsCount() - played;
+    $('remainingCount').textContent = remaining + ' questions restantes';
 
     var card = document.createElement('div');
     card.className = 'card';
@@ -815,7 +838,7 @@
   function countCommon(answers1, answers2, pairIdx) {
     var c = 0;
     for (var i = 0; i < answers1.length; i++) {
-      if (isMatchForPair(answers1[i], answers2[i], PAIRS[pairIdx[i]])) c++;
+      if (isMatchForPair(answers1[i], answers2[i], getPair(pairIdx[i]))) c++;
     }
     return c;
   }
@@ -831,7 +854,7 @@
   function buildRoundRowsHtml(pairIdx, answers1, answers2, name1, name2) {
     var html = '';
     for (var i = 0; i < pairIdx.length; i++) {
-      var pair = PAIRS[pairIdx[i]];
+      var pair = getPair(pairIdx[i]);
       var a1 = answers1[i];
       var a2 = answers2[i];
       var isMatch = isMatchForPair(a1, a2, pair);
@@ -873,10 +896,13 @@
 
     $('globalStatPercent').textContent = runningPct + '%';
     $('globalStatCount').textContent = totalAnswered;
-    $('globalStatTotal').textContent = PAIRS.length;
+    $('globalStatTotal').textContent = getTotalPairsCount();
     $('globalStatBarFill').style.width = runningPct + '%';
 
-    var allSeen = roundNumber >= MAX_ROUNDS;
+    var remaining = getTotalPairsCount() - totalAnswered;
+    $('roundRemainingCount').textContent = remaining > 0 ? remaining + ' questions restantes' : '';
+
+    var allSeen = roundNumber >= getMaxRounds();
     $('nextRoundBtn').hidden = allSeen;
     $('allQuestionsSeenNote').hidden = !allSeen;
 
@@ -885,7 +911,7 @@
 
   function initRoundActions() {
     $('nextRoundBtn').addEventListener('click', function () {
-      if (state.round >= MAX_ROUNDS) { showFinalSummary(); return; }
+      if (state.round >= getMaxRounds()) { showFinalSummary(); return; }
       state.round++;
 
       if (state.mode === 'hotseat') {
@@ -929,6 +955,46 @@
     showScreen('screen-results');
   }
 
+  // ---------- custom questions ----------
+
+  function initAddQuestion() {
+    $('addQuestionBtn').addEventListener('click', function () {
+      $('addQuestionForm').hidden = false;
+      $('customOptionA').value = '';
+      $('customOptionB').value = '';
+      $('customOptionA').focus();
+    });
+
+    $('cancelAddQuestion').addEventListener('click', function () {
+      $('addQuestionForm').hidden = true;
+    });
+
+    $('confirmAddQuestion').addEventListener('click', function () {
+      var a = $('customOptionA').value.trim();
+      var b = $('customOptionB').value.trim();
+      if (!a || !b) return;
+
+      var newPair = { cat: 'Perso', ea: '✏️', a: a, eb: '✏️', b: b };
+      customPairs.push(newPair);
+
+      if (state.mode === 'online' && state.online && state.online.docRef) {
+        var cpData = customPairs.map(function (p) { return { a: p.a, b: p.b }; });
+        state.online.docRef.update({ customPairs: cpData }).catch(function () {});
+      }
+
+      $('addQuestionForm').hidden = true;
+
+      var allSeen = state.round >= getMaxRounds();
+      $('nextRoundBtn').hidden = allSeen;
+      if (!allSeen) $('allQuestionsSeenNote').hidden = true;
+
+      var totalAnswered = state.sessionRounds.length * ROUND_SIZE;
+      var remaining = getTotalPairsCount() - totalAnswered;
+      $('roundRemainingCount').textContent = remaining > 0 ? remaining + ' questions restantes' : '';
+      $('globalStatTotal').textContent = getTotalPairsCount();
+    });
+  }
+
   // ---------- replay ----------
 
   function initReplay() {
@@ -944,6 +1010,7 @@
       state.answers = [];
       state.sessionRounds = [];
       state.lastNames = null;
+      customPairs = [];
       updateProgress();
       $('joinCodeInput').value = '';
       $('joinNameInput').value = '';
@@ -964,6 +1031,7 @@
     initHotseatFlow();
     initRoundActions();
     initExtraChoices();
+    initAddQuestion();
     initReplay();
     checkForSavedSession();
   });

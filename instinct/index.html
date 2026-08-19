@@ -129,6 +129,7 @@
         <button class="extra-btn" id="btnBoth">🤝 Trop dur, les deux</button>
       </div>
       <p class="instant-hint">Tape le premier choix qui te vient</p>
+      <p class="remaining-count" id="remainingCount"></p>
     </section>
 
     <!-- ===== ATTENTE DE L'AUTRE (online) ===== -->
@@ -154,10 +155,20 @@
         <div class="global-stat-bar"><div class="global-stat-bar-fill" id="globalStatBarFill"></div></div>
       </div>
       <div class="results-list" id="roundResultsList"></div>
+      <p class="remaining-count" id="roundRemainingCount"></p>
       <p class="form-sub" id="allQuestionsSeenNote" hidden>🎉 Vous avez répondu à toutes les questions disponibles !</p>
       <div class="round-actions">
         <button class="btn-primary" id="nextRoundBtn">Manche suivante ▶</button>
+        <button class="link-btn" id="addQuestionBtn">＋ Ajouter une question</button>
         <button class="btn-secondary" id="endSessionBtn">Terminer la session</button>
+      </div>
+      <div class="add-question-form" id="addQuestionForm" hidden>
+        <h3>Nouvelle question</h3>
+        <input type="text" id="customOptionA" class="text-input" placeholder="Option A (ex: Plutôt ceci)" maxlength="60" autocomplete="off">
+        <span class="add-question-vs">ou</span>
+        <input type="text" id="customOptionB" class="text-input" placeholder="Option B (ex: Plutôt cela)" maxlength="60" autocomplete="off">
+        <button class="btn-primary" id="confirmAddQuestion">Ajouter ✓</button>
+        <button class="link-btn" id="cancelAddQuestion">Annuler</button>
       </div>
     </section>
 
@@ -178,6 +189,6 @@
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 <script src="firebase-config.js"></script>
-<script src="script.js?v=4"></script>
+<script src="script.js?v=5"></script>
 </body>
 </html>
