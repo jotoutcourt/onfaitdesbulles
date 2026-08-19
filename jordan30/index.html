@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Save the Date</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="Save the Date">
+    <meta property="og:description" content="Comme si avoir 30 ans n'&eacute;tait pas d&eacute;j&agrave; assez terrifiant..">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>&#127875;</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section id="envelope-screen" class="screen active">
+        <div class="particles" id="particles"></div>
+        <div class="fog"></div>
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <img src="assets/enveloppe.svg" alt="" class="envelope-svg">
+            </div>
+            <button id="open-btn">Ouvrir l'invitation</button>
+        </div>
+    </section>
+
+    <section id="video-screen" class="screen">
+        <video id="invitation-video" playsinline webkit-playsinline preload="auto">
+            <source src="assets/video.mp4" type="video/mp4">
+        </video>
+        <button id="play-fallback" class="play-fallback hidden">Lancer la vid&eacute;o</button>
+        <button id="skip-video" class="skip-btn">Passer</button>
+    </section>
+
+    <section id="card-screen" class="screen">
+        <div class="card-scroll">
+            <div class="card">
+                <p class="tagline">Comme si avoir 30 ans<br>n'&eacute;tait pas d&eacute;j&agrave; assez terrifiant..</p>
+                <div class="big-30">Fun&eacute;railles</div>
+                <h1 class="card-title">de ma vingtaine</h1>
+                <div class="divider"><span>&#9760;</span></div>
+                <div class="details">
+                    <div class="detail-row">
+                        <span class="detail-icon">&#128197;</span>
+                        <span>Samedi 7 Novembre 2026</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-icon">&#128343;</span>
+                        <span>&Agrave; partir de 19h00</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-icon">&#128205;</span>
+                        <span>Lieu bient&ocirc;t r&eacute;v&eacute;l&eacute;...</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-icon">&#128123;</span>
+                        <span>Dress code : Halloween Am&eacute;ricain / Cin&eacute;ma / Pop Culture</span>
+                    </div>
+                </div>
+                <form id="rsvp-form" class="rsvp-form">
+                    <input type="text" name="prenom" placeholder="Ton pr&eacute;nom" required autocomplete="given-name">
+                    <button type="submit" class="rsvp-btn">Je serai pr&eacute;sent</button>
+                </form>
+                <div id="rsvp-success" class="rsvp-success hidden">
+                    <p class="success-text">C'est not&eacute; !</p>
+                    <p class="success-sub">&Agrave; tr&egrave;s vite... si tu survis jusque-l&agrave;</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <audio id="open-sound" preload="auto">
+        <source src="assets/sound.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
