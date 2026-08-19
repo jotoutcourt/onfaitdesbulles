@@ -402,8 +402,17 @@ html, body {
     flex-shrink: 0;
 }
 
+.plus-one {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--text-dim);
+    margin-top: 1.5rem;
+    opacity: 0;
+}
+
 .rsvp-form {
-    margin-top: 2.2rem;
+    margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -481,7 +490,8 @@ html, body {
 #card-screen.active .card-title   { animation: fadeInUp 0.7s ease 0.3s forwards; }
 #card-screen.active .divider      { animation: fadeInUp 0.7s ease 0.45s forwards; }
 #card-screen.active .details      { animation: fadeInUp 0.7s ease 0.6s forwards; }
-#card-screen.active .rsvp-form    { animation: fadeInUp 0.7s ease 0.75s forwards; }
+#card-screen.active .plus-one     { animation: fadeInUp 0.7s ease 0.75s forwards; }
+#card-screen.active .rsvp-form    { animation: fadeInUp 0.7s ease 0.9s forwards; }
 
 @keyframes fadeInUp {
     from {
@@ -586,6 +596,7 @@ html, body {
                         <span>Dress code : Halloween Am&eacute;ricain / Cin&eacute;ma / Pop Culture</span>
                     </div>
                 </div>
+                <p class="plus-one">Les +1 sont les bienvenus</p>
                 <form id="rsvp-form" class="rsvp-form">
                     <input type="text" name="prenom" placeholder="Ton pr&eacute;nom" required autocomplete="given-name">
                     <button type="submit" class="rsvp-btn">Je serai pr&eacute;sent</button>
