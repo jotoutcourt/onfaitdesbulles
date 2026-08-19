@@ -488,15 +488,21 @@
 
       state.sessionRounds = [];
       var lastAnsweredByMe = 0;
+      var lastCompletedRound = 0;
       var rounds = data.rounds || {};
       Object.keys(rounds).forEach(function (key) {
         var n = parseInt(key, 10);
         var r = rounds[key];
         if (r && r[saved.myKey] && n > lastAnsweredByMe) lastAnsweredByMe = n;
         if (r && r.player1 && r.player2) {
+          if (n > lastCompletedRound) lastCompletedRound = n;
           var rIdx = getRoundPairIndexes(saved.code, n);
           var common = countCommon(r.player1, r.player2, rIdx);
-          state.sessionRounds.push({ round: n, common: common, tier: getRoundTier(common) });
+          state.sessionRounds.push({
+            round: n, common: common, tier: getRoundTier(common),
+            pairIdx: rIdx, answers1: r.player1, answers2: r.player2,
+            name1: data.player1.name, name2: data.player2.name
+          });
         }
       });
       state.sessionRounds.sort(function (a, b) { return a.round - b.round; });
@@ -516,6 +522,15 @@
         $('waitingForName').textContent = state.online.otherName || 'l’autre joueur';
         $('waitingSub').textContent = 'Manche ' + lastAnsweredByMe + ' — le verdict arrive dès que vous avez tous les deux répondu.';
         showScreen('screen-waiting-result');
+      } else if (otherAnsweredLast && lastAnsweredByMe === lastCompletedRound) {
+        state.round = lastAnsweredByMe;
+        state.sessionRounds = state.sessionRounds.filter(function (r) { return r.round !== lastAnsweredByMe; });
+        var pairIdx = getRoundPairIndexes(saved.code, lastAnsweredByMe);
+        revealRound(
+          lastAnsweredByMe, pairIdx,
+          data.player1.name, lastRoundData.player1,
+          data.player2.name, lastRoundData.player2
+        );
       } else if (lastAnsweredByMe >= getMaxRounds()) {
         showFinalSummary();
       } else {
@@ -921,8 +936,13 @@
     $('roundRemainingCount').textContent = remaining > 0 ? remaining + ' questions restantes' : '';
 
     var allSeen = roundNumber >= getMaxRounds();
-    $('nextRoundBtn').hidden = allSeen;
     $('allQuestionsSeenNote').hidden = !allSeen;
+
+    var nextBtn = $('nextRoundBtn');
+    nextBtn.hidden = true;
+    if (!allSeen) {
+      setTimeout(function () { nextBtn.hidden = false; }, 3000);
+    }
 
     showScreen('screen-round-result');
   }
