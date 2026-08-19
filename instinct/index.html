@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 
@@ -18,7 +18,18 @@
   <header class="topbar">
     <div class="logo">First<span class="dot">•</span>date</div>
     <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <button class="history-btn" id="historyBtn" hidden>📋</button>
   </header>
+
+  <div class="history-overlay" id="historyOverlay" hidden>
+    <div class="history-panel">
+      <div class="history-header">
+        <h2>Résultats précédents</h2>
+        <button class="history-close" id="historyClose">✕</button>
+      </div>
+      <div class="history-body" id="historyBody"></div>
+    </div>
+  </div>
 
   <main id="stage">
 
@@ -189,6 +200,6 @@
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 <script src="firebase-config.js"></script>
-<script src="script.js?v=5"></script>
+<script src="script.js?v=6"></script>
 </body>
 </html>

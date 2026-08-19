@@ -886,7 +886,11 @@
     $('roundCommonCount').textContent = common;
     $('roundResultsList').innerHTML = buildRoundRowsHtml(pairIdx, answers1, answers2, name1, name2);
 
-    state.sessionRounds.push({ round: roundNumber, common: common, tier: tier });
+    state.sessionRounds.push({
+      round: roundNumber, common: common, tier: tier,
+      pairIdx: pairIdx.slice(), answers1: answers1.slice(), answers2: answers2.slice(),
+      name1: name1, name2: name2
+    });
     state.lastNames = { name1: name1, name2: name2 };
 
     var totalAnswered = state.sessionRounds.length * ROUND_SIZE;
@@ -906,6 +910,7 @@
     $('nextRoundBtn').hidden = allSeen;
     $('allQuestionsSeenNote').hidden = !allSeen;
 
+    updateHistoryBtn();
     showScreen('screen-round-result');
   }
 
@@ -995,6 +1000,42 @@
     });
   }
 
+  // ---------- history overlay ----------
+
+  function updateHistoryBtn() {
+    $('historyBtn').hidden = state.sessionRounds.length === 0;
+  }
+
+  function buildHistoryHtml() {
+    if (state.sessionRounds.length === 0) {
+      return '<p class="history-empty">Aucune manche terminée pour le moment.</p>';
+    }
+    var html = '';
+    for (var i = state.sessionRounds.length - 1; i >= 0; i--) {
+      var r = state.sessionRounds[i];
+      html += '<div class="history-round-block">';
+      html += '<div class="history-round-title">' + r.tier.emoji + ' Manche ' + r.round + ' — ' + r.common + '/' + ROUND_SIZE + ' ' + r.tier.label + '</div>';
+      html += buildRoundRowsHtml(r.pairIdx, r.answers1, r.answers2, r.name1, r.name2);
+      html += '</div>';
+    }
+    return html;
+  }
+
+  function initHistory() {
+    $('historyBtn').addEventListener('click', function () {
+      $('historyBody').innerHTML = buildHistoryHtml();
+      $('historyOverlay').hidden = false;
+    });
+
+    $('historyClose').addEventListener('click', function () {
+      $('historyOverlay').hidden = true;
+    });
+
+    $('historyOverlay').addEventListener('click', function (e) {
+      if (e.target === $('historyOverlay')) $('historyOverlay').hidden = true;
+    });
+  }
+
   // ---------- replay ----------
 
   function initReplay() {
@@ -1012,6 +1053,7 @@
       state.lastNames = null;
       customPairs = [];
       updateProgress();
+      updateHistoryBtn();
       $('joinCodeInput').value = '';
       $('joinNameInput').value = '';
       $('hostNameInput').value = '';
@@ -1032,6 +1074,7 @@
     initRoundActions();
     initExtraChoices();
     initAddQuestion();
+    initHistory();
     initReplay();
     checkForSavedSession();
   });
