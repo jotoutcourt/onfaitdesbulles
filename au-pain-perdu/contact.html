@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — Au Pain Perdu, Lyon</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-nav" id="siteNav">
+    <a href="index.html" class="logo-mark">
+      <img class="logo-dark" src="assets/Logo/logo-mascot-couleur.png" alt="Au Pain Perdu" />
+      <img class="logo-light" src="assets/Logo/logo-mascot-blanc.png" alt="Au Pain Perdu" />
+    </a>
+
+    <ul class="nav-center">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="carte.html">La carte</a></li>
+      <li><a href="notre-histoire.html">Notre histoire</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <a href="tel:+33478000000" class="btn-pill"><span class="dot"></span>04 78 00 00 00</a>
+    </div>
+
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Accueil</a>
+    <a href="carte.html">La carte</a>
+    <a href="notre-histoire.html">Notre histoire</a>
+    <a href="contact.html">Contact</a>
+    <a href="tel:+33478000000" class="btn-pill">04 78 00 00 00</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-media">
+      <img src="assets/la boulangerie café/boulangerie café.png" alt="La terrasse d'Au Pain Perdu" />
+    </div>
+    <div class="wrap page-hero-content reveal">
+      <span class="eyebrow">Contact</span>
+      <h1>Passez nous <em>voir.</em></h1>
+      <p>Au 9 rue du Bœuf, en plein Vieux Lyon. On répond aussi par téléphone ou par email — avec le même soin qu'on met dans le pain.</p>
+    </div>
+  </section>
+
+  <!-- INFO CARDS -->
+  <section class="section-pad tight">
+    <div class="wrap info-cards reveal">
+      <div class="info-card">
+        <h5>Adresse</h5>
+        <p>9 rue du Bœuf<br>69005 Lyon, France</p>
+      </div>
+      <div class="info-card">
+        <h5>Contact</h5>
+        <p><a href="tel:+33478000000">04 78 00 00 00</a><br><a href="mailto:bonjour@aupainperdu-lyon.fr">bonjour@aupainperdu-lyon.fr</a></p>
+      </div>
+      <div class="info-card">
+        <h5>Horaires</h5>
+        <p>Mardi – Dimanche : 8h – 22h<br>Fermé le lundi</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM + MEDIA -->
+  <section class="section-pad tight bg-peach">
+    <div class="wrap contact-grid reveal">
+      <form class="rdv-form" action="#" method="post">
+        <span class="eyebrow">Une question, une réservation&nbsp;?</span>
+        <h2 class="title-block" style="margin-bottom:0.6rem;">Écrivez-<em>nous</em></h2>
+        <div class="form-row">
+          <div>
+            <label for="nom">Nom complet</label>
+            <input type="text" id="nom" name="nom" placeholder="Votre nom" />
+          </div>
+          <div>
+            <label for="tel">Téléphone</label>
+            <input type="tel" id="tel" name="tel" placeholder="06 00 00 00 00" />
+          </div>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="vous@email.fr" />
+        </div>
+        <div>
+          <label for="motif">Motif</label>
+          <select id="motif" name="motif">
+            <option>Réservation</option>
+            <option>Question sur un produit</option>
+            <option>Intolérances / allergies</option>
+            <option>Autre demande</option>
+          </select>
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Décrivez brièvement votre demande..."></textarea>
+        </div>
+        <button type="submit" class="btn-pill"><span class="dot"></span>Envoyer le message</button>
+      </form>
+      <div class="contact-media">
+        <img src="assets/plats/plat5.png" alt="Tartines maison, prêtes à être servies" />
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="section-pad tight">
+    <div class="wrap reveal">
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps?q=9+Rue+du+B%C5%93uf,+69005+Lyon&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap footer-cols">
+      <div>
+        <h5>Adresse</h5>
+        <p>9 rue du Bœuf<br>69005 Lyon, France</p>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <p><a href="tel:+33478000000">04 78 00 00 00</a><br><a href="mailto:bonjour@aupainperdu-lyon.fr">bonjour@aupainperdu-lyon.fr</a></p>
+      </div>
+      <div>
+        <h5>Horaires</h5>
+        <p>Mar–Dim : 8h – 22h<br>Fermé le lundi</p>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© 2026 Au Pain Perdu — Restaurant Boulangerie</span>
+      <span>Lyon, France</span>
+    </div>
+  </footer>
+
+  <a href="https://jordan-join.fr/contact.html" target="_blank" rel="noopener" class="demo-badge"><span class="db-full">Maquette démo — Jordan Join, Directeur Artistique</span><span class="db-short">Démo — J. Join</span></a>
+
+  <script src="script.js"></script>
+</body>
+</html>
