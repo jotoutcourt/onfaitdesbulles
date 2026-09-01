@@ -303,6 +303,16 @@ header.site-nav.scrolled .nav-center a { text-shadow: none; }
 .wave-banner text { font-family: var(--font-display); font-size: 46px; fill: var(--navy); }
 .wave-banner .wave-accent { fill: var(--orange); }
 
+.hero-banderole { display: none; }
+@media (max-width: 560px) {
+  .wave-banner { display: none; }
+  .hero-banderole {
+    display: block; position: absolute; left: 0; right: 0; bottom: 4%; z-index: 1; pointer-events: none;
+  }
+  .hero-banderole svg { display: block; width: 100%; height: auto; }
+  .hero-banderole text { font-family: var(--font-display); font-size: 46px; fill: var(--cream); }
+}
+
 /* ---------- Values row ---------- */
 .values-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 @media (max-width: 900px) { .values-row { grid-template-columns: 1fr; gap: 1.6rem; } }
