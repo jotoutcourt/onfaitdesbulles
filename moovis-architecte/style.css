@@ -558,7 +558,7 @@ footer.site-footer { background: var(--navy); color: #fff; padding-top: 4rem; po
 }
 .footer-bottom {
   position: relative; z-index: 1; border-top: 1px solid var(--line-dark);
-  padding: 1.4rem 0 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;
+  padding-top: 1.4rem; padding-bottom: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;
   font-size: 0.78rem; color: rgba(242,243,246,0.5);
 }
 .footer-bottom a { color: rgba(242,243,246,0.5); text-decoration: none; }
