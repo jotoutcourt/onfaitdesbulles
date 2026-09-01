@@ -1,4 +1,16 @@
 (function () {
+  // Site loader: shown for at least a beat so it actually reads as a
+  // loading moment, even when the page (being local) loads instantly
+  var loader = document.getElementById('siteLoader');
+  if (loader) {
+    var loaderStart = Date.now();
+    var MIN_LOADER_TIME = 700;
+    window.addEventListener('load', function () {
+      var wait = Math.max(0, MIN_LOADER_TIME - (Date.now() - loaderStart));
+      setTimeout(function () { loader.classList.add('loaded'); }, wait);
+    });
+  }
+
   // Nav scroll state
   var nav = document.querySelector('header.site-nav');
   function onScroll() {
