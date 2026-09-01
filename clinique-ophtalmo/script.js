@@ -15,6 +15,43 @@
     }
   }
 
+  // Homepage hero (mobile only): after the intro, glide gently down to
+  // the first paragraph instead of leaving the visitor stuck on the hero
+  var heroSection = document.querySelector('.hero');
+  var firstParagraph = document.querySelector('.soins-intro-text p');
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (heroSection && firstParagraph && window.innerWidth <= 900 && !reduceMotion) {
+    var autoScrollCancelled = false;
+    function cancelAutoScroll() { autoScrollCancelled = true; }
+    window.addEventListener('wheel', cancelAutoScroll, { passive: true, once: true });
+    window.addEventListener('touchstart', cancelAutoScroll, { passive: true, once: true });
+
+    function easeInOutSine(t) { return -(Math.cos(Math.PI * t) - 1) / 2; }
+
+    function glideToFirstParagraph() {
+      if (autoScrollCancelled) return;
+      var startY = window.scrollY;
+      var targetY = firstParagraph.getBoundingClientRect().top + startY - 24;
+      var distance = targetY - startY;
+      if (distance <= 0) return;
+      var duration = 2200;
+      var startTime = null;
+
+      function step(timestamp) {
+        if (autoScrollCancelled) return;
+        if (startTime === null) startTime = timestamp;
+        var progress = Math.min((timestamp - startTime) / duration, 1);
+        window.scrollTo(0, startY + distance * easeInOutSine(progress));
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    // Give the loader (if it's playing) time to clear before gliding
+    var loaderAlreadyPlayed = sessionStorage.getItem('ophtaLoaderPlayed');
+    setTimeout(glideToFirstParagraph, loaderAlreadyPlayed ? 900 : 3200);
+  }
+
   // Nav scroll state
   var nav = document.querySelector('header.site-nav');
   function onScroll() {
