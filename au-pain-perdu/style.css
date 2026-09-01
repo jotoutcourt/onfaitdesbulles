@@ -114,8 +114,7 @@ header.site-nav.scrolled .nav-center a { text-shadow: none; }
 .nav-right .btn-pill { padding: 0.65rem 1.4rem; font-size: 0.95rem; box-shadow: 2px 2px 0 var(--navy); }
 
 .burger { grid-column: 2; display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 600; justify-self: end; }
-.burger span { width: 22px; height: 2px; background: var(--navy); display: block; border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s; }
-header.site-nav.scrolled .burger span { background: #fff; }
+.burger span { width: 22px; height: 2px; background: var(--cream); display: block; border-radius: 2px; box-shadow: 0 1px 3px rgba(12,14,69,0.4); transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s; }
 .burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .burger.open span:nth-child(2) { opacity: 0; }
 .burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
