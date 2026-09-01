@@ -9,19 +9,34 @@
 
     var mascot = document.getElementById('loaderMascot');
     var panSurface = document.getElementById('panSurface');
-    var panSvg = document.querySelector('.loader-pan');
+    var panSvg = document.getElementById('loaderPanWrap');
     var hint = document.getElementById('loaderHint');
     var scene = document.querySelector('.loader-scene');
+    var fireWipe = document.getElementById('fireWipe');
     var dragging = false, offsetX = 0, offsetY = 0, baked = false;
 
     function finishBaking() {
       if (baked) return;
       baked = true;
-      mascot.classList.add('baked');
+
+      // Settle the mascot into the middle of the pan, then let it "cook"
+      var panRect = panSurface.getBoundingClientRect();
+      var sceneRect = scene.getBoundingClientRect();
+      mascot.style.left = (panRect.left + panRect.width / 2 - sceneRect.left) + 'px';
+      mascot.style.top = (panRect.top + panRect.height / 2 - sceneRect.top) + 'px';
+      mascot.style.bottom = 'auto';
+      mascot.style.transform = 'translate(-50%, -50%) scale(0.9)';
+      mascot.classList.add('cooking', 'cooked');
+
       if (panSvg) panSvg.classList.add('baking');
-      if (panSurface) panSurface.classList.add('baking');
-      if (hint) hint.textContent = 'Ça sort de la poêle !';
-      setTimeout(function () { loader.classList.add('loaded'); }, 1200);
+      if (hint) hint.textContent = 'Ça grille !';
+
+      // The spark at the pan grows into a fire that engulfs the whole screen
+      setTimeout(function () {
+        if (fireWipe) fireWipe.classList.add('expand');
+      }, 250);
+
+      setTimeout(function () { loader.classList.add('loaded'); }, 1050);
     }
 
     if (mascot && panSurface && scene) {
