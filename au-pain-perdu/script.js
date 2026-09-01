@@ -1,14 +1,82 @@
 (function () {
-  // Site loader: shown for at least a beat so it actually reads as a
-  // loading moment, even when the page (being local) loads instantly
+  // Site loader: drag the mascot into the pan to open the site.
+  // Shown once per browser session — a same-session inline script
+  // (in the page <head>) already hides it instantly on repeat visits,
+  // so here we only need to skip wiring up the interaction.
   var loader = document.getElementById('siteLoader');
-  if (loader) {
-    var loaderStart = Date.now();
-    var MIN_LOADER_TIME = 700;
-    window.addEventListener('load', function () {
-      var wait = Math.max(0, MIN_LOADER_TIME - (Date.now() - loaderStart));
-      setTimeout(function () { loader.classList.add('loaded'); }, wait);
-    });
+  if (loader && loader.style.display !== 'none') {
+    sessionStorage.setItem('apLoaderSeen', '1');
+
+    var mascot = document.getElementById('loaderMascot');
+    var panSurface = document.getElementById('panSurface');
+    var panSvg = document.querySelector('.loader-pan');
+    var hint = document.getElementById('loaderHint');
+    var scene = document.querySelector('.loader-scene');
+    var dragging = false, offsetX = 0, offsetY = 0, baked = false;
+
+    function finishBaking() {
+      if (baked) return;
+      baked = true;
+      mascot.classList.add('baked');
+      if (panSvg) panSvg.classList.add('baking');
+      if (panSurface) panSurface.classList.add('baking');
+      if (hint) hint.textContent = 'Ça sort de la poêle !';
+      setTimeout(function () { loader.classList.add('loaded'); }, 1200);
+    }
+
+    if (mascot && panSurface && scene) {
+      mascot.addEventListener('pointerdown', function (e) {
+        if (baked) return;
+        try {
+          mascot.setPointerCapture(e.pointerId);
+        } catch (err) {
+          return;
+        }
+        dragging = true;
+        mascot.classList.add('dragging');
+        var rect = mascot.getBoundingClientRect();
+        offsetX = e.clientX - rect.left;
+        offsetY = e.clientY - rect.top;
+      });
+
+      window.addEventListener('pointermove', function (e) {
+        if (!dragging || baked) return;
+        var sceneRect = scene.getBoundingClientRect();
+        mascot.style.left = (e.clientX - offsetX - sceneRect.left) + 'px';
+        mascot.style.top = (e.clientY - offsetY - sceneRect.top) + 'px';
+        mascot.style.bottom = 'auto';
+        mascot.style.transform = 'none';
+      });
+
+      window.addEventListener('pointerup', function (e) {
+        if (!dragging || baked) return;
+        dragging = false;
+        mascot.classList.remove('dragging');
+        if (mascot.hasPointerCapture && mascot.hasPointerCapture(e.pointerId)) {
+          mascot.releasePointerCapture(e.pointerId);
+        }
+
+        var doorRect = panSurface.getBoundingClientRect();
+        var doorCx = doorRect.left + doorRect.width / 2;
+        var doorCy = doorRect.top + doorRect.height / 2;
+        var mascotRect = mascot.getBoundingClientRect();
+        var mascotCx = mascotRect.left + mascotRect.width / 2;
+        var mascotCy = mascotRect.top + mascotRect.height / 2;
+        var dist = Math.hypot(mascotCx - doorCx, mascotCy - doorCy);
+
+        if (dist < (doorRect.width / 2) * 0.95) {
+          finishBaking();
+        } else {
+          mascot.style.left = '';
+          mascot.style.top = '';
+          mascot.style.bottom = '0';
+          mascot.style.transform = 'translateX(-50%)';
+        }
+      });
+    }
+
+    // Safety net: nobody should be stuck on the loader forever
+    setTimeout(finishBaking, 10000);
   }
 
   // Nav scroll state
