@@ -349,7 +349,7 @@ footer.site-footer { background: var(--bordeaux); color: #fff; padding-top: 4rem
 }
 .footer-bottom {
   position: relative; z-index: 1;
-  border-top: 1px solid var(--line-dark); padding: 1.4rem 0 2rem;
+  border-top: 1px solid var(--line-dark); padding-top: 1.4rem; padding-bottom: 2rem;
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;
   font-size: 0.78rem; color: rgba(250,246,242,0.5);
 }
