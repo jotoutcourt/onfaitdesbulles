@@ -105,20 +105,15 @@ header.site-nav.scrolled {
 }
 @media (max-width: 900px) { header.site-nav, header.site-nav.scrolled { padding: 1rem 1.4rem; } }
 
-.logo-mark { display: flex; align-items: center; justify-self: start; text-decoration: none; }
-.logo-mark img { height: 54px; width: auto; }
-.logo-mark .logo-dark { display: none; }
-.logo-mark .logo-light { display: block; }
-
-.nav-center { display: flex; gap: 2.4rem; list-style: none; justify-self: center; }
+.nav-center { grid-column: 2; display: flex; gap: 2.4rem; list-style: none; justify-self: center; }
 .nav-center a { color: var(--cream); text-decoration: none; font-family: var(--font-display); font-size: 1.05rem; white-space: nowrap; transition: color 0.2s; text-shadow: 0 1px 4px rgba(12,14,69,0.35); }
 header.site-nav.scrolled .nav-center a { text-shadow: none; }
 .nav-center a:hover, .nav-center a.active { color: var(--orange); }
 
-.nav-right { display: flex; align-items: center; justify-self: end; }
+.nav-right { grid-column: 3; display: flex; align-items: center; justify-self: end; }
 .nav-right .btn-pill { padding: 0.65rem 1.4rem; font-size: 0.95rem; box-shadow: 2px 2px 0 var(--navy); }
 
-.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 600; justify-self: end; }
+.burger { grid-column: 2; display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 600; justify-self: end; }
 .burger span { width: 22px; height: 2px; background: var(--navy); display: block; border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s; }
 header.site-nav.scrolled .burger span { background: #fff; }
 .burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
