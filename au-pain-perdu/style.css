@@ -186,6 +186,11 @@ header.site-nav.scrolled .burger span { background: #fff; }
 .hint-arrow svg { width: 70px; height: auto; transform: scaleX(-1); margin-left: auto; }
 .hint-arrow span { display: block; font-family: var(--font-display); font-size: 1.1rem; margin-top: -0.4rem; }
 @media (max-width: 900px) { .hero-content { padding-top: 8rem; } .hero-mascot { width: 100px; top: 8%; right: 4%; } .hint-arrow { width: 80px; right: 13%; top: 4%; } .hint-arrow span { font-size: 0.95rem; } }
+@media (max-width: 560px) {
+  .hero { min-height: 80vh; align-items: center; }
+  .hero-media::after { background: linear-gradient(to top, rgba(12,14,69,0.95) 0%, rgba(12,14,69,0.8) 40%, rgba(12,14,69,0.55) 75%, rgba(12,14,69,0.3) 100%); }
+  .hero-content { padding-top: 0; padding-bottom: 0; }
+}
 @media (max-width: 560px) { .hero-mascot, .hint-arrow { display: none; } }
 
 /* ---------- Checkerboard band ---------- */
